@@ -4,6 +4,7 @@ import {useState} from 'react';
 
 import Input from '../../../\bUtils/Component/Input';
 import MainButton from '../../../\bUtils/Component/MainButton';
+import SignUpButton from '../Component/SignUpButton';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);
@@ -25,7 +26,10 @@ function LoginPage({navigation}) {
           onChange={setPassword}
           security={true}
         />
-        <MainButton text="로그인" onPress={() => console.log('hello')} />
+        <View style={styles.buttondiv}>
+          <MainButton text="로그인" onPress={() => console.log('hello')} />
+        </View>
+        <SignUpButton />
       </KeyboardAvoidingView>
     </View>
   );
@@ -49,6 +53,9 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: '900',
     marginBottom: 70,
-    marginTop: -130,
+    marginTop: -100,
+  },
+  buttondiv: {
+    marginTop: 28,
   },
 });
