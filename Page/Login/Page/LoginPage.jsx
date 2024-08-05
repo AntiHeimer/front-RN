@@ -12,6 +12,7 @@ function LoginPage({navigation}) {
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView style={styles.keyboardview}>
+        <Text style={styles.logo}>AntiHeimer</Text>
         <Input
           placeholder="아이디를 입력하세요"
           value={userId}
@@ -24,7 +25,7 @@ function LoginPage({navigation}) {
           onChange={setPassword}
           security={true}
         />
-        <MainButton />
+        <MainButton text="로그인" onPress={() => console.log('hello')} />
       </KeyboardAvoidingView>
     </View>
   );
@@ -43,5 +44,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    fontSize: 40,
+    fontWeight: '900',
+    marginBottom: 70,
+    marginTop: -130,
   },
 });

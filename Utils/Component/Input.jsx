@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   input: {
-    height: 50,
-    width: 280,
+    height: 55,
+    width: 308,
     borderColor: 'black',
     backgroundColor: 'white',
     borderWidth: 0.2,
