@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   placeholderContainer: {
     position: 'absolute',
     left: 16,
-    top: 15,
+    top: 18,
   },
   placeholder: {
     color: '#717171',
