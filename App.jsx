@@ -6,6 +6,7 @@
  */
 
 import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 
 import React from 'react';
@@ -13,10 +14,23 @@ import React from 'react';
 import LoginPage from './Page/Login/Page/LoginPage';
 import SignUpPage from './Page/SignUp/Page/SignUpPage';
 import MainPage from './Page/Main/Page/MainPage';
+import LocationPage from './Page/Location/Page/LocationPage';
+import AccountPage from './Page/Account/Page/AccountPage';
+
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MainTabNavigator() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="위치" component={LocationPage} />
+      <Tab.Screen name="메인" component={MainPage} />
+      <Tab.Screen name="계정" component={AccountPage} />
+    </Tab.Navigator>
+  );
+}
 
 function App() {
-  const Stack = createStackNavigator();
-
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="로그인">
@@ -35,13 +49,11 @@ function App() {
             headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
           }}
         />
+
         <Stack.Screen
           name="메인"
-          component={MainPage}
-          options={{
-            gestureEnabled: false,
-            // headerLeft: null,
-          }}
+          component={MainTabNavigator}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
