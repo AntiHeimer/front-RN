@@ -29,7 +29,7 @@ function LoginPage({navigation}) {
         <View style={styles.buttondiv}>
           <MainButton text="로그인" onPress={() => console.log('hello')} />
         </View>
-        <SignUpButton />
+        <SignUpButton navigation={navigation} />
       </KeyboardAvoidingView>
     </View>
   );
