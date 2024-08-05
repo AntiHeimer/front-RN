@@ -2,9 +2,9 @@ import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 
 import {useState} from 'react';
 
-import Input from '../../../\bUtils/Component/Input';
-import MainButton from '../../../\bUtils/Component/MainButton';
 import SignUpButton from '../Component/SignUpButton';
+import Input from '../../../Utils/Component/Input';
+import MainButton from '../../../Utils/Component/MainButton';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);
