@@ -12,19 +12,16 @@ import React from 'react';
 
 import LoginPage from './Page/Login/Page/LoginPage';
 import SignUpPage from './Page/SignUp/Page/SignUpPage';
+import MainPage from './Page/Main/Page/MainPage';
 
 function App() {
   const Stack = createStackNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="LoginPage"
-        options={{
-          headerBackAccessibilityLabel: true,
-        }}>
+      <Stack.Navigator initialRouteName="로그인">
         <Stack.Screen
-          name="LoginPage"
+          name="로그인"
           component={LoginPage}
           options={{headerShown: false}}
         />
@@ -32,9 +29,18 @@ function App() {
           name="회원가입"
           component={SignUpPage}
           options={{
+            headerBackAccessibilityLabel: true,
             headerBackTitleVisible: false,
             headerTintColor: 'black',
             headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+          }}
+        />
+        <Stack.Screen
+          name="메인"
+          component={MainPage}
+          options={{
+            gestureEnabled: false,
+            // headerLeft: null,
           }}
         />
       </Stack.Navigator>
