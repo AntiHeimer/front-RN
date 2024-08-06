@@ -18,6 +18,7 @@ import LocationPage from './Page/Location/Page/LocationPage';
 import AccountPage from './Page/Account/Page/AccountPage';
 import DiagnosisPage from './Page/Diagnosis/Page/DiagnosisPage';
 import DiagnosisResultInquiryPage from './Page/DiagnosisResultInquiry/Page/DiagnosisResultInquiryPage';
+import DiagnosisResultPage from './Page/Diagnosis/Page/DiagnosisResultPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -64,6 +65,14 @@ function App() {
             headerBackTitleVisible: false,
             headerTintColor: 'black',
             headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+          }}
+        />
+        <Stack.Screen
+          name="진단 결과"
+          component={DiagnosisResultPage}
+          options={{
+            headerBackAccessibilityLabel: true,
+            headerLeft: () => null,
           }}
         />
         <Stack.Screen
