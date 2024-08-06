@@ -1,10 +1,13 @@
 import {StyleSheet, Text, View} from 'react-native';
 import MainButton from '../../../Utils/Component/MainButton';
+import Graph from '../Component/Graph';
 
 function MainPage({navigation}) {
   return (
     <View style={styles.container}>
-      <View style={styles.graphContainer}></View>
+      <View style={styles.graphContainer}>
+        <Graph />
+      </View>
       <View style={styles.buttonDiv}>
         <MainButton
           text="진단하기"
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   graphContainer: {
-    borderWidth: 0.2,
+    // borderWidth: 0.2,
     width: 310,
     height: 350,
     marginBottom: 22,

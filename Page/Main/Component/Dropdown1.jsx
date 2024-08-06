@@ -2,13 +2,12 @@ import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-function DropDown() {
+function Dropdown1() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
-    {label: 'Pear', value: 'pear'},
+    {label: '수면', value: '수면'},
+    {label: '걸음걸이', value: '걸음걸이'},
   ]);
 
   return (
@@ -21,7 +20,7 @@ function DropDown() {
           setOpen={setOpen}
           setValue={setValue}
           setItems={setItems}
-          placeholder={'피보호자를 선택해주세요'}
+          placeholder={'데이터 종류'}
           style={styles.dropdown}
           dropDownContainerStyle={styles.dropdown}
         />
@@ -30,18 +29,19 @@ function DropDown() {
   );
 }
 
-export default DropDown;
+export default Dropdown1;
 
 const styles = StyleSheet.create({
   container: {
     flex: 0.1,
+    position: 'static',
     zIndex: 100,
     marginBottom: 50,
   },
   subContainer: {
     flex: 1,
     alignItems: 'center',
-    width: 308,
+    width: 120,
   },
   dropdown: {
     borderWidth: 0.2,

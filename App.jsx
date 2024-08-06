@@ -32,6 +32,7 @@ function LocationStackNavigator() {
           title: '위치',
           headerLeft: () => null,
           headerRight: () => <Notification />,
+          headerStyle: {height: 110},
         }}
       />
       <LocationStack.Screen
@@ -44,6 +45,7 @@ function LocationStackNavigator() {
           headerTintColor: 'black',
           headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
           headerRight: () => <Notification />,
+          headerStyle: {height: 110},
         }}
       />
     </LocationStack.Navigator>
@@ -56,7 +58,10 @@ function MainTabNavigator() {
       <Tab.Screen
         name="Location Tab"
         component={LocationStackNavigator}
-        options={{title: '위치', headerShown: false}}
+        options={{
+          title: '위치',
+          headerShown: false,
+        }}
       />
       <Tab.Screen
         name="Main Tab"
