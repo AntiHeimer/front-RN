@@ -54,9 +54,9 @@ const styles = StyleSheet.create({
   },
   tableHeader: {
     flex: 1,
+    borderWidth: 0.2,
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 0.2,
     borderColor: 'black',
     height: 50,
   },
@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
   },
   tableCell: {
     flex: 1,
+    borderWidth: 0.2,
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 0.2,
     borderColor: 'black',
     height: 50,
   },
