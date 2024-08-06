@@ -11,7 +11,7 @@ function DiagnosisResultPage({navigation}) {
         <Text style={styles.resultHighlight}>3단계 입니다</Text>
       </View>
       <Table />
-      <MainButton text="홈으로" onPress={() => navigation.navigate('메인')} />
+      <MainButton text="홈으로" onPress={() => navigation.navigate('Main')} />
     </View>
   );
 }

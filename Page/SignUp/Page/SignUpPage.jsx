@@ -49,7 +49,7 @@ function SignUpPage({navigation}) {
           <View style={styles.loginButtonDiv}>
             <MainButton
               text="회원가입"
-              onPress={() => navigation.navigate('로그인')}
+              onPress={() => navigation.navigate('Login')}
             />
           </View>
         </View>

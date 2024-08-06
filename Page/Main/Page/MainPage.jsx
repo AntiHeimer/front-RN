@@ -8,13 +8,13 @@ function MainPage({navigation}) {
       <View style={styles.buttonDiv}>
         <MainButton
           text="진단하기"
-          onPress={() => navigation.navigate('진단하기')}
+          onPress={() => navigation.navigate('Diagnosis')}
         />
       </View>
       <View style={styles.buttonDiv}>
         <MainButton
           text="진단 결과 조회하기"
-          onPress={() => navigation.navigate('진단 결과 조회')}
+          onPress={() => navigation.navigate('Diagnosis Result Inquiry')}
         />
       </View>
     </View>

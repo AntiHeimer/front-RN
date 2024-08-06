@@ -28,7 +28,7 @@ function DiagnosisPage({navigation}) {
         <MainSmallButtonGray text="이전" />
         <MainSmallButtonBlack
           text="다음"
-          onPress={() => navigation.navigate('진단 결과')}
+          onPress={() => navigation.navigate('Diagnosis Result')}
         />
       </View>
     </View>

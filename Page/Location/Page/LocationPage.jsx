@@ -1,9 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import RegisterButton from '../Component/RegisterButton';
 
-function LocationPage() {
+function LocationPage({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>location page</Text>
+      <RegisterButton navigation={navigation} />
     </View>
   );
 }
