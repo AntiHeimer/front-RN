@@ -13,15 +13,16 @@ export default MainSmallButtonGray;
 const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
+    borderColor: '#F2F2F2',
     borderRadius: 90,
-    backgroundColor: 'black',
-    width: 159,
-    height: 55,
+    backgroundColor: '#F2F2F2',
+    width: 60,
+    height: 34,
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    color: 'white',
-    fontSize: 20,
+    color: 'black',
+    fontSize: 12,
   },
 });

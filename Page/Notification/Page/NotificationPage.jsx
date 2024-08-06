@@ -1,11 +1,15 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import Row from '../Component/Row';
 
 function NotificationPage() {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollViewContent}>
         <View style={styles.subContainer}>
-          <Text style={styles.title}>Notification</Text>
+          <Row />
+          <Row />
+          <Row />
+          <Row />
         </View>
       </ScrollView>
     </View>
@@ -25,6 +29,5 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     alignItems: 'center',
-    marginTop: 200,
   },
 });
