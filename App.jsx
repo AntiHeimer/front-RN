@@ -16,6 +16,8 @@ import SignUpPage from './Page/SignUp/Page/SignUpPage';
 import MainPage from './Page/Main/Page/MainPage';
 import LocationPage from './Page/Location/Page/LocationPage';
 import AccountPage from './Page/Account/Page/AccountPage';
+import DiagnosisPage from './Page/Diagnosis/Page/DiagnosisPage';
+import DiagnosisResultInquiryPage from './Page/DiagnosisResultInquiry/Page/DiagnosisResultInquiryPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,6 +55,26 @@ function App() {
           name="메인"
           component={MainTabNavigator}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="진단하기"
+          component={DiagnosisPage}
+          options={{
+            headerBackAccessibilityLabel: true,
+            headerBackTitleVisible: false,
+            headerTintColor: 'black',
+            headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+          }}
+        />
+        <Stack.Screen
+          name="진단 결과 조회"
+          component={DiagnosisResultInquiryPage}
+          options={{
+            headerBackAccessibilityLabel: true,
+            headerBackTitleVisible: false,
+            headerTintColor: 'black',
+            headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
