@@ -22,7 +22,7 @@ const Tab = createBottomTabNavigator();
 
 function MainTabNavigator() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName="메인">
       <Tab.Screen name="위치" component={LocationPage} />
       <Tab.Screen name="메인" component={MainPage} />
       <Tab.Screen name="계정" component={AccountPage} />
@@ -49,7 +49,6 @@ function App() {
             headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
           }}
         />
-
         <Stack.Screen
           name="메인"
           component={MainTabNavigator}
