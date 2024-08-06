@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-function MainSmallButtonGray({text, onPress}) {
+function MainMediumButtonGray({text, onPress}) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <Text style={styles.text}> {text}</Text>
@@ -8,20 +8,21 @@ function MainSmallButtonGray({text, onPress}) {
   );
 }
 
-export default MainSmallButtonGray;
+export default MainMediumButtonGray;
 
 const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
+    borderColor: '#F2F2F2',
     borderRadius: 90,
-    backgroundColor: 'black',
+    backgroundColor: '#F2F2F2',
     width: 159,
     height: 55,
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    color: 'white',
+    color: 'black',
     fontSize: 20,
   },
 });

@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-function MainSmallButtonGray({text, onPress}) {
+function MainMediumButtonBlack({text, onPress}) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <Text style={styles.text}> {text}</Text>
@@ -8,7 +8,7 @@ function MainSmallButtonGray({text, onPress}) {
   );
 }
 
-export default MainSmallButtonGray;
+export default MainMediumButtonBlack;
 
 const styles = StyleSheet.create({
   container: {

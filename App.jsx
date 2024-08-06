@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
@@ -22,6 +15,8 @@ import DiagnosisPage from './Page/Diagnosis/Page/DiagnosisPage';
 import DiagnosisResultInquiryPage from './Page/DiagnosisResultInquiry/Page/DiagnosisResultInquiryPage';
 import DiagnosisResultPage from './Page/DiagnosisResult/Page/DiagnosisResultPage';
 import RegisterPage from './Page/Register/Page/RegisterPage';
+import Notification from './Utils/Component/Notification';
+import NotificationPage from './Page/Notification/Page/NotificationPage';
 
 const LocationStack = createStackNavigator();
 const Stack = createStackNavigator();
@@ -33,7 +28,11 @@ function LocationStackNavigator() {
       <LocationStack.Screen
         name="Location"
         component={LocationPage}
-        options={{title: '위치', headerLeft: () => null}}
+        options={{
+          title: '위치',
+          headerLeft: () => null,
+          headerRight: () => <Notification />,
+        }}
       />
       <LocationStack.Screen
         name="Register"
@@ -44,6 +43,7 @@ function LocationStackNavigator() {
           headerBackTitleVisible: false,
           headerTintColor: 'black',
           headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+          headerRight: () => <Notification />,
         }}
       />
     </LocationStack.Navigator>
@@ -61,12 +61,20 @@ function MainTabNavigator() {
       <Tab.Screen
         name="Main Tab"
         component={MainPage}
-        options={{title: '메인'}}
+        options={{
+          title: '메인',
+          headerRight: () => <Notification />,
+          headerStyle: {height: 110},
+        }}
       />
       <Tab.Screen
         name="Account Tab"
         component={AccountPage}
-        options={{title: '계정'}}
+        options={{
+          title: '계정',
+          headerRight: () => <Notification />,
+          headerStyle: {height: 110},
+        }}
       />
     </Tab.Navigator>
   );
@@ -95,7 +103,10 @@ function App() {
         <Stack.Screen
           name="Main"
           component={MainTabNavigator}
-          options={{title: '메인', headerShown: false}}
+          options={{
+            title: '메인',
+            headerShown: false,
+          }}
         />
         <Stack.Screen
           name="Diagnosis"
@@ -106,6 +117,8 @@ function App() {
             headerBackTitleVisible: false,
             headerTintColor: 'black',
             headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+
+            headerStyle: {height: 110},
           }}
         />
         <Stack.Screen
@@ -115,6 +128,8 @@ function App() {
             title: '진단 결과',
             headerBackAccessibilityLabel: true,
             headerLeft: () => null,
+            headerRight: () => <Notification />,
+            headerStyle: {height: 110},
           }}
         />
         <Stack.Screen
@@ -126,6 +141,20 @@ function App() {
             headerBackTitleVisible: false,
             headerTintColor: 'black',
             headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+            headerStyle: {height: 110},
+            headerRight: () => <Notification />,
+          }}
+        />
+        <Stack.Screen
+          name="Notification"
+          component={NotificationPage}
+          options={{
+            title: '알림',
+            headerBackAccessibilityLabel: true,
+            headerBackTitleVisible: false,
+            headerTintColor: 'black',
+            headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+            headerStyle: {height: 110},
           }}
         />
       </Stack.Navigator>

@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import MainSmallButtonGray from '../../../Utils/Component/MainSmallButtonGray';
-import MainSmallButtonBlack from '../../../Utils/Component/MainSmallButtonBlack';
+import MainMediumButtonGray from '../../../Utils/Component/MainMediumButtonGray';
+import MainMediumButtonBlack from '../../../Utils/Component/MainMediumButtonBlack';
 
 import checkMark from '../../../Utils/Asset/checkmark.png';
 import xMark from '../../../Utils/Asset/xmark.png';
@@ -25,8 +25,8 @@ function DiagnosisPage({navigation}) {
         </TouchableOpacity>
       </View>
       <View style={styles.buttonDiv}>
-        <MainSmallButtonGray text="이전" />
-        <MainSmallButtonBlack
+        <MainMediumButtonGray text="이전" />
+        <MainMediumButtonBlack
           text="다음"
           onPress={() => navigation.navigate('Diagnosis Result')}
         />
