@@ -3,7 +3,7 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 function SignUpButton({navigation}) {
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('회원가입')}
+      onPress={() => navigation.navigate('Sign Up')}
       style={styles.container}>
       <Text style={styles.text}>회원가입</Text>
     </TouchableOpacity>

@@ -29,7 +29,7 @@ function LoginPage({navigation}) {
         <View style={styles.buttondiv}>
           <MainButton
             text="로그인"
-            onPress={() => navigation.navigate('메인')}
+            onPress={() => navigation.navigate('Main')}
           />
         </View>
         <SignUpButton navigation={navigation} />
