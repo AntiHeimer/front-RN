@@ -26,7 +26,10 @@ function DiagnosisPage({navigation}) {
       </View>
       <View style={styles.buttonDiv}>
         <MainSmallButtonGray text="이전" />
-        <MainSmallButtonBlack text="다음" />
+        <MainSmallButtonBlack
+          text="다음"
+          onPress={() => navigation.navigate('진단 결과')}
+        />
       </View>
     </View>
   );
@@ -51,12 +54,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   questionBox: {
-    borderWidth: 1,
+    borderWidth: 0.2,
     width: 318,
     height: 202,
   },
   answerBox: {
-    borderWidth: 1,
+    borderWidth: 0.2,
     width: 318,
     height: 60,
   },

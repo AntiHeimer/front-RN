@@ -13,12 +13,14 @@ import React from 'react';
 
 import LoginPage from './Page/Login/Page/LoginPage';
 import SignUpPage from './Page/SignUp/Page/SignUpPage';
+
 import MainPage from './Page/Main/Page/MainPage';
 import LocationPage from './Page/Location/Page/LocationPage';
 import AccountPage from './Page/Account/Page/AccountPage';
+
 import DiagnosisPage from './Page/Diagnosis/Page/DiagnosisPage';
 import DiagnosisResultInquiryPage from './Page/DiagnosisResultInquiry/Page/DiagnosisResultInquiryPage';
-import DiagnosisResultPage from './Page/Diagnosis/Page/DiagnosisResultPage';
+import DiagnosisResultPage from './Page/DiagnosisResult/Page/DiagnosisResultPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
