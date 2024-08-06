@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   graphContainer: {
-    // borderWidth: 0.2,
     width: 310,
     height: 350,
     marginBottom: 22,
