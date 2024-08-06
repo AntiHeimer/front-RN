@@ -1,11 +1,44 @@
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import RegisterProtector from '../Component/RegisterProtector';
+import RegisterWard from '../Component/RegisterWard';
+import {useState} from 'react';
 
-function RegisterPage() {
+function RegisterPage({navigation}) {
+  const [protectorId, setProtectorId] = useState(null);
+  const [wardId, setWardId] = useState(null);
+
   return (
-    <View>
-      <Text>Register Page</Text>
+    <View style={styles.container}>
+      <RegisterProtector
+        navigation={navigation}
+        value={protectorId}
+        onChange={setProtectorId}
+      />
+      <View style={styles.hr} />
+      <RegisterWard
+        navigation={navigation}
+        value={wardId}
+        onChange={setWardId}
+      />
     </View>
   );
 }
 
 export default RegisterPage;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    marginTop: -200,
+  },
+  hr: {
+    borderTopWidth: 0.2,
+    width: 308,
+    height: 1,
+    marginTop: 35,
+    marginBottom: 35,
+  },
+});
