@@ -31,79 +31,80 @@ export default function GetHelthKitInfoFunction() {
     const weightOptions = {
       unit: 'kg',
     };
-    appleHealthKit.getSleepSamples(options, (error, result) => {
-      if (error) {
-        console.log('[Error] Failed to load Sleep Data');
 
-        return;
-      }
+    // appleHealthKit.getSleepSamples(options, (error, result) => {
+    //   if (error) {
+    //     console.log('[Error] Failed to load Sleep Data');
 
-      console.log('sleep data', result);
+    //     return;
+    //   }
 
-      return;
-    });
+    //   console.log('sleep data', result);
 
-    appleHealthKit.getActivitySummary(options, (error, result) => {
-      if (error) {
-        console.log('[Error] Failed to load Activity Data');
+    //   return;
+    // });
 
-        return;
-      }
+    // appleHealthKit.getActivitySummary(options, (error, result) => {
+    //   if (error) {
+    //     console.log('[Error] Failed to load Activity Data');
 
-      console.log('activity data', result);
+    //     return;
+    //   }
 
-      return;
-    });
+    //   console.log('activity data', result);
 
-    appleHealthKit.getDailyStepCountSamples(
-      stepCountOptions,
-      (error, result) => {
-        if (error) {
-          console.log('[Error] Failed to load StepCount Data');
+    //   return;
+    // });
 
-          return;
-        }
+    // appleHealthKit.getDailyStepCountSamples(
+    //   stepCountOptions,
+    //   (error, result) => {
+    //     if (error) {
+    //       console.log('[Error] Failed to load StepCount Data');
 
-        console.log('step count data', result);
+    //       return;
+    //     }
 
-        return;
-      },
-    );
+    //     console.log('step count data', result);
 
-    appleHealthKit.getBiologicalSex(null, (error, result) => {
-      if (error) {
-        console.log('[Error] Failed to lad Biological Sex');
+    //     return;
+    //   },
+    // );
 
-        return;
-      }
+    // appleHealthKit.getBiologicalSex(null, (error, result) => {
+    //   if (error) {
+    //     console.log('[Error] Failed to lad Biological Sex');
 
-      console.log('biological sex', result);
+    //     return;
+    //   }
 
-      return;
-    });
+    //   console.log('biological sex', result);
 
-    appleHealthKit.getDateOfBirth(null, (error, result) => {
-      if (error) {
-        console.log('[Error] Failed to load Date of Birth');
+    //   return;
+    // });
 
-        return;
-      }
+    // appleHealthKit.getDateOfBirth(null, (error, result) => {
+    //   if (error) {
+    //     console.log('[Error] Failed to load Date of Birth');
 
-      console.log('date of birth', result);
+    //     return;
+    //   }
 
-      return;
-    });
+    //   console.log('date of birth', result);
 
-    appleHealthKit.getLatestWeight(weightOptions, (error, result) => {
-      if (error) {
-        console.log('[Error] Failed to get weight data');
+    //   return;
+    // });
 
-        return;
-      }
+    // appleHealthKit.getLatestWeight(weightOptions, (error, result) => {
+    //   if (error) {
+    //     console.log('[Error] Failed to get weight data');
 
-      console.log('latest wieght', result);
+    //     return;
+    //   }
 
-      return;
-    });
+    //   console.log('latest wieght', result);
+
+    //   return;
+    // });
   });
 }

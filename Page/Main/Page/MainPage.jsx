@@ -1,15 +1,28 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import Graph from '../Component/Graph';
 
 import GetHelthKitInfoFunction from '../../../Utils/Function/GetHelthKitInfoFunction';
+import GetGeoLocationFunction from '../../../Utils/Function/GetGeoLocationFunction';
 
 function MainPage({navigation}) {
+  const [location, setLocation] = useState(null);
+
+  async function getGeoLocationFunction() {
+    const res = await GetGeoLocationFunction();
+    setLocation(res);
+  }
+
   useEffect(() => {
     GetHelthKitInfoFunction();
+    getGeoLocationFunction();
   }, []);
+
+  useEffect(() => {
+    if (location != null) console.log(location);
+  }, [location]);
 
   return (
     <View style={styles.container}>
