@@ -4,7 +4,7 @@ import {useState} from 'react';
 
 import SignUpButton from '../Component/SignUpButton';
 import Input from '../../../Utils/Component/Input';
-import MainButton from '../../../Utils/Component/MainButton';
+import MainButton from '../../../Utils/Component/MainButton/MainButton';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);

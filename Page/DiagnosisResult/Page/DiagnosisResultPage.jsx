@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
-import MainButton from '../../../Utils/Component/MainButton';
+import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import Table from '../Component/Table';
 
 function DiagnosisResultPage({navigation}) {

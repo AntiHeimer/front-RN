@@ -1,14 +1,14 @@
 import {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import MainButton from '../../../Utils/Component/MainButton';
+import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import Graph from '../Component/Graph';
 
-import GetPermissionFunction from '../Function/GetPermissionFunction';
+import GetHelthKitInfoFunction from '../../../Utils/Function/GetHelthKitInfoFunction';
 
 function MainPage({navigation}) {
   useEffect(() => {
-    GetPermissionFunction();
+    GetHelthKitInfoFunction();
   }, []);
 
   return (

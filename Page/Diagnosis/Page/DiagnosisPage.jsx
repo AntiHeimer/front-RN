@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import MainMediumButtonGray from '../../../Utils/Component/MainMediumButtonGray';
-import MainMediumButtonBlack from '../../../Utils/Component/MainMediumButtonBlack';
+import MainMediumButtonGray from '../../../Utils/Component/MainButton/MainMediumButtonGray';
+import MainMediumButtonBlack from '../../../Utils/Component/MainButton/MainMediumButtonBlack';
 
 import checkMark from '../../../Utils/Asset/checkmark.png';
 import xMark from '../../../Utils/Asset/xmark.png';

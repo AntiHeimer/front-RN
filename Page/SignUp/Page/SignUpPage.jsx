@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import Input from '../../../Utils/Component/Input';
 import {ScrollView} from 'react-native-gesture-handler';
 import InputBox from '../Component/InputBox';
-import MainButton from '../../../Utils/Component/MainButton';
+import MainButton from '../../../Utils/Component/MainButton/MainButton';
 
 function SignUpPage({navigation}) {
   const [name, setName] = useState(null);

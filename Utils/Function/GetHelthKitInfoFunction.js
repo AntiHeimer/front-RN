@@ -1,6 +1,6 @@
 import appleHealthKit from 'react-native-health';
 
-export default function GetPermissionFunction() {
+export default function GetHelthKitInfoFunction() {
   const permissions = {
     permissions: {
       read: [
