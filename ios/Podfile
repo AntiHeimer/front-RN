@@ -23,6 +23,9 @@ target 'AntiHeimer' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+  pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
+
   target 'AntiHeimerTests' do
     inherit! :complete
     # Pods for testing
