@@ -4,7 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import MainButton from '../../../Utils/Component/MainButton';
 import Graph from '../Component/Graph';
 
-import GetPermissionFunction from '../../Login/Function/GetPermissionFunction';
+import GetPermissionFunction from '../Function/GetPermissionFunction';
 
 function MainPage({navigation}) {
   useEffect(() => {
@@ -24,7 +24,7 @@ function MainPage({navigation}) {
       </View>
       <View style={styles.buttonDiv}>
         <MainButton
-          text="진단 결과 조회하기"
+          text="진단 결과조회하기"
           onPress={() => navigation.navigate('Diagnosis Result Inquiry')}
         />
       </View>

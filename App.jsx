@@ -3,6 +3,15 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 
 import React from 'react';
+import {Image} from 'react-native';
+
+import PersonImg from './Utils/Asset/Tab/person.png';
+import MapImg from './Utils/Asset/Tab/map.png';
+import HouseImg from './Utils/Asset/Tab/house.png';
+
+import PersonGrayImg from './Utils/Asset/Tab/person_gray.png';
+import MapGrayImg from './Utils/Asset/Tab/map_gray.png';
+import HouseGrayImg from './Utils/Asset/Tab/house_gray.png';
 
 import LoginPage from './Page/Login/Page/LoginPage';
 import SignUpPage from './Page/SignUp/Page/SignUpPage';
@@ -61,6 +70,13 @@ function MainTabNavigator() {
         options={{
           title: '위치',
           headerShown: false,
+          tabBarLabelStyle: {color: 'black'},
+          tabBarIcon: ({focused}) =>
+            focused ? (
+              <Image source={MapImg} style={{width: 25, height: 25}} />
+            ) : (
+              <Image source={MapGrayImg} style={{width: 25, height: 25}} />
+            ),
         }}
       />
       <Tab.Screen
@@ -70,6 +86,13 @@ function MainTabNavigator() {
           title: '메인',
           headerRight: () => <Notification />,
           headerStyle: {height: 110},
+          tabBarLabelStyle: {color: 'black'},
+          tabBarIcon: ({focused}) =>
+            focused ? (
+              <Image source={HouseImg} style={{width: 25, height: 25}} />
+            ) : (
+              <Image source={HouseGrayImg} style={{width: 25, height: 25}} />
+            ),
         }}
       />
       <Tab.Screen
@@ -79,6 +102,13 @@ function MainTabNavigator() {
           title: '계정',
           headerRight: () => <Notification />,
           headerStyle: {height: 110},
+          tabBarLabelStyle: {color: 'black'},
+          tabBarIcon: ({focused}) =>
+            focused ? (
+              <Image source={PersonImg} style={{width: 25, height: 25}} />
+            ) : (
+              <Image source={PersonGrayImg} style={{width: 25, height: 25}} />
+            ),
         }}
       />
     </Tab.Navigator>
