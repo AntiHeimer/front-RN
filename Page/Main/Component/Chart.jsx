@@ -37,7 +37,7 @@ function Chart() {
     },
     {
       stacks: [
-        {value: 1, color: '#4ABFF4'},
+        {value: 2, color: '#4ABFF4'},
         {value: 11, color: 'orange', marginBottom: 2},
         {value: 15, color: '#28B2B3', marginBottom: 2},
       ],

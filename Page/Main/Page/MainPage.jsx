@@ -1,8 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
+
 import MainButton from '../../../Utils/Component/MainButton';
 import Graph from '../Component/Graph';
 
+import GetPermissionFunction from '../../Login/Function/GetPermissionFunction';
+
 function MainPage({navigation}) {
+  useEffect(() => {
+    GetPermissionFunction();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.graphContainer}>
