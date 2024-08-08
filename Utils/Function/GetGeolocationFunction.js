@@ -4,7 +4,7 @@ export default async function GetGeoLocationFunction() {
   const permission = await Geolocation.requestAuthorization('always');
 
   if (permission == 'granted') {
-    return new Promise((res, rej) => {
+    return await new Promise((res, rej) => {
       Geolocation.getCurrentPosition(
         position => {
           const {latitude, longitude} = position.coords;
@@ -19,9 +19,10 @@ export default async function GetGeoLocationFunction() {
             date.getMinutes(),
           ).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
 
-          const locationData = {latitude, longitude, formattedDate};
+          const location = {latitude, longitude};
+          //   const locationData = {location, formattedDate};
 
-          res(locationData);
+          res(location);
         },
         error => {
           console.log(error);

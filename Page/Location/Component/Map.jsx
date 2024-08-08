@@ -1,7 +1,21 @@
+import {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+
 import DropDown from './DropDown';
 
+import GetGeoLocationFunction from '../../../Utils/Function/GetGeoLocationFunction';
+
 function Map() {
+  const [location, setLocation] = useState(1);
+
+  async function getGeoLocationFunction() {
+    const res = await GetGeoLocationFunction();
+  }
+
+  useEffect(() => {
+    getGeoLocationFunction();
+  }, []);
+
   return (
     <View>
       <Text style={styles.description}>피보호자 위치 추적</Text>
