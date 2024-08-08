@@ -8,21 +8,9 @@ import GetHelthKitInfoFunction from '../../../Utils/Function/GetHelthKitInfoFunc
 import GetGeoLocationFunction from '../../../Utils/Function/GetGeoLocationFunction';
 
 function MainPage({navigation}) {
-  const [location, setLocation] = useState(null);
-
-  async function getGeoLocationFunction() {
-    const res = await GetGeoLocationFunction();
-    setLocation(res);
-  }
-
   useEffect(() => {
     GetHelthKitInfoFunction();
-    getGeoLocationFunction();
   }, []);
-
-  useEffect(() => {
-    if (location != null) console.log(location);
-  }, [location]);
 
   return (
     <View style={styles.container}>
