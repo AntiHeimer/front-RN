@@ -6,7 +6,6 @@ export default async function LogoutFunction({uuid, token}) {
   const result = await fetch(`${process.env.API_URL}/logout/${encryptedUuid}`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'text/plain',
       Authorization: `Bearer ${token}`,
     },
   });
