@@ -24,6 +24,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NMFClientId</key>
+	<string>vUvSDFjwkCgxJrfmrVXxHOkKjRU9SlHH1HE1ptWc</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -31,8 +33,6 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
-	<key>NMFClientId</key>
-	<string>vUvSDFjwkCgxJrfmrVXxHOkKjRU9SlHH1HE1ptWc</string>
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
 	<string>Read and understand clinical health data.</string>
 	<key>NSHealthShareUsageDescription</key>

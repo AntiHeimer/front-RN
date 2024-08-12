@@ -490,7 +490,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.ian--PRODUCT-NAME-rfc1034identifier-";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.chating;
 				PRODUCT_NAME = AntiHeimer;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -518,7 +518,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.ian--PRODUCT-NAME-rfc1034identifier-";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.chating;
 				PRODUCT_NAME = AntiHeimer;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

@@ -9,6 +9,7 @@ export default async function GetGeoLocationFunction() {
         position => {
           const {latitude, longitude} = position.coords;
           const timestamp = position.timestamp;
+
           const date = new Date(timestamp);
           const formattedDate = `${date.getFullYear()}-${String(
             date.getMonth() + 1,
