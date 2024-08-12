@@ -8,7 +8,7 @@ export default async function LoginFunction({id, password}) {
 
   const encryptedData = EncryptFunction({data: data});
 
-  const result = await fetch(`${process.env.API_URL}/user/login`, {
+  const result = await fetch(`${process.env.API_URL}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
