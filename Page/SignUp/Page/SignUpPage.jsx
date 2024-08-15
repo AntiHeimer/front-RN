@@ -1,9 +1,10 @@
 import {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Input from '../../../Utils/Component/Input';
+import {StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+
 import InputBox from '../Component/InputBox';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
+
 import SignUpFunction from '../Function/SignUpFunction';
 
 function SignUpPage({navigation}) {
