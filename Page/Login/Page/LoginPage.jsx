@@ -1,14 +1,23 @@
-import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
-
 import {useState} from 'react';
+
+import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 
 import SignUpButton from '../Component/SignUpButton';
 import Input from '../../../Utils/Component/Input';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
 
+import LoginFunction from '../Function/LoginFunction';
+
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);
   const [password, setPassword] = useState(null);
+
+  async function Login() {
+    const result = await LoginFunction({id: userId, password: password});
+
+    console.log(result);
+    return;
+  }
 
   return (
     <View style={styles.container}>
