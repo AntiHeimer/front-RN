@@ -4,12 +4,24 @@ import Input from '../../../Utils/Component/Input';
 import {ScrollView} from 'react-native-gesture-handler';
 import InputBox from '../Component/InputBox';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
+import SignUpFunction from '../Function/SignUpFunction';
 
 function SignUpPage({navigation}) {
   const [name, setName] = useState(null);
   const [userId, setUserId] = useState(null);
   const [password, setPassword] = useState(null);
   const [password2, setPassword2] = useState(null);
+
+  async function SignUp() {
+    const result = await SignUpFunction({
+      name: name,
+      id: userId,
+      password: password,
+    });
+
+    console.log(result);
+    return;
+  }
 
   return (
     <View style={styles.container}>
