@@ -2,8 +2,7 @@ import {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 import DropDown from './DropDown';
-
-import GetGeoLocationFunction from '../../../Utils/Function/GetGeoLocationFunction';
+import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
 
 function Map() {
   const [location, setLocation] = useState(1);
