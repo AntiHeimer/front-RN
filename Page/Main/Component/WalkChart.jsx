@@ -46,7 +46,7 @@ function WalkChart() {
         barWidth={10}
         yAxisLabelWidth={50}
         barBorderRadius={6}
-        isAnimated
+        // isAnimated
         renderTooltip={item => {
           return (
             <View
