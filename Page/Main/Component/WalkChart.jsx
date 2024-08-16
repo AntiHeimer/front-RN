@@ -46,19 +46,10 @@ function WalkChart() {
         barWidth={10}
         yAxisLabelWidth={50}
         barBorderRadius={6}
-        // isAnimated
         renderTooltip={item => {
           return (
-            <View
-              style={{
-                marginBottom: 20,
-                marginLeft: -20,
-                paddingHorizontal: 6,
-                paddingVertical: 4,
-                borderRadius: 4,
-                zIndex: 100,
-              }}>
-              <Text>{item.stacks[0].value}</Text>
+            <View style={styles.label}>
+              <Text style={styles.labelText}>{item.stacks[0].value}</Text>
             </View>
           );
         }}
@@ -79,6 +70,21 @@ const styles = StyleSheet.create({
     marginTop: 30,
     position: 'static',
     zIndex: 1,
+  },
+  label: {
+    marginBottom: 20,
+    marginLeft: -20,
+    width: 50,
+    paddingHorizontal: 6,
+    paddingVertical: 4,
+    borderRadius: 4,
+    zIndex: 100,
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  labelText: {
+    fontSize: 12,
   },
   legend: {
     display: 'flex',
