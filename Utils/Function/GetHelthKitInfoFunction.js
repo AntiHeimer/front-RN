@@ -7,6 +7,7 @@ export default function GetHelthKitInfoFunction() {
         appleHealthKit.Constants.Permissions.SleepAnalysis,
         appleHealthKit.Constants.Permissions.ActivitySummary,
         appleHealthKit.Constants.Permissions.StepCount,
+        appleHealthKit.Constants.Permissions.DistanceWalkingRunning,
         appleHealthKit.Constants.Permissions.BiologicalSex,
         appleHealthKit.Constants.Permissions.DateOfBirth,
         appleHealthKit.Constants.Permissions.Weight,
@@ -32,27 +33,30 @@ export default function GetHelthKitInfoFunction() {
       unit: 'kg',
     };
 
+    const distanceWalkingRunningOptions = {
+      startDate: new Date(2024, 7, 1).toISOString(),
+      endDate: new Date(2024, 7, 2).toISOString(),
+      ascending: false,
+      unit: 'meter',
+    };
+
     // appleHealthKit.getSleepSamples(options, (error, result) => {
     //   if (error) {
     //     console.log('[Error] Failed to load Sleep Data');
-
     //     return;
     //   }
 
     //   console.log('sleep data', result);
-
     //   return;
     // });
 
     // appleHealthKit.getActivitySummary(options, (error, result) => {
     //   if (error) {
     //     console.log('[Error] Failed to load Activity Data');
-
     //     return;
     //   }
 
     //   console.log('activity data', result);
-
     //   return;
     // });
 
@@ -61,12 +65,10 @@ export default function GetHelthKitInfoFunction() {
     //   (error, result) => {
     //     if (error) {
     //       console.log('[Error] Failed to load StepCount Data');
-
     //       return;
     //     }
 
     //     console.log('step count data', result);
-
     //     return;
     //   },
     // );
@@ -74,37 +76,46 @@ export default function GetHelthKitInfoFunction() {
     // appleHealthKit.getBiologicalSex(null, (error, result) => {
     //   if (error) {
     //     console.log('[Error] Failed to lad Biological Sex');
-
     //     return;
     //   }
 
     //   console.log('biological sex', result);
-
     //   return;
     // });
 
     // appleHealthKit.getDateOfBirth(null, (error, result) => {
     //   if (error) {
     //     console.log('[Error] Failed to load Date of Birth');
-
     //     return;
     //   }
 
     //   console.log('date of birth', result);
-
     //   return;
     // });
 
     // appleHealthKit.getLatestWeight(weightOptions, (error, result) => {
     //   if (error) {
     //     console.log('[Error] Failed to get weight data');
-
     //     return;
     //   }
 
     //   console.log('latest wieght', result);
-
     //   return;
     // });
+
+    // appleHealthKit.getDailyDistanceWalkingRunningSamples(
+    //   distanceWalkingRunningOptions,
+    //   (error, result) => {
+    //     if (error) {
+    //       console.log(
+    //         '[Error] Failed to get daily distance walking and running data ',
+    //       );
+    //       return;
+    //     }
+
+    //     console.log('daily distance walking and running', result);
+    //     return;
+    //   },
+    // );
   });
 }
