@@ -1,17 +1,21 @@
 import {StyleSheet, Text, View} from 'react-native';
 import Dropdown1 from './Dropdown1';
 import Dropdown2 from './Dropdown2';
-import Chart from './Chart';
+import SleepChart from './SleepChart';
+import WalkChart from './WalkChart';
+import {useState} from 'react';
 
 function Graph() {
+  const [kindOfData, setKindOfData] = useState('수면');
+
   return (
     <View style={styles.graphContainer}>
-      <Text style={styles.title}>수면 및 걸음걸이 차트</Text>
+      <Text style={styles.title}>수면 및 걸음 차트</Text>
       <View style={styles.dropdownContainer}>
-        <Dropdown1 />
+        <Dropdown1 kindOfData={kindOfData} setKindOfData={setKindOfData} />
         <Dropdown2 />
       </View>
-      <Chart />
+      {kindOfData === '수면' ? <SleepChart /> : <WalkChart />}
     </View>
   );
 }

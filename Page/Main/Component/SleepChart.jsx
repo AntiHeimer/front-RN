@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {BarChart} from 'react-native-gifted-charts';
 
-function Chart() {
+function SleepChart() {
   const stackData = [
     {
       stacks: [
@@ -84,11 +84,11 @@ function Chart() {
   );
 }
 
-export default Chart;
+export default SleepChart;
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: -10,
+    marginLeft: -4,
     marginTop: 30,
     position: 'static',
     zIndex: 1,
