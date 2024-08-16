@@ -71,6 +71,7 @@ function SleepChart() {
         initialSpacing={30}
         barWidth={10}
         barBorderRadius={6}
+        isAnimated
       />
       <View style={styles.legend}>
         <View style={styles.bar1} />
@@ -88,7 +89,7 @@ export default SleepChart;
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: -4,
+    marginLeft: -20,
     marginTop: 30,
     position: 'static',
     zIndex: 1,
