@@ -21,9 +21,9 @@ export default async function GetGeoLocationFunction() {
           ).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
 
           const location = {latitude, longitude};
-          //   const locationData = {location, formattedDate};
-
-          res(location);
+          const locationData = {location, formattedDate};
+          console.log(locationData);
+          res(locationData);
         },
         error => {
           console.log(error);
