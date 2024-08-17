@@ -28,12 +28,15 @@ function Map() {
             <MapView
               style={{flex: 1}}
               initialRegion={{
-                latitude: location.latitude,
-                longitude: location.longitude,
+                latitude: location.location.latitude,
+                longitude: location.location.longitude,
                 latitudeDelta: 0.0522,
                 longitudeDelta: 0.0121,
               }}>
-              <Marker coordinate={location} />
+              <Marker
+                coordinate={location.location}
+                title={'기록된 시간: ' + location.formattedDate}
+              />
             </MapView>
           </>
         )}
