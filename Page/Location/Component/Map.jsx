@@ -3,12 +3,14 @@ import {StyleSheet, Text, View} from 'react-native';
 
 import DropDown from './DropDown';
 import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
+import MapView, {Marker} from 'react-native-maps';
 
 function Map() {
-  const [location, setLocation] = useState(1);
+  const [location, setLocation] = useState(null);
 
   async function getGeoLocationFunction() {
     const res = await GetGeoLocationFunction();
+    setLocation(res);
   }
 
   useEffect(() => {
@@ -20,7 +22,22 @@ function Map() {
       <Text style={styles.description}>피보호자 위치 추적</Text>
       <DropDown />
 
-      <View style={styles.map}></View>
+      <View style={styles.map}>
+        {location && (
+          <>
+            <MapView
+              style={{flex: 1}}
+              initialRegion={{
+                latitude: location.latitude,
+                longitude: location.longitude,
+                latitudeDelta: 0.0522,
+                longitudeDelta: 0.0121,
+              }}>
+              <Marker coordinate={location} />
+            </MapView>
+          </>
+        )}
+      </View>
     </View>
   );
 }
