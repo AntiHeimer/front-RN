@@ -1,12 +1,12 @@
 import {useState} from 'react';
-import {Alert, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
 import InputBox from '../Component/InputBox';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
 
 import SignUpFunction from '../Function/SignUpFunction';
-import ConfirmAlert from '../../../Utils/Component/\bAlert/ConfirmAlert';
+import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
 
 function SignUpPage({navigation}) {
   const [name, setName] = useState(null);

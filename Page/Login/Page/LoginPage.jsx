@@ -1,19 +1,14 @@
 import {useState} from 'react';
 
-import {
-  Alert,
-  KeyboardAvoidingView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 
 import SignUpButton from '../Component/SignUpButton';
 import Input from '../../../Utils/Component/Input';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
+import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
 
 import LoginFunction from '../Function/LoginFunction';
-import ConfirmAlert from '../../../Utils/Component/\bAlert/ConfirmAlert';
+import {Storage} from '../../../Utils/Function/Storage';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);
@@ -23,6 +18,14 @@ function LoginPage({navigation}) {
     const result = await LoginFunction({id: userId, password: password});
 
     if (result.statusCode === '200') {
+      setUserId(null);
+      setPassword(null);
+
+      Storage.setItem('userState', {
+        jwtToken: result.jwtToken,
+        uuid: result.uuid,
+      });
+
       navigation.navigate('Main');
       return;
     }
