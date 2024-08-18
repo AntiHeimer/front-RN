@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Alert, StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
 import InputBox from '../Component/InputBox';
@@ -21,6 +21,20 @@ function SignUpPage({navigation}) {
     });
 
     console.log(result);
+
+    if (result.statusCode === '200') {
+      navigation.navigate('Login');
+      return;
+    }
+
+    Alert.alert('회원가입 실패', [
+      {
+        text: '확인',
+        onPress: () => {},
+        style: 'cancel',
+      },
+    ]);
+
     return;
   }
 

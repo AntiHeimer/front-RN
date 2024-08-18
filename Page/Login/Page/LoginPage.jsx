@@ -1,6 +1,12 @@
 import {useState} from 'react';
 
-import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 import SignUpButton from '../Component/SignUpButton';
 import Input from '../../../Utils/Component/Input';
@@ -15,7 +21,18 @@ function LoginPage({navigation}) {
   async function Login() {
     const result = await LoginFunction({id: userId, password: password});
 
-    console.log(result);
+    if (result.statusCode === '200') {
+      navigation.navigate('Main');
+      return;
+    }
+
+    Alert.alert('로그인 실패', [
+      {
+        text: '확인',
+        onPress: () => {},
+        style: 'cancel',
+      },
+    ]);
     return;
   }
 

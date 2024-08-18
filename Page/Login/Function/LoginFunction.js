@@ -1,14 +1,14 @@
 import EncryptFunction from '../../../Utils/Function/EncryptFunction';
 
 export default async function LoginFunction({id, password}) {
-  const data = {
+  const data = JSON.stringify({
     id: id,
-    password: password,
-  };
+    pw: password,
+  });
 
   const encryptedData = EncryptFunction({data: data});
 
-  const result = await fetch(`${process.env.API_URL}/login`, {
+  const result = await fetch(`${process.env.API}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
@@ -18,6 +18,7 @@ export default async function LoginFunction({id, password}) {
   });
 
   const res = await result.json();
+  console.log(res);
 
   return res;
 }
