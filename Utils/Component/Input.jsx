@@ -13,7 +13,12 @@ function Input({placeholder, value, onChange, security}) {
         autoCapitalize="none"
       />
       <View pointerEvents="none" style={styles.placeholderContainer}>
-        <Text style={value == null ? styles.placeholder : styles.transparent}>
+        <Text
+          style={
+            value == null || value == ''
+              ? styles.placeholder
+              : styles.transparent
+          }>
           {placeholder}
         </Text>
       </View>
