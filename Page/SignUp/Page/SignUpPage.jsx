@@ -6,6 +6,7 @@ import InputBox from '../Component/InputBox';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
 
 import SignUpFunction from '../Function/SignUpFunction';
+import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
 
 function SignUpPage({navigation}) {
   const [name, setName] = useState(null);
@@ -21,6 +22,25 @@ function SignUpPage({navigation}) {
     });
 
     console.log(result);
+
+    if (result.statusCode === '200') {
+      ConfirmAlert({
+        title: '회원가입 성공',
+        message: '로그인 창으로 이동합니다.',
+        onPress: () => {
+          navigation.navigate('Login');
+        },
+      });
+
+      return;
+    }
+
+    ConfirmAlert({
+      title: '회원가입 실패',
+      message: '회원가입에 실패하였습니다.',
+      onPress: () => {},
+    });
+
     return;
   }
 

@@ -1,8 +1,10 @@
 import CryptoJS from 'react-native-crypto-js';
 
 export default function EncryptFunction({data}) {
-  const secretKey = process.env.AES_KEY;
-  const initVector = process.env.IV_KEY;
+  const secretKey = process.env.SECRET_KEY;
+  const initVector = process.env.AES_IV;
+
+  console.log('secretkey: %o, initvector: %o', secretKey, initVector);
 
   const encodedData = CryptoJS.enc.Utf8.parse(data);
   const encodedKey = CryptoJS.enc.Utf8.parse(secretKey);

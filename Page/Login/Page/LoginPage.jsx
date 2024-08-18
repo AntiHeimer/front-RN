@@ -5,8 +5,10 @@ import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 import SignUpButton from '../Component/SignUpButton';
 import Input from '../../../Utils/Component/Input';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
+import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
 
 import LoginFunction from '../Function/LoginFunction';
+import {Storage} from '../../../Utils/Function/Storage';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);
@@ -15,8 +17,24 @@ function LoginPage({navigation}) {
   async function Login() {
     const result = await LoginFunction({id: userId, password: password});
 
-    console.log(result);
-    return;
+    if (result.statusCode === '200') {
+      setUserId(null);
+      setPassword(null);
+
+      Storage.setItem('userState', {
+        jwtToken: result.jwtToken,
+        uuid: result.uuid,
+      });
+
+      navigation.navigate('Main');
+      return;
+    }
+
+    ConfirmAlert({
+      title: '로그인 실패',
+      message: '아이디 또는 비밀번호가 잘못되었습니다.',
+      onPress: () => {},
+    });
   }
 
   return (
