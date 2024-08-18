@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {BarChart} from 'react-native-gifted-charts';
 
-function Chart() {
+function SleepChart() {
   const stackData = [
     {
       stacks: [
@@ -37,7 +37,7 @@ function Chart() {
     },
     {
       stacks: [
-        {value: 1, color: '#4ABFF4'},
+        {value: 2, color: '#4ABFF4'},
         {value: 11, color: 'orange', marginBottom: 2},
         {value: 15, color: '#28B2B3', marginBottom: 2},
       ],
@@ -71,6 +71,7 @@ function Chart() {
         initialSpacing={30}
         barWidth={10}
         barBorderRadius={6}
+        // isAnimated
       />
       <View style={styles.legend}>
         <View style={styles.bar1} />
@@ -84,11 +85,11 @@ function Chart() {
   );
 }
 
-export default Chart;
+export default SleepChart;
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: -10,
+    marginLeft: -20,
     marginTop: 30,
     position: 'static',
     zIndex: 1,

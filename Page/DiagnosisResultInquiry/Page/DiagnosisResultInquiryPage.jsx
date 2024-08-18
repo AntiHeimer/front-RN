@@ -1,5 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import Graph from '../Component/Graph';
+import Table from '../Component/Table';
 
 function DiagnosisResultInquiryPage() {
   return (
@@ -7,6 +8,7 @@ function DiagnosisResultInquiryPage() {
       <View style={styles.graphContainer}>
         <Graph />
       </View>
+      <Table />
     </View>
   );
 }
@@ -19,7 +21,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
+    paddingTop: 40,
   },
+
   graphContainer: {
     width: 310,
     height: 350,
