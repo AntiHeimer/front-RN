@@ -2,10 +2,11 @@ import {useState} from 'react';
 
 import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 
-import SignUpButton from '../Component/SignUpButton';
 import Input from '../../../Utils/Component/Input';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
+
+import SignUpButton from '../Component/SignUpButton';
 
 import LoginFunction from '../Function/LoginFunction';
 import {Storage} from '../../../Utils/Function/Storage';

@@ -2,17 +2,25 @@ import {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import InputBox from '../Component/InputBox';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
+import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
+import MainButtonGray from '../../../Utils/Component/MainButton/MainButtonGray';
+
+import Name from '../Component/Name';
+import UserId from '../Component/UserId';
+import Password from '../Component/Password';
 
 import SignUpFunction from '../Function/SignUpFunction';
-import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
 
 function SignUpPage({navigation}) {
   const [name, setName] = useState(null);
   const [userId, setUserId] = useState(null);
   const [password, setPassword] = useState(null);
   const [password2, setPassword2] = useState(null);
+
+  const [isNameFilled, setIsNameFilled] = useState(false);
+  const [isUserIdFilled, setIsUserIdFilled] = useState(false);
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
 
   async function SignUp() {
     const result = await SignUpFunction({
@@ -48,39 +56,30 @@ function SignUpPage({navigation}) {
     <View style={styles.container}>
       <ScrollView style={styles.scrollViewContainer}>
         <View style={styles.smallContainer}>
-          <InputBox
-            title="이름"
-            placeholder="이름을 입력해주세요"
-            value={name}
-            onChange={setName}
-            security={false}
+          <Name
+            name={name}
+            setName={setName}
+            setIsNameFilled={setIsNameFilled}
           />
-          <InputBox
-            title="아이디"
-            placeholder="아이디를 입력해주세요"
-            value={userId}
-            onChange={setUserId}
-            security={false}
-            comment="영어, 숫자 포함 8~20자리를 입력해주세요."
+          <UserId
+            userId={userId}
+            setUserId={setUserId}
+            setIsUserIdFilled={setIsUserIdFilled}
           />
-          <InputBox
-            title="비밀번호"
-            placeholder="비밀번호 입력해주세요"
-            value={password}
-            onChange={setPassword}
-            security={true}
-            comment="영어, 숫자, 특수문자 포함 12~24자리를 입력해주세요."
-          />
-          <InputBox
-            title="비밀번호 확인"
-            placeholder="한번 더 비밀번호 입력해주세요"
-            value={password2}
-            onChange={setPassword2}
-            security={true}
-            comment="비밀번호가 일치하지 않습니다."
+          <Password
+            password={password}
+            password2={password2}
+            setPassword={setPassword}
+            setPassword2={setPassword2}
+            isPasswordCorrect={isPasswordCorrect}
+            setIsPasswordCorrect={setIsPasswordCorrect}
           />
           <View style={styles.loginButtonDiv}>
-            <MainButton text="회원가입" onPress={() => SignUp()} />
+            {isNameFilled && isUserIdFilled && isPasswordCorrect ? (
+              <MainButton text="회원가입" onPress={() => SignUp()} />
+            ) : (
+              <MainButtonGray text="회원가입" onPress={() => {}} />
+            )}
           </View>
         </View>
       </ScrollView>
