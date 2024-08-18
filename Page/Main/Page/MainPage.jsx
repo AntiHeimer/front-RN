@@ -1,5 +1,5 @@
-import {useEffect} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {useEffect, useState} from 'react';
+import {StyleSheet, View, RefreshControl, ScrollView} from 'react-native';
 
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import Graph from '../Component/Graph';
@@ -8,6 +8,15 @@ import GetHelthKitInfoFunction from '../../../Utils/Function/GetHelthKitInfoFunc
 import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
 
 function MainPage({navigation}) {
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  async function handleRefresh() {
+    setIsRefreshing(true);
+    GetHelthKitInfoFunction();
+    GetGeoLocationFunction();
+    setIsRefreshing(false);
+  }
+
   useEffect(() => {
     GetHelthKitInfoFunction();
     GetGeoLocationFunction();
@@ -15,21 +24,29 @@ function MainPage({navigation}) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.graphContainer}>
-        <Graph />
-      </View>
-      <View style={styles.buttonDiv}>
-        <MainButton
-          text="진단하기"
-          onPress={() => navigation.navigate('Diagnosis')}
-        />
-      </View>
-      <View style={styles.buttonDiv}>
-        <MainButton
-          text="진단 결과조회하기"
-          onPress={() => navigation.navigate('Diagnosis Result Inquiry')}
-        />
-      </View>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
+        }
+        style={styles.scrollViewContent}>
+        <View style={styles.subContainer}>
+          <View style={styles.graphContainer}>
+            <Graph />
+          </View>
+          <View style={styles.buttonDiv}>
+            <MainButton
+              text="진단하기"
+              onPress={() => navigation.navigate('Diagnosis')}
+            />
+          </View>
+          <View style={styles.buttonDiv}>
+            <MainButton
+              text="진단 결과조회하기"
+              onPress={() => navigation.navigate('Diagnosis Result Inquiry')}
+            />
+          </View>
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -39,9 +56,15 @@ export default MainPage;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
     flex: 1,
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+    backgroundColor: 'white',
+  },
+  subContainer: {
+    alignItems: 'center',
+    paddingTop: 70,
   },
   graphContainer: {
     width: 310,

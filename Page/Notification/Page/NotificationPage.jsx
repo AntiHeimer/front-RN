@@ -1,10 +1,33 @@
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {useEffect, useState} from 'react';
+import {View, StyleSheet, ScrollView, RefreshControl} from 'react-native';
+
 import Row from '../Component/Row';
 
 function NotificationPage() {
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  async function LoadNotification() {
+    console.log('load');
+    return;
+  }
+
+  async function handleRefresh() {
+    setIsRefreshing(true);
+    LoadNotification();
+    setIsRefreshing(false);
+  }
+
+  useEffect(() => {
+    LoadNotification();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.scrollViewContent}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
+        }
+        style={styles.scrollViewContent}>
         <View style={styles.subContainer}>
           <Row />
           <Row />
