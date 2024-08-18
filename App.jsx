@@ -27,49 +27,19 @@ import RegisterPage from './Page/Register/Page/RegisterPage';
 import Notification from './Utils/Component/Notification';
 import NotificationPage from './Page/Notification/Page/NotificationPage';
 
-const LocationStack = createStackNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-function LocationStackNavigator() {
-  return (
-    <LocationStack.Navigator>
-      <LocationStack.Screen
-        name="Location"
-        component={LocationPage}
-        options={{
-          title: '위치',
-          headerLeft: () => null,
-          headerRight: () => <Notification />,
-          headerStyle: {height: 110},
-        }}
-      />
-      <LocationStack.Screen
-        name="Register"
-        component={RegisterPage}
-        options={{
-          title: '관계 등록',
-          headerBackAccessibilityLabel: true,
-          headerBackTitleVisible: false,
-          headerTintColor: 'black',
-          headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
-          headerRight: () => <Notification />,
-          headerStyle: {height: 110},
-        }}
-      />
-    </LocationStack.Navigator>
-  );
-}
 
 function MainTabNavigator() {
   return (
     <Tab.Navigator initialRouteName="Main Tab">
       <Tab.Screen
         name="Location Tab"
-        component={LocationStackNavigator}
+        component={LocationPage}
         options={{
           title: '위치',
-          headerShown: false,
+          headerRight: () => <Notification />,
+          headerStyle: {height: 110},
           tabBarLabelStyle: {color: 'black'},
           tabBarIcon: ({focused}) =>
             focused ? (
@@ -141,6 +111,7 @@ function App() {
           options={{
             title: '메인',
             headerShown: false,
+            gestureEnabled: false,
           }}
         />
         <Stack.Screen
@@ -189,6 +160,19 @@ function App() {
             headerBackTitleVisible: false,
             headerTintColor: 'black',
             headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+            headerStyle: {height: 110},
+          }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={RegisterPage}
+          options={{
+            title: '관계 등록',
+            headerBackAccessibilityLabel: true,
+            headerBackTitleVisible: false,
+            headerTintColor: 'black',
+            headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+            headerRight: () => <Notification />,
             headerStyle: {height: 110},
           }}
         />
