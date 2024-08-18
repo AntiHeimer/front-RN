@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 
@@ -25,6 +25,7 @@ function LoginPage({navigation}) {
       Storage.setItem('userState', {
         jwtToken: result.jwtToken,
         uuid: result.uuid,
+        isLoggedIn: true,
       });
 
       navigation.navigate('Main');
@@ -37,6 +38,18 @@ function LoginPage({navigation}) {
       onPress: () => {},
     });
   }
+
+  async function LoadLoginState() {
+    const userState = await Storage.getItem('userState');
+
+    if (userState.isLoggedIn) navigation.navigate('Main');
+
+    return;
+  }
+
+  useEffect(() => {
+    LoadLoginState();
+  }, []);
 
   return (
     <View style={styles.container}>
