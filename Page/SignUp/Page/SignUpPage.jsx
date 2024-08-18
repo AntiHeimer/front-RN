@@ -37,7 +37,7 @@ function SignUpPage({navigation}) {
 
     ConfirmAlert({
       title: '회원가입 실패',
-      message: '회원가입을 실패하였습니다.',
+      message: '회원가입에 실패하였습니다.',
       onPress: () => {},
     });
 
