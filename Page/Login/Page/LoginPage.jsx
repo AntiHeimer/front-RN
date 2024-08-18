@@ -36,10 +36,7 @@ function LoginPage({navigation}) {
           security={true}
         />
         <View style={styles.buttondiv}>
-          <MainButton
-            text="로그인"
-            onPress={() => navigation.navigate('Main')}
-          />
+          <MainButton text="로그인" onPress={() => Login()} />
         </View>
         <SignUpButton navigation={navigation} />
       </KeyboardAvoidingView>

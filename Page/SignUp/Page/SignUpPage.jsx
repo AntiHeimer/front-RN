@@ -60,10 +60,7 @@ function SignUpPage({navigation}) {
             comment="비밀번호가 일치하지 않습니다."
           />
           <View style={styles.loginButtonDiv}>
-            <MainButton
-              text="회원가입"
-              onPress={() => navigation.navigate('Login')}
-            />
+            <MainButton text="회원가입" onPress={() => SignUp()} />
           </View>
         </View>
       </ScrollView>
