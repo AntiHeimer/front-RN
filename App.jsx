@@ -123,7 +123,6 @@ function App() {
             headerBackTitleVisible: false,
             headerTintColor: 'black',
             headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
-
             headerStyle: {height: 110},
           }}
         />
@@ -136,6 +135,7 @@ function App() {
             headerLeft: () => null,
             headerRight: () => <Notification />,
             headerStyle: {height: 110},
+            gestureEnabled: false,
           }}
         />
         <Stack.Screen
