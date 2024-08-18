@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import RegisterButton from '../Component/RegisterButton';
 import Map from '../Component/Map';
 

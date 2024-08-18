@@ -1,7 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+
 import RegisterProtector from '../Component/RegisterProtector';
 import RegisterWard from '../Component/RegisterWard';
-import {useState} from 'react';
 
 function RegisterPage({navigation}) {
   const [protectorId, setProtectorId] = useState(null);
