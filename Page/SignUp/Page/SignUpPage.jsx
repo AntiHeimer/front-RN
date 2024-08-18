@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {KeyboardAvoidingView, StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
@@ -53,7 +53,10 @@ function SignUpPage({navigation}) {
   }
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior="padding"
+      keyboardVerticalOffset={100}>
       <ScrollView style={styles.scrollViewContainer}>
         <View style={styles.smallContainer}>
           <Name
@@ -83,7 +86,7 @@ function SignUpPage({navigation}) {
           </View>
         </View>
       </ScrollView>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

@@ -10,7 +10,13 @@ function Password({
   setIsPasswordCorrect,
 }) {
   useEffect(() => {
-    if (password2 == null || password2 == '' || password != password2) {
+    if (
+      password2 == null ||
+      password2 == '' ||
+      password != password2 ||
+      password.length < 12 ||
+      password.length > 24
+    ) {
       setIsPasswordCorrect(false);
     } else {
       setIsPasswordCorrect(true);

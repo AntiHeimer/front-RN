@@ -3,7 +3,7 @@ import InputBox from './InputBox';
 
 function UserId({userId, setUserId, setIsUserIdFilled}) {
   useEffect(() => {
-    if (userId == null || userId == '') {
+    if (userId == null || userId == '' || userId.length < 8) {
       setIsUserIdFilled(false);
     } else {
       setIsUserIdFilled(true);
