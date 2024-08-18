@@ -1,9 +1,10 @@
 import {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import MapView, {Marker} from 'react-native-maps';
+
+import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
 
 import DropDown from './DropDown';
-import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
-import MapView, {Marker} from 'react-native-maps';
 
 function Map() {
   const [location, setLocation] = useState(null);

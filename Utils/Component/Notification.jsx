@@ -1,6 +1,7 @@
-import {Image, StyleSheet, TouchableOpacity} from 'react-native';
-import notification from '../Asset/notification.png';
 import {useNavigation} from '@react-navigation/native';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+
+import notification from '../Asset/notification.png';
 
 function Notification() {
   const navigation = useNavigation();

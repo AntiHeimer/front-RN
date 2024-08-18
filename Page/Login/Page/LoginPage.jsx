@@ -1,11 +1,12 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 
-import SignUpButton from '../Component/SignUpButton';
 import Input from '../../../Utils/Component/Input';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
+
+import SignUpButton from '../Component/SignUpButton';
 
 import LoginFunction from '../Function/LoginFunction';
 import {Storage} from '../../../Utils/Function/Storage';
@@ -24,6 +25,7 @@ function LoginPage({navigation}) {
       Storage.setItem('userState', {
         jwtToken: result.jwtToken,
         uuid: result.uuid,
+        isLoggedIn: true,
       });
 
       navigation.navigate('Main');
@@ -36,6 +38,18 @@ function LoginPage({navigation}) {
       onPress: () => {},
     });
   }
+
+  async function LoadLoginState() {
+    const userState = await Storage.getItem('userState');
+
+    if (userState.isLoggedIn) navigation.navigate('Main');
+
+    return;
+  }
+
+  useEffect(() => {
+    LoadLoginState();
+  }, []);
 
   return (
     <View style={styles.container}>

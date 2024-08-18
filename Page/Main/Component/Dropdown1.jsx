@@ -4,7 +4,6 @@ import DropDownPicker from 'react-native-dropdown-picker';
 
 function Dropdown1({kindOfData, setKindOfData}) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
   const [items, setItems] = useState([
     {label: '수면', value: '수면'},
     {label: '걸음', value: '걸음'},
