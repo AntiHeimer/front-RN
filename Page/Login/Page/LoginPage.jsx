@@ -13,6 +13,7 @@ import Input from '../../../Utils/Component/Input';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
 
 import LoginFunction from '../Function/LoginFunction';
+import ConfirmAlert from '../../../Utils/Component/\bAlert/ConfirmAlert';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);
@@ -26,14 +27,11 @@ function LoginPage({navigation}) {
       return;
     }
 
-    Alert.alert('로그인 실패', [
-      {
-        text: '확인',
-        onPress: () => {},
-        style: 'cancel',
-      },
-    ]);
-    return;
+    ConfirmAlert({
+      title: '로그인 실패',
+      message: '아이디 또는 비밀번호가 잘못되었습니다.',
+      onPress: () => {},
+    });
   }
 
   return (

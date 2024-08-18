@@ -18,7 +18,7 @@ export default async function LoginFunction({id, password}) {
   });
 
   const res = await result.json();
-  console.log(res);
+  console.log('Login Function: %o', res);
 
   return res;
 }
