@@ -21,7 +21,12 @@ export default function GetHelthKitInfoFunction() {
     }
 
     const options = {
-      startDate: new Date(2024, 5, 27).toISOString(),
+      startDate: new Date(2024, 7, 1).toISOString(),
+    };
+
+    const activityOptions = {
+      startDate: new Date(2024, 7, 11).toISOString(),
+      endDate: new Date(2024, 7, 12).toISOString(),
     };
 
     const stepCountOptions = {
@@ -35,7 +40,7 @@ export default function GetHelthKitInfoFunction() {
 
     const distanceWalkingRunningOptions = {
       startDate: new Date(2024, 7, 1).toISOString(),
-      endDate: new Date(2024, 7, 2).toISOString(),
+      endDate: new Date(2024, 7, 12).toISOString(),
       ascending: false,
       unit: 'meter',
     };
@@ -50,7 +55,7 @@ export default function GetHelthKitInfoFunction() {
     //   return;
     // });
 
-    // appleHealthKit.getActivitySummary(options, (error, result) => {
+    // appleHealthKit.getActivitySummary(activityOptions, (error, result) => {
     //   if (error) {
     //     console.log('[Error] Failed to load Activity Data');
     //     return;
