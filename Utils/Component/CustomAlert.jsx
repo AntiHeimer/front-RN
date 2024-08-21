@@ -3,14 +3,14 @@ import {Alert} from 'react-native';
 /**
  * 확인 버튼이 있는 기본 알림창 컴포넌트
  *
- * 이 컴포넌트는 제목과 메시지를 포함하는 알림창을 생성하고, 확인 버튼을 클릭했을 때 지정된 함수가 실행됩니다.
+ * 이 컴포넌트는 제목과 메시지를 포함하는 알림창을 생성하고, 확인 버튼을 클릭했을 때 지정된 함수가 실행
  *
  * @param {Object} props - 컴포넌트에 전달되는 props
  * @param {string} props.title - 알림창의 제목
  * @param {string} props.message - 알림창의 설명 메시지
  * @param {function} props.onPress - 확인 버튼을 눌렀을 때 호출되는 함수
  *
- * @returns {void} - 알림창을 화면에 표시하며, 함수 호출로 알림창을 표시합니다.
+ * @returns {void} - 알림창을 화면에 표시하며, 함수 호출로 알림창을 표시
  */
 function ConfirmAlert({title, message, onPress}) {
   function showAlert() {
@@ -35,7 +35,7 @@ function ConfirmAlert({title, message, onPress}) {
 /**
  * 확인 및 취소 버튼이 있는 기본 알림창 컴포넌트
  *
- * 이 컴포넌트는 제목과 메시지를 포함하는 알림창을 생성하고, 확인 및 취소 버튼을 클릭했을 때 각각 지정된 함수가 실행됩니다.
+ * 이 컴포넌트는 제목과 메시지를 포함하는 알림창을 생성하고, 확인 및 취소 버튼을 클릭했을 때 각각 지정된 함수가 실행
  *
  * @param {Object} props - 컴포넌트에 전달되는 props
  * @param {string} props.title - 알림창의 제목
@@ -43,7 +43,7 @@ function ConfirmAlert({title, message, onPress}) {
  * @param {function} props.onPressConfirm - 확인 버튼을 눌렀을 때 호출되는 함수
  * @param {function} props.onPressCancel - 취소 버튼을 눌렀을 때 호출되는 함수
  *
- * @returns {void} - 알림창을 화면에 표시하며, 함수 호출로 알림창을 표시합니다.
+ * @returns {void} - 알림창을 화면에 표시하며, 함수 호출로 알림창을 표시
  */
 function CancleAlert({title, message, onPressConfirm, onPressCancel}) {
   function showAlert() {
