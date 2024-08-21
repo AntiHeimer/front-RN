@@ -1,18 +1,26 @@
 import {useEffect} from 'react';
 import InputBox from './InputBox';
 
+/**
+ * 사용자 ID 입력 필드 컴포넌트
+ *
+ * 이 컴포넌트는 사용자의 ID를 입력받고, ID의 유효성을 검증하여 입력 필드의 상태를 업데이트합니다.
+ *
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {string} props.userId - 현재 입력된 사용자 ID 값
+ * @param {function} props.setUserId - 사용자 ID를 업데이트하는 함수
+ * @param {function} props.setIsUserIdFilled - 사용자 ID 입력 필드가 채워졌는지 여부를 설정하는 함수
+ *
+ * @returns {JSX.Element} - 사용자 ID 입력 필드를 렌더링하는 React Native 컴포넌트
+ */
+
 function UserId({userId, setUserId, setIsUserIdFilled}) {
-  /*
-  userId -> string: 현재 입력된 사용자 id 값
-  setUserId -> function: 사용자 id 업데이트 함수
-  setIsUserIdFilled -> function: 사용자 ID 입력 필드가 채워졌는지 여부를 설정하는 함수 (boolean -> void)
-  */
   useEffect(() => {
-    // userId input 칸 상태에 따라 setIsUserIdFilled 값 변경
-    if (userId == null || userId == '' || userId.length < 8) {
-      setIsUserIdFilled(false);
+    // userId의 값에 따라 setIsUserIdFilled 상태를 업데이트합니다.
+    if (userId == null || userId === '' || userId.length < 8) {
+      setIsUserIdFilled(false); // ID가 비어있거나 길이가 8자 미만일 때
     } else {
-      setIsUserIdFilled(true);
+      setIsUserIdFilled(true); // ID가 적절하게 입력되었을 때
     }
   }, [userId]);
 
