@@ -20,13 +20,19 @@ export default function GetHelthKitInfoFunction() {
       console.log('[Error] Cannot grant permissions!');
     }
 
-    const options = {
-      startDate: new Date(2024, 5, 27).toISOString(),
+    const sleepOptions = {
+      startDate: new Date(2024, 1, 23).toISOString(),
+      endDate: new Date(2024, 1, 24).toISOString(),
+    };
+
+    const activityOptions = {
+      startDate: new Date(2024, 7, 11).toISOString(),
+      endDate: new Date(2024, 7, 12).toISOString(),
     };
 
     const stepCountOptions = {
       startDate: new Date(2024, 7, 1).toISOString(),
-      endDate: new Date(2024, 7, 30).toISOString(),
+      endDate: new Date(2024, 7, 2).toISOString(),
     };
 
     const weightOptions = {
@@ -40,7 +46,7 @@ export default function GetHelthKitInfoFunction() {
       unit: 'meter',
     };
 
-    // appleHealthKit.getSleepSamples(options, (error, result) => {
+    // appleHealthKit.getSleepSamples(sleepOptions, (error, result) => {
     //   if (error) {
     //     console.log('[Error] Failed to load Sleep Data');
     //     return;
@@ -50,7 +56,7 @@ export default function GetHelthKitInfoFunction() {
     //   return;
     // });
 
-    // appleHealthKit.getActivitySummary(options, (error, result) => {
+    // appleHealthKit.getActivitySummary(activityOptions, (error, result) => {
     //   if (error) {
     //     console.log('[Error] Failed to load Activity Data');
     //     return;
