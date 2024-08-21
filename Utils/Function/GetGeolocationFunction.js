@@ -22,7 +22,7 @@ export default async function GetGeoLocationFunction() {
 
           const location = {latitude, longitude};
           const locationData = {location, formattedDate};
-          console.log(locationData);
+
           res(locationData);
         },
         error => {

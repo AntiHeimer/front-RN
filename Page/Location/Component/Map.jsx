@@ -1,30 +1,47 @@
+import {useEffect, useRef} from 'react';
+
 import {StyleSheet, Text, View} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 
 import DropDown from './DropDown';
 
 function Map({location}) {
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    if (location && mapRef.current) {
+      mapRef.current.animateToRegion(
+        {
+          latitude: location.location.latitude,
+          longitude: location.location.longitude,
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121,
+        },
+        1,
+      );
+    }
+  }, [location]);
+
   return (
     <View>
       <Text style={styles.description}>피보호자 위치 추적</Text>
       <DropDown />
       <View style={styles.map}>
         {location && (
-          <>
-            <MapView
-              style={{flex: 1}}
-              initialRegion={{
-                latitude: location.location.latitude,
-                longitude: location.location.longitude,
-                latitudeDelta: 0.0522,
-                longitudeDelta: 0.0121,
-              }}>
-              <Marker
-                coordinate={location.location}
-                title={'기록된 시간: ' + location.formattedDate}
-              />
-            </MapView>
-          </>
+          <MapView
+            ref={mapRef}
+            style={{flex: 1}}
+            initialRegion={{
+              latitude: location.location.latitude,
+              longitude: location.location.longitude,
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.0121,
+            }}>
+            <Marker
+              coordinate={location.location}
+              title={'기록된 시간: ' + location.formattedDate}
+            />
+          </MapView>
         )}
       </View>
     </View>

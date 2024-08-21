@@ -109,19 +109,19 @@ export default function GetHelthKitInfoFunction() {
     //   return;
     // });
 
-    appleHealthKit.getDailyDistanceWalkingRunningSamples(
-      distanceWalkingRunningOptions,
-      (error, result) => {
-        if (error) {
-          console.log(
-            '[Error] Failed to get daily distance walking and running data ',
-          );
-          return;
-        }
+    // appleHealthKit.getDailyDistanceWalkingRunningSamples(
+    //   distanceWalkingRunningOptions,
+    //   (error, result) => {
+    //     if (error) {
+    //       console.log(
+    //         '[Error] Failed to get daily distance walking and running data ',
+    //       );
+    //       return;
+    //     }
 
-        console.log('daily distance walking and running', result);
-        return;
-      },
-    );
+    //     console.log('daily distance walking and running', result);
+    //     return;
+    //   },
+    // );
   });
 }
