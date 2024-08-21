@@ -10,6 +10,7 @@ import SignUpButton from '../Component/SignUpButton';
 
 import LoginFunction from '../Function/LoginFunction';
 import {Storage} from '../../../Utils/Function/Storage';
+import {HealthKitService} from '../../../Utils/Function/HealthkitService';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);
@@ -48,6 +49,7 @@ function LoginPage({navigation}) {
   }
 
   useEffect(() => {
+    HealthKitService.initialize();
     LoadLoginState();
   }, []);
 

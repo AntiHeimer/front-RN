@@ -4,7 +4,6 @@ import {StyleSheet, View, RefreshControl, ScrollView} from 'react-native';
 import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import Graph from '../Component/Graph';
 
-import GetHelthKitInfoFunction from '../../../Utils/Function/GetHelthKitInfoFunction';
 import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
 
 function MainPage({navigation}) {
@@ -12,13 +11,11 @@ function MainPage({navigation}) {
 
   async function handleRefresh() {
     setIsRefreshing(true);
-    GetHelthKitInfoFunction();
     GetGeoLocationFunction();
     setIsRefreshing(false);
   }
 
   useEffect(() => {
-    GetHelthKitInfoFunction();
     GetGeoLocationFunction();
   }, []);
 
