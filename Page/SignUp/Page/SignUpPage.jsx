@@ -29,8 +29,6 @@ function SignUpPage({navigation}) {
       password: password,
     });
 
-    console.log(result);
-
     if (result.statusCode === '200') {
       ConfirmAlert({
         title: '회원가입 성공',
