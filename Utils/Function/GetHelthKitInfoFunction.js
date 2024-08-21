@@ -20,8 +20,9 @@ export default function GetHelthKitInfoFunction() {
       console.log('[Error] Cannot grant permissions!');
     }
 
-    const options = {
-      startDate: new Date(2024, 7, 1).toISOString(),
+    const sleepOptions = {
+      startDate: new Date(2024, 1, 23).toISOString(),
+      endDate: new Date(2024, 1, 24).toISOString(),
     };
 
     const activityOptions = {
@@ -31,7 +32,7 @@ export default function GetHelthKitInfoFunction() {
 
     const stepCountOptions = {
       startDate: new Date(2024, 7, 1).toISOString(),
-      endDate: new Date(2024, 7, 30).toISOString(),
+      endDate: new Date(2024, 7, 2).toISOString(),
     };
 
     const weightOptions = {
@@ -40,12 +41,12 @@ export default function GetHelthKitInfoFunction() {
 
     const distanceWalkingRunningOptions = {
       startDate: new Date(2024, 7, 1).toISOString(),
-      endDate: new Date(2024, 7, 12).toISOString(),
+      endDate: new Date(2024, 7, 2).toISOString(),
       ascending: false,
       unit: 'meter',
     };
 
-    // appleHealthKit.getSleepSamples(options, (error, result) => {
+    // appleHealthKit.getSleepSamples(sleepOptions, (error, result) => {
     //   if (error) {
     //     console.log('[Error] Failed to load Sleep Data');
     //     return;
@@ -108,19 +109,19 @@ export default function GetHelthKitInfoFunction() {
     //   return;
     // });
 
-    // appleHealthKit.getDailyDistanceWalkingRunningSamples(
-    //   distanceWalkingRunningOptions,
-    //   (error, result) => {
-    //     if (error) {
-    //       console.log(
-    //         '[Error] Failed to get daily distance walking and running data ',
-    //       );
-    //       return;
-    //     }
+    appleHealthKit.getDailyDistanceWalkingRunningSamples(
+      distanceWalkingRunningOptions,
+      (error, result) => {
+        if (error) {
+          console.log(
+            '[Error] Failed to get daily distance walking and running data ',
+          );
+          return;
+        }
 
-    //     console.log('daily distance walking and running', result);
-    //     return;
-    //   },
-    // );
+        console.log('daily distance walking and running', result);
+        return;
+      },
+    );
   });
 }

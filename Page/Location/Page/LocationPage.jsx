@@ -17,7 +17,6 @@ function LocationPage({navigation}) {
 
   async function handleRefresh() {
     setIsRefreshing(true);
-
     getGeoLocationFunction();
     setIsRefreshing(false);
   }
