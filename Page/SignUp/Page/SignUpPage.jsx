@@ -5,7 +5,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import Name from '../Component/Name';
 import UserId from '../Component/UserId';
 import Password from '../Component/Password';
-import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
+import {ConfirmAlert} from '../../../Utils/Component/ConfirmAlert';
 import {
   MainButtonBlack,
   MainButtonGray,

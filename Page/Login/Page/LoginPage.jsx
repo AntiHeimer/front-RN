@@ -4,7 +4,7 @@ import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 
 import SignUpButton from '../Component/SignUpButton';
 import Input from '../../../Utils/Component/Input';
-import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
+import {ConfirmAlert} from '../../../Utils/Component/ConfirmAlert';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import LoginFunction from '../Function/LoginFunction';
