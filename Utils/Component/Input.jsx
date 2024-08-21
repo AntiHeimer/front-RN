@@ -1,6 +1,13 @@
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 
 function Input({placeholder, value, onChange, security}) {
+  /* 
+  메인 입력 필드
+  placeholder -> string : 입력 필드 위에 나타날 placeholder text 값
+  value -> string: 입력 필드의 현재 값
+  onChange -> function: 사용자가 입력 필드의 텍스트를 변경할 때 호출되는 콜백 함수
+  security -> boolean: 비밀번호 등 보안 정보 입력 시 형식
+  */
   return (
     <View style={styles.inputContainer}>
       <TextInput
