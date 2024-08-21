@@ -1,7 +1,8 @@
-import {Alert, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 import Input from '../../../Utils/Component/Input';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
+import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 
 /**
  * 보호자 등록 화면 컴포넌트
@@ -21,15 +22,13 @@ function RegisterProtector({navigation, value, onChange}) {
    * 요청 전송 완료 후 알림을 표시하고, 'Location' 화면으로 네비게이션합니다.
    */
   function AlertFunction() {
-    Alert.alert('요청 전송 완료', '보호자 요청이\n성공적으로 전송되었습니다.', [
-      {
-        text: '확인',
-        onPress: () => {
-          navigation.navigate('Location');
-        },
-        style: 'cancel',
+    ConfirmAlert({
+      title: '요청 전송 완료',
+      message: '보호자 요청이\n성공적으로 전송되었습니다.',
+      onPress: () => {
+        navigation.navigate('Location');
       },
-    ]);
+    });
   }
 
   return (
