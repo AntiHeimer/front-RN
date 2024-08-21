@@ -45,7 +45,7 @@ function ConfirmAlert({title, message, onPress}) {
  *
  * @returns {void} - 알림창을 화면에 표시하며, 함수 호출로 알림창을 표시
  */
-function CancleAlert({title, message, onPressConfirm, onPressCancel}) {
+function CancelAlert({title, message, onPressConfirm, onPressCancel}) {
   function showAlert() {
     Alert.alert(
       title, // 알림창 제목
@@ -69,4 +69,4 @@ function CancleAlert({title, message, onPressConfirm, onPressCancel}) {
   return showAlert();
 }
 
-export {ConfirmAlert, CancleAlert};
+export {ConfirmAlert, CancelAlert};
