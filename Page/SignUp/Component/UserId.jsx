@@ -3,6 +3,7 @@ import InputBox from './InputBox';
 
 function UserId({userId, setUserId, setIsUserIdFilled}) {
   useEffect(() => {
+    // userId input 칸 상태에 따라 setIsUserIdFilled 값 변경
     if (userId == null || userId == '' || userId.length < 8) {
       setIsUserIdFilled(false);
     } else {

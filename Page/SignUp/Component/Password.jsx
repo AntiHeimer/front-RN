@@ -2,14 +2,15 @@ import {useEffect} from 'react';
 import InputBox from './InputBox';
 
 function Password({
-  password,
-  password2,
+  password, // 비밀번호
+  password2, // 비밀번호 확인
   setPassword,
   setPassword2,
   isPasswordCorrect,
   setIsPasswordCorrect,
 }) {
   useEffect(() => {
+    // password, password2 input 칸 상태에따라 isPasswordCorrect 값 변경
     if (
       password2 == null ||
       password2 == '' ||
