@@ -89,7 +89,7 @@ export const HealthKitService = {
   },
 
   /**
-   * 지정된 날짜 범위의 일일 걸음 수 데이터를 가져옵니다.
+   * 지정된 날짜 범위의 일일 걸음 수 데이터를 가져옴
    * @param {string} startDate - 데이터 검색 시작 날짜 (ISO 8601 형식)
    * @param {string} endDate - 데이터 검색 종료 날짜 (ISO 8601 형식)
    * @returns {Promise<object>} 일일 걸음 수 데이터 객체를 포함하는 Promise
