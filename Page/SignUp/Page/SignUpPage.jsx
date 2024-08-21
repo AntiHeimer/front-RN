@@ -18,9 +18,9 @@ function SignUpPage({navigation}) {
   const [password, setPassword] = useState(null);
   const [password2, setPassword2] = useState(null);
 
-  const [isNameFilled, setIsNameFilled] = useState(false);
-  const [isUserIdFilled, setIsUserIdFilled] = useState(false);
-  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
+  const [isNameFilled, setIsNameFilled] = useState(false); // 이름 input 칸이 비어있는지 확인
+  const [isUserIdFilled, setIsUserIdFilled] = useState(false); // 아이디 input 칸이 비어있는지 확인
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false); // 패스워드, 패스워드 확인 텍스트가 같은지 확인
 
   async function SignUp() {
     const result = await SignUpFunction({
@@ -29,6 +29,7 @@ function SignUpPage({navigation}) {
       password: password,
     });
 
+    // 회원가입 성공 시 성공 알림창 띄우고 로그인 탭으로 이동
     if (result.statusCode === '200') {
       ConfirmAlert({
         title: '회원가입 성공',
@@ -41,6 +42,7 @@ function SignUpPage({navigation}) {
       return;
     }
 
+    // 회원가입 실패 시 실패 경고창 띄움
     ConfirmAlert({
       title: '회원가입 실패',
       message: '회원가입에 실패하였습니다.',
@@ -75,6 +77,7 @@ function SignUpPage({navigation}) {
             isPasswordCorrect={isPasswordCorrect}
             setIsPasswordCorrect={setIsPasswordCorrect}
           />
+
           <View style={styles.loginButtonDiv}>
             {isNameFilled && isUserIdFilled && isPasswordCorrect ? (
               <MainButton text="회원가입" onPress={() => SignUp()} />
