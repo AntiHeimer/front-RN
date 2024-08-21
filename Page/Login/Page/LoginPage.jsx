@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 
 import Input from '../../../Utils/Component/Input';
-import MainButton from '../../../Utils/Component/MainButton/MainButton';
+
 import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
 
 import SignUpButton from '../Component/SignUpButton';
@@ -11,6 +11,7 @@ import SignUpButton from '../Component/SignUpButton';
 import LoginFunction from '../Function/LoginFunction';
 import {Storage} from '../../../Utils/Function/Storage';
 import {HealthKitService} from '../../../Utils/Function/HealthkitService';
+import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);
@@ -70,7 +71,7 @@ function LoginPage({navigation}) {
           security={true}
         />
         <View style={styles.buttondiv}>
-          <MainButton text="로그인" onPress={() => Login()} />
+          <MainButtonBlack text="로그인" onPress={() => Login()} />
         </View>
         <SignUpButton navigation={navigation} />
       </KeyboardAvoidingView>

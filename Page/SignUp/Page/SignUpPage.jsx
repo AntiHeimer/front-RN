@@ -2,15 +2,17 @@ import {useState} from 'react';
 import {KeyboardAvoidingView, StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
-import MainButtonGray from '../../../Utils/Component/MainButton/MainButtonGray';
 
 import Name from '../Component/Name';
 import UserId from '../Component/UserId';
 import Password from '../Component/Password';
 
 import SignUpFunction from '../Function/SignUpFunction';
+import {
+  MainButtonBlack,
+  MainButtonGray,
+} from '../../../Utils/Component/MainButton';
 
 function SignUpPage({navigation}) {
   const [name, setName] = useState(null);
@@ -80,7 +82,7 @@ function SignUpPage({navigation}) {
 
           <View style={styles.loginButtonDiv}>
             {isNameFilled && isUserIdFilled && isPasswordCorrect ? (
-              <MainButton text="회원가입" onPress={() => SignUp()} />
+              <MainButtonBlack text="회원가입" onPress={() => SignUp()} />
             ) : (
               <MainButtonGray text="회원가입" onPress={() => {}} />
             )}

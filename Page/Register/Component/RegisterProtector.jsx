@@ -1,7 +1,7 @@
 import {Alert, StyleSheet, Text, View} from 'react-native';
 
 import Input from '../../../Utils/Component/Input';
-import MainButton from '../../../Utils/Component/MainButton/MainButton';
+import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 function RegisterProtector({navigation, value, onChange}) {
   function AlertFunction() {
@@ -29,7 +29,7 @@ function RegisterProtector({navigation, value, onChange}) {
           security={false}
         />
       </View>
-      <MainButton text="보호자 등록" onPress={AlertFunction} />
+      <MainButtonBlack text="보호자 등록" onPress={AlertFunction} />
     </View>
   );
 }

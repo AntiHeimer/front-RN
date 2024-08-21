@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react';
 import {StyleSheet, View, RefreshControl, ScrollView} from 'react-native';
 
-import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import Graph from '../Component/Graph';
 
 import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
+import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -31,13 +31,13 @@ function MainPage({navigation}) {
             <Graph />
           </View>
           <View style={styles.buttonDiv}>
-            <MainButton
+            <MainButtonBlack
               text="진단하기"
               onPress={() => navigation.navigate('Diagnosis')}
             />
           </View>
           <View style={styles.buttonDiv}>
-            <MainButton
+            <MainButtonBlack
               text="진단 결과조회하기"
               onPress={() => navigation.navigate('Diagnosis Result Inquiry')}
             />

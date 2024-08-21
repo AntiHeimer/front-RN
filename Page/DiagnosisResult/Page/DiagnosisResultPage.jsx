@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
-import MainButton from '../../../Utils/Component/MainButton/MainButton';
+
 import Table from '../Component/Table';
+import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 function DiagnosisResultPage({navigation}) {
   return (
@@ -11,7 +12,10 @@ function DiagnosisResultPage({navigation}) {
         <Text style={styles.resultHighlight}>3단계 입니다</Text>
       </View>
       <Table />
-      <MainButton text="홈으로" onPress={() => navigation.navigate('Main')} />
+      <MainButtonBlack
+        text="홈으로"
+        onPress={() => navigation.navigate('Main')}
+      />
     </View>
   );
 }
