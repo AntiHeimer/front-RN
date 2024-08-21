@@ -26,7 +26,7 @@ function RegisterWard({navigation, value, onChange}) {
       title: '요청 전송 완료',
       message: '보호자 요청이\n성공적으로 전송되었습니다.',
       onPress: () => {
-        navigation.navigate('Location');
+        navigation.navigate('Location Tab');
       },
     });
   }
