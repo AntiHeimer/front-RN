@@ -1,10 +1,9 @@
 import {useEffect, useState} from 'react';
 import {StyleSheet, View, RefreshControl, ScrollView} from 'react-native';
 
-import MainButton from '../../../Utils/Component/MainButton/MainButton';
 import Graph from '../Component/Graph';
+import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
-import GetHelthKitInfoFunction from '../../../Utils/Function/GetHelthKitInfoFunction';
 import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
 
 function MainPage({navigation}) {
@@ -12,13 +11,11 @@ function MainPage({navigation}) {
 
   async function handleRefresh() {
     setIsRefreshing(true);
-    GetHelthKitInfoFunction();
     GetGeoLocationFunction();
     setIsRefreshing(false);
   }
 
   useEffect(() => {
-    GetHelthKitInfoFunction();
     GetGeoLocationFunction();
   }, []);
 
@@ -34,13 +31,13 @@ function MainPage({navigation}) {
             <Graph />
           </View>
           <View style={styles.buttonDiv}>
-            <MainButton
+            <MainButtonBlack
               text="진단하기"
               onPress={() => navigation.navigate('Diagnosis')}
             />
           </View>
           <View style={styles.buttonDiv}>
-            <MainButton
+            <MainButtonBlack
               text="진단 결과조회하기"
               onPress={() => navigation.navigate('Diagnosis Result Inquiry')}
             />

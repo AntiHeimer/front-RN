@@ -4,6 +4,7 @@ import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import notification from '../Asset/notification.png';
 
 function Notification() {
+  // 상단바 알림 아이콘
   const navigation = useNavigation();
   return (
     <TouchableOpacity onPress={() => navigation.navigate('Notification')}>

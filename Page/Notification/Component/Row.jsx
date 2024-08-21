@@ -1,7 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
-
-import MainSmallButtonGray from '../../../Utils/Component/MainButton/MainSmallButtonGray';
-import MainSmallButtonBlack from '../../../Utils/Component/MainButton/MainSmallButtonBlack';
+import {
+  MainSmallButtonBlack,
+  MainSmallButtonGray,
+} from '../../../Utils/Component/MainButton';
 
 function Row() {
   return (
