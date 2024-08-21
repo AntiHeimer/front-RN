@@ -1,7 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 /**
- * 버튼의 텍스트와 클릭 시 실행되는 함수를 props로 받아 렌더링합니다.
+ * 버튼의 텍스트와 클릭 시 실행되는 함수를 props로 받아 렌더링
  *
  * @param {Object} props - 컴포넌트에 전달되는 props
  * @param {string} props.text - 버튼에 표시될 텍스트

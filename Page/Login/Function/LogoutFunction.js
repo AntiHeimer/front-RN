@@ -3,8 +3,10 @@ import EncryptFunction from '../../../Utils/Function/EncryptFunction';
 /**
  * 로그아웃 요청을 처리하는 함수
  *
- * 이 함수는 사용자의 UUID를 암호화한 후, 로그아웃 API에 GET 요청을 보냅니다. 요청 시 사용자의 인증 토큰을 헤더에 포함시킵니다.
- * 서버의 응답을 JSON 형식으로 반환합니다.
+ * 이 함수는 사용자의 UUID를 암호화한 후, 로그아웃 API에 GET 요청을 보냄
+ * 요청 시 사용자의 인증 토큰을 헤더에 포함
+ *
+ * 서버의 응답을 JSON 형식으로 반환
  *
  * @param {Object} params - 함수에 전달되는 매개변수
  * @param {string} params.uuid - 사용자의 UUID (문자열)

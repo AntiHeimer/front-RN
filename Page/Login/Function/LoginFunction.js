@@ -3,8 +3,9 @@ import EncryptFunction from '../../../Utils/Function/EncryptFunction';
 /**
  * 로그인 요청을 처리하는 함수
  *
- * 이 함수는 사용자 ID와 비밀번호를 받아 JSON 형식으로 변환한 후, 암호화하여 서버에 로그인 요청을 보냅니다.
- * 요청 후, 서버의 응답을 JSON 형식으로 반환합니다.
+ * 이 함수는 사용자 ID와 비밀번호를 받아 JSON 형식으로 변환한 후, 암호화하여 서버에 로그인 요청을 보냄
+ *
+ * 서버의 응답을 JSON 형식으로 반환
  *
  * @param {Object} params - 함수에 전달되는 매개변수
  * @param {string} params.id - 사용자의 ID

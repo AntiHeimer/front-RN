@@ -4,7 +4,7 @@ import InputBox from './InputBox';
 /**
  * 사용자 ID 입력 필드 컴포넌트
  *
- * 이 컴포넌트는 사용자의 ID를 입력받고, ID의 유효성을 검증하여 입력 필드의 상태를 업데이트합니다.
+ * 이 컴포넌트는 사용자의 ID를 입력받고, ID의 유효성을 검증하여 입력 필드의 상태를 업데이트
  *
  * @param {Object} props - 컴포넌트에 전달되는 props
  * @param {string} props.userId - 현재 입력된 사용자 ID 값
@@ -16,7 +16,7 @@ import InputBox from './InputBox';
 
 function UserId({userId, setUserId, setIsUserIdFilled}) {
   useEffect(() => {
-    // userId의 값에 따라 setIsUserIdFilled 상태를 업데이트합니다.
+    // userId의 값에 따라 setIsUserIdFilled 상태를 업데이트
     if (userId == null || userId === '' || userId.length < 8) {
       setIsUserIdFilled(false); // ID가 비어있거나 길이가 8자 미만일 때
     } else {

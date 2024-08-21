@@ -5,7 +5,7 @@ import InputBox from './InputBox';
  * 사용자 이름 입력 컴포넌트
  *
  * 이 컴포넌트는 사용자 이름을 입력받는 필드를 제공하며,
- * 입력된 이름이 비어 있는지 여부에 따라 상태를 업데이트합니다.
+ * 입력된 이름이 비어 있는지 여부에 따라 상태를 업데이트
  *
  * @param {Object} props - 컴포넌트에 전달되는 props
  * @param {string} props.name - 현재 입력된 사용자 이름 값
@@ -17,7 +17,7 @@ import InputBox from './InputBox';
 
 function Name({name, setName, setIsNameFilled}) {
   useEffect(() => {
-    // name 입력 필드의 상태에 따라 setIsNameFilled 상태를 업데이트합니다.
+    // name 입력 필드의 상태에 따라 setIsNameFilled 상태를 업데이트
     if (name == null || name === '') {
       setIsNameFilled(false); // 이름이 비어 있거나 null일 때
     } else {

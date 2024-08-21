@@ -5,7 +5,7 @@ import InputBox from './InputBox';
  * 비밀번호 입력 및 확인 컴포넌트
  *
  * 이 컴포넌트는 비밀번호와 비밀번호 확인 입력 필드를 제공하며,
- * 두 필드의 값이 일치하는지 확인하여 상태를 업데이트합니다.
+ * 두 필드의 값이 일치하는지 확인하여 상태를 업데이트
  *
  * @param {Object} props - 컴포넌트에 전달되는 props
  * @param {string} props.password - 현재 입력된 비밀번호 값
@@ -27,7 +27,7 @@ function Password({
   setIsPasswordCorrect,
 }) {
   useEffect(() => {
-    // password와 password2 입력 값에 따라 isPasswordCorrect 상태를 업데이트합니다.
+    // password와 password2 입력 값에 따라 isPasswordCorrect 상태를 업데이트
     if (
       password2 == null ||
       password2 === '' ||
