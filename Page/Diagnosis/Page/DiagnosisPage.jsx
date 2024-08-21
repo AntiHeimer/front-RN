@@ -2,6 +2,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 import checkMark from '../../../Utils/Asset/checkmark.png';
 import xMark from '../../../Utils/Asset/xmark.png';
+
 import {
   MainMediumButtonBlack,
   MainMediumButtonGray,

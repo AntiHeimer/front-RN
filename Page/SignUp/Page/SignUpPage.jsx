@@ -2,17 +2,16 @@ import {useState} from 'react';
 import {KeyboardAvoidingView, StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
-
 import Name from '../Component/Name';
 import UserId from '../Component/UserId';
 import Password from '../Component/Password';
-
-import SignUpFunction from '../Function/SignUpFunction';
+import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
 import {
   MainButtonBlack,
   MainButtonGray,
 } from '../../../Utils/Component/MainButton';
+
+import SignUpFunction from '../Function/SignUpFunction';
 
 function SignUpPage({navigation}) {
   const [name, setName] = useState(null);

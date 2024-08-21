@@ -2,16 +2,14 @@ import {useEffect, useState} from 'react';
 
 import {KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 
-import Input from '../../../Utils/Component/Input';
-
-import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
-
 import SignUpButton from '../Component/SignUpButton';
+import Input from '../../../Utils/Component/Input';
+import ConfirmAlert from '../../../Utils/Component/Alert/ConfirmAlert';
+import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import LoginFunction from '../Function/LoginFunction';
 import {Storage} from '../../../Utils/Function/Storage';
 import {HealthKitService} from '../../../Utils/Function/HealthkitService';
-import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);

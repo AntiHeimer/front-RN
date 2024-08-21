@@ -2,9 +2,9 @@ import {useEffect, useState} from 'react';
 import {StyleSheet, View, RefreshControl, ScrollView} from 'react-native';
 
 import Graph from '../Component/Graph';
+import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
-import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
