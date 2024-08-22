@@ -81,7 +81,6 @@ export const HealthKitService = {
           console.error('[Error] Failed to load Activity Data');
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
-          console.log('activity data', result); // 활동 데이터 로깅
           resolve(result); // 활동 데이터 반환
         }
       });
@@ -110,7 +109,6 @@ export const HealthKitService = {
             console.error('[Error] Failed to load StepCount Data');
             reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
           } else {
-            console.log('step count data', result); // 걸음 수 데이터 로깅
             resolve(result); // 걸음 수 데이터 반환
           }
         },
@@ -206,7 +204,6 @@ export const HealthKitService = {
             );
             reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
           } else {
-            console.log('daily distance walking and running', result); // 거리 데이터 로깅
             resolve(result); // 거리 데이터 반환
           }
         },
