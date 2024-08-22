@@ -6,6 +6,7 @@ import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
 import PostActiveFunction from '../../../Utils/Function/Health/PostActiveFunction';
+import PostMoveFunction from '../../../Utils/Function/Health/PostMoveFunction';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -19,6 +20,7 @@ function MainPage({navigation}) {
   useEffect(() => {
     GetGeoLocationFunction();
     // PostActiveFunction();
+    // PostMoveFunction();
   }, []);
 
   return (

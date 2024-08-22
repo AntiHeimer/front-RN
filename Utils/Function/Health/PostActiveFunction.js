@@ -2,7 +2,7 @@ import HealthKitService from '../HealthkitService';
 import {Storage} from '../Storage';
 
 export default async function PostActiveFunction() {
-  const activityResult = await HealthKitService.getActivitySummary(
+  const activeData = await HealthKitService.getActivitySummary(
     '2024-08-11',
     '2024-08-12',
   );
@@ -21,7 +21,7 @@ export default async function PostActiveFunction() {
     body: JSON.stringify({
       memberUuid: uuid,
       date: '2024-08-11',
-      activeData: activityResult,
+      activeData: activeData,
     }),
   });
 
