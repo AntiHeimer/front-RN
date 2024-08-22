@@ -10,7 +10,7 @@ export default async function PostWalkFunction() {
   );
 
   const formattedWalkData = DateFormattingFunction(walkData);
-
+  console.log(formattedWalkData);
   const userState = await Storage.getItem('userState');
 
   const uuid = userState.uuid;
@@ -25,7 +25,7 @@ export default async function PostWalkFunction() {
     body: JSON.stringify({
       memberUuid: uuid,
       date: '2024-08-21',
-      moveData: formattedWalkData,
+      walkData: formattedWalkData,
     }),
   });
 

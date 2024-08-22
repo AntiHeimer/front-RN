@@ -1,7 +1,7 @@
 export default function DateFormattingFunction(data) {
   function convertToLocalDateTime(dateString) {
-    const date = new Date(dateString);
-    return date.toISOString().replace('T', ' ').split('.')[0];
+    // "2024-08-22T09:00:00.000+0900" -> "2024-08-22T09:00:00"
+    return dateString.split('.')[0];
   }
 
   return data.map(item => ({

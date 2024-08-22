@@ -10,7 +10,7 @@ export default async function PostMoveFunction() {
   );
 
   const formattedMoveData = DateFormattingFunction(moveData);
-  //   console.log(formattedMoveData);
+
   const userState = await Storage.getItem('userState');
 
   const uuid = userState.uuid;
