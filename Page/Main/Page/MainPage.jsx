@@ -22,7 +22,7 @@ function MainPage({navigation}) {
     GetGeoLocationFunction();
     // PostActiveFunction();
     // PostMoveFunction();
-    PostWalkFunction();
+    // PostWalkFunction();
   }, []);
 
   return (
