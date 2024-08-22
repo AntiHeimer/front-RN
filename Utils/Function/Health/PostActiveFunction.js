@@ -1,4 +1,4 @@
-import HealthKitService from '../HealthkitService';
+import HealthKitService from './HealthkitService';
 import {Storage} from '../Storage';
 
 export default async function PostActiveFunction() {

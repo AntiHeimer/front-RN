@@ -3,20 +3,20 @@ import HealthKitService from './HealthkitService';
 
 import DateFormattingFunction from './DateFormattingFunction';
 
-export default async function PostMoveFunction() {
-  const moveData = await HealthKitService.getDailyDistanceWalkingRunning(
+export default async function PostWalkFunction() {
+  const walkData = await HealthKitService.getStepCount(
     '2024-08-21',
     '2024-08-22',
   );
 
-  const formattedMoveData = DateFormattingFunction(moveData);
-  //   console.log(formattedMoveData);
+  const formattedWalkData = DateFormattingFunction(walkData);
+
   const userState = await Storage.getItem('userState');
 
   const uuid = userState.uuid;
   const token = userState.jwtToken;
 
-  const result = await fetch(`${process.env.API}/save/move`, {
+  const result = await fetch(`${process.env.API}/save/walk`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -25,7 +25,7 @@ export default async function PostMoveFunction() {
     body: JSON.stringify({
       memberUuid: uuid,
       date: '2024-08-21',
-      moveData: formattedMoveData,
+      moveData: formattedWalkData,
     }),
   });
 
