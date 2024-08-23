@@ -1,6 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 /**
+ * 큰 블랙 버튼 컴포넌트
  * 버튼의 텍스트와 클릭 시 실행되는 함수를 props로 받아 렌더링
  *
  * @param {Object} props - 컴포넌트에 전달되는 props
@@ -9,8 +10,6 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
  *
  * @returns {JSX.Element} - 버튼을 렌더링하는 React Native 컴포넌트
  */
-
-// 큰 블랙 버튼 컴포넌트
 function MainButtonBlack({text, onPress}) {
   return (
     <TouchableOpacity
@@ -25,7 +24,16 @@ function MainButtonBlack({text, onPress}) {
   );
 }
 
-// 큰 회색 버튼 컴포넌트
+/**
+ * 큰 회색 버튼 컴포넌트
+ * 버튼의 텍스트와 클릭 시 실행되는 함수를 props로 받아 렌더링
+ *
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {string} props.text - 버튼에 표시될 텍스트
+ * @param {function} props.onPress - 버튼 클릭 시 호출될 함수
+ *
+ * @returns {JSX.Element} - 버튼을 렌더링하는 React Native 컴포넌트
+ */
 function MainButtonGray({text, onPress}) {
   return (
     <TouchableOpacity
@@ -40,7 +48,16 @@ function MainButtonGray({text, onPress}) {
   );
 }
 
-// 중간 크기 블랙 버튼 컴포넌트
+/**
+ * 중간 크기 블랙 버튼 컴포넌트
+ * 버튼의 텍스트와 클릭 시 실행되는 함수를 props로 받아 렌더링
+ *
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {string} props.text - 버튼에 표시될 텍스트
+ * @param {function} props.onPress - 버튼 클릭 시 호출될 함수
+ *
+ * @returns {JSX.Element} - 버튼을 렌더링하는 React Native 컴포넌트
+ */
 function MainMediumButtonBlack({text, onPress}) {
   return (
     <TouchableOpacity
@@ -57,7 +74,16 @@ function MainMediumButtonBlack({text, onPress}) {
   );
 }
 
-// 중간 크기 회색 버튼 컴포넌트
+/**
+ * 중간 크기 회색 버튼 컴포넌트
+ * 버튼의 텍스트와 클릭 시 실행되는 함수를 props로 받아 렌더링
+ *
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {string} props.text - 버튼에 표시될 텍스트
+ * @param {function} props.onPress - 버튼 클릭 시 호출될 함수
+ *
+ * @returns {JSX.Element} - 버튼을 렌더링하는 React Native 컴포넌트
+ */
 function MainMediumButtonGray({text, onPress}) {
   return (
     <TouchableOpacity
@@ -74,7 +100,16 @@ function MainMediumButtonGray({text, onPress}) {
   );
 }
 
-// 작은 블랙 버튼 컴포넌트
+/**
+ * 작은 블랙 버튼 컴포넌트
+ * 버튼의 텍스트와 클릭 시 실행되는 함수를 props로 받아 렌더링
+ *
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {string} props.text - 버튼에 표시될 텍스트
+ * @param {function} props.onPress - 버튼 클릭 시 호출될 함수
+ *
+ * @returns {JSX.Element} - 버튼을 렌더링하는 React Native 컴포넌트
+ */
 function MainSmallButtonBlack({text, onPress}) {
   return (
     <TouchableOpacity
@@ -91,7 +126,16 @@ function MainSmallButtonBlack({text, onPress}) {
   );
 }
 
-// 작은 회색 버튼 컴포넌트
+/**
+ * 작은 회색 버튼 컴포넌트
+ * 버튼의 텍스트와 클릭 시 실행되는 함수를 props로 받아 렌더링
+ *
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {string} props.text - 버튼에 표시될 텍스트
+ * @param {function} props.onPress - 버튼 클릭 시 호출될 함수
+ *
+ * @returns {JSX.Element} - 버튼을 렌더링하는 React Native 컴포넌트
+ */
 function MainSmallButtonGray({text, onPress}) {
   return (
     <TouchableOpacity
