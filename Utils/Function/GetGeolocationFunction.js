@@ -1,3 +1,4 @@
+import moment from 'moment';
 import Geolocation from 'react-native-geolocation-service';
 
 export default async function GetGeoLocationFunction() {
@@ -16,16 +17,7 @@ export default async function GetGeoLocationFunction() {
 
           // 타임스탬프를 Date 객체로 변환
           const date = new Date(timestamp);
-
-          // Date 객체를 'YYYY-MM-DD HH:MM:SS' 형식으로 포맷팅
-          const formattedDate = `${date.getFullYear()}-${String(
-            date.getMonth() + 1,
-          ).padStart(2, '0')}-${String(date.getDate()).padStart(
-            2,
-            '0',
-          )} ${String(date.getHours()).padStart(2, '0')}:${String(
-            date.getMinutes(),
-          ).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
+          const formattedDate = moment(date).format('YYYY-MM-DD HH:mm:ss');
 
           // 위치와 포맷된 날짜를 포함하는 객체를 생성
           const location = {latitude, longitude};

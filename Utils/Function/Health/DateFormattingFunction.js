@@ -1,7 +1,8 @@
+import moment from 'moment';
+
 export default function DateFormattingFunction(data) {
   function convertToLocalDateTime(dateString) {
-    // "2024-08-22T09:00:00.000+0900" -> "2024-08-22T09:00:00"
-    return dateString.split('.')[0];
+    return moment(dateString).format('YYYY-MM-DDTHH:mm:ss');
   }
 
   return data.map(item => ({
