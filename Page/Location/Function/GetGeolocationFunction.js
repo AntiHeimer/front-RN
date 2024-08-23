@@ -1,6 +1,12 @@
 import moment from 'moment';
 import Geolocation from 'react-native-geolocation-service';
 
+/**
+ * 사용자의 현재 위치와 해당 위치를 가져온 시간을 반환하는 함수.
+ *
+ * @returns {Promise<Object>} - 위치 정보(위도, 경도)와 타임스탬프(날짜 및 시간)를 포함한 객체를 반환하는 Promise.
+ */
+
 export default async function GetGeoLocationFunction() {
   // 위치 권한 요청
   const permission = await Geolocation.requestAuthorization('always');

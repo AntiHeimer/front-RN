@@ -4,7 +4,7 @@ import {StyleSheet, View, ScrollView, RefreshControl} from 'react-native';
 import RegisterButton from '../Component/RegisterButton';
 import Map from '../Component/Map';
 
-import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFunction';
+import GetGeoLocationFunction from '../Function/GetGeolocationFunction';
 
 function LocationPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
