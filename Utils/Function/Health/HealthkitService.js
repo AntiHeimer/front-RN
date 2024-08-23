@@ -25,7 +25,6 @@ export const HealthKitService = {
       // HealthKit 초기화 및 권한 요청
       appleHealthKit.initHealthKit(permissions, error => {
         if (error) {
-          console.error('[Error] Cannot grant permissions!');
           reject(error); // 권한 요청 실패 시 Promise를 실패로 처리
         } else {
           resolve(); // 초기화 성공 시 Promise를 성공으로 처리
@@ -51,7 +50,6 @@ export const HealthKitService = {
       // 수면 데이터 요청
       appleHealthKit.getSleepSamples(sleepOptions, (error, result) => {
         if (error) {
-          console.error('[Error] Failed to load Sleep Data');
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
           console.log('sleep data', result); // 수면 데이터 로깅
@@ -78,7 +76,6 @@ export const HealthKitService = {
       // 활동 요약 데이터 요청
       appleHealthKit.getActivitySummary(activityOptions, (error, result) => {
         if (error) {
-          console.error('[Error] Failed to load Activity Data');
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
           resolve(result); // 활동 데이터 반환
@@ -106,7 +103,6 @@ export const HealthKitService = {
         stepCountOptions,
         (error, result) => {
           if (error) {
-            console.error('[Error] Failed to load StepCount Data');
             reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
           } else {
             resolve(result); // 걸음 수 데이터 반환
@@ -125,7 +121,6 @@ export const HealthKitService = {
       // 생물학적 성별 데이터 요청
       appleHealthKit.getBiologicalSex(null, (error, result) => {
         if (error) {
-          console.error('[Error] Failed to load Biological Sex');
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
           console.log('biological sex', result); // 생물학적 성별 데이터 로깅
@@ -144,7 +139,6 @@ export const HealthKitService = {
       // 생년월일 데이터 요청
       appleHealthKit.getDateOfBirth(null, (error, result) => {
         if (error) {
-          console.error('[Error] Failed to load Date of Birth');
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
           console.log('date of birth', result); // 생년월일 데이터 로깅
@@ -168,7 +162,6 @@ export const HealthKitService = {
       // 최신 체중 데이터 요청
       appleHealthKit.getLatestWeight(weightOptions, (error, result) => {
         if (error) {
-          console.error('[Error] Failed to get weight data');
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
           console.log('latest weight', result); // 체중 데이터 로깅
@@ -199,9 +192,6 @@ export const HealthKitService = {
         distanceWalkingRunningOptions,
         (error, result) => {
           if (error) {
-            console.error(
-              '[Error] Failed to get daily distance walking and running data',
-            );
             reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
           } else {
             resolve(result); // 거리 데이터 반환

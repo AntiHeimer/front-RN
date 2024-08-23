@@ -8,7 +8,6 @@ import GetGeoLocationFunction from '../../../Utils/Function/GetGeolocationFuncti
 import PostActiveFunction from '../../../Utils/Function/Health/PostActiveFunction';
 import PostMoveFunction from '../../../Utils/Function/Health/PostMoveFunction';
 import PostWalkFunction from '../../../Utils/Function/Health/PostWalkFunction';
-import TestFunction from '../../Login/Function/TestFunction';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -21,7 +20,7 @@ function MainPage({navigation}) {
 
   useEffect(() => {
     GetGeoLocationFunction();
-    // TestFunction();
+
     // PostActiveFunction();
     // PostMoveFunction();
     // PostWalkFunction();
