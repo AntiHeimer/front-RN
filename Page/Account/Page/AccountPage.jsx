@@ -1,18 +1,31 @@
 import {StyleSheet, Text, View} from 'react-native';
+
 import Row from '../Component/Row';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 import {Storage} from '../../../Utils/Function/Storage';
+import {CancelAlert} from '../../../Utils/Component/CustomAlert';
+
+import LogoutFunction from '../../Login/Function/LogoutFunction';
 
 function AccountPage({navigation}) {
-  async function LogoutFunction() {
-    Storage.setItem('userState', {
-      jwtToken: null,
-      uuid: null,
-      isLoggedIn: false,
-    });
+  async function Logout() {
+    CancelAlert({
+      title: '로그아웃',
+      message: '정말 로그아웃 하시겠습니까?',
+      onPressConfirm: async () => {
+        LogoutFunction();
 
-    navigation.navigate('Login');
-    return;
+        Storage.setItem('userState', {
+          jwtToken: null,
+          uuid: null,
+          isLoggedIn: false,
+        });
+
+        navigation.navigate('Login');
+        return;
+      },
+      onPressCancel: () => {},
+    });
   }
 
   return (
@@ -28,7 +41,7 @@ function AccountPage({navigation}) {
       <Text style={styles.text}>나의 피보호자 정보</Text>
       <Row name="강민숙" id="minsook0627" />
       <View style={styles.hr} />
-      <MainButtonBlack text="로그아웃" onPress={() => LogoutFunction()} />
+      <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
     </View>
   );
 }
