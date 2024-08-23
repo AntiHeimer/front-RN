@@ -3,14 +3,20 @@ import HealthKitService from './HealthkitService';
 
 import DateFormattingFunction from './DateFormattingFunction';
 
-export default async function PostWalkFunction() {
-  const walkData = await HealthKitService.getStepCount(
-    '2024-08-21',
-    '2024-08-22',
-  );
+/**
+ * iOS HealthKit 걸음 수 데이터를 가져와 서버로 전송하는 함수
+ *
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {string} props.startDate - 건강 데이터 조회 시작 날짜
+ * @param {string} props.endDate - 건강 데이터 조회 끝 날짜
+ *
+ * @returns {Promise<void>} - 데이터 전송이 완료되면 완료되는 Promise
+ */
+export default async function PostWalkFunction({startDate, endDate}) {
+  const walkData = await HealthKitService.getStepCount(startDate, endDate);
 
   const formattedWalkData = DateFormattingFunction(walkData);
-  console.log(formattedWalkData);
+
   const userState = await Storage.getItem('userState');
 
   const uuid = userState.uuid;
@@ -24,7 +30,7 @@ export default async function PostWalkFunction() {
     },
     body: JSON.stringify({
       memberUuid: uuid,
-      date: '2024-08-21',
+      date: startDate,
       walkData: formattedWalkData,
     }),
   });
