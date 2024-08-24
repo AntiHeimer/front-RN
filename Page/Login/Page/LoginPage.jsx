@@ -71,7 +71,11 @@ function LoginPage({navigation}) {
         <View style={styles.buttondiv}>
           <MainButtonBlack text="로그인" onPress={() => Login()} />
         </View>
-        <SignUpButton navigation={navigation} />
+        <SignUpButton
+          navigation={navigation}
+          setUserId={setUserId}
+          setPassword={setPassword}
+        />
       </KeyboardAvoidingView>
     </View>
   );

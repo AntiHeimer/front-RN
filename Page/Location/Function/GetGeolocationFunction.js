@@ -23,12 +23,12 @@ export default async function GetGeoLocationFunction() {
 
           // 타임스탬프를 Date 객체로 변환
           const date = new Date(timestamp);
-          const formattedDate = moment(date).format('YYYY-MM-DD HH:mm:ss');
+          const formattedDate = moment(date).format('YYYY-MM-DDTHH:mm:ss');
 
           // 위치와 포맷된 날짜를 포함하는 객체를 생성
           const location = {latitude, longitude};
           const locationData = {location, formattedDate};
-
+          console.log(locationData);
           // Promise를 성공으로 처리
           res(locationData);
         },
