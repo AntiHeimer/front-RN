@@ -10,15 +10,18 @@ import DateFormattingFunction from './DateFormattingFunction';
  * @param {string} props.startDate - 건강 데이터 조회 시작 날짜
  * @param {string} props.endDate - 건강 데이터 조회 끝 날짜
  *
- * @returns {Promise<void>} - 전송 성공 여부를 포함하는 JSON 객체
+ * @returns {Promise<void>} - 데이터 전송이 완료되면 완료되는 Promise
  */
 export default async function PostMoveFunction({startDate, endDate}) {
-  const moveData = await HealthKitService.getDailyDistanceWalkingRunning(
+  const moveData = await HealthKitService.getDailyDistanceWalkingRunning({
     startDate,
-    endDate,
-  );
+    startDate,
+  });
 
   const formattedMoveData = DateFormattingFunction(moveData);
+  const filteredData = formattedMoveData.filter(item =>
+    item.startDateTime.startsWith(startDate),
+  );
 
   const userState = await Storage.getItem('userState');
 
@@ -34,10 +37,12 @@ export default async function PostMoveFunction({startDate, endDate}) {
     body: JSON.stringify({
       memberUuid: uuid,
       date: startDate,
-      moveData: formattedMoveData,
+      moveData: filteredData,
     }),
   });
 
   const res = await result.json();
   console.log(res);
+
+  return res;
 }

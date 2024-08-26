@@ -28,13 +28,12 @@ export default async function GetGeoLocationFunction() {
           // 위치와 포맷된 날짜를 포함하는 객체를 생성
           const location = {latitude, longitude};
           const locationData = {location, formattedDate};
-          console.log(locationData);
+
           // Promise를 성공으로 처리
           res(locationData);
         },
         error => {
           // 위치를 가져오는 중 오류가 발생한 경우
-          console.log(error);
           rej(error); // Promise를 실패로 처리
         },
         {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000}, // 위치 요청 옵션

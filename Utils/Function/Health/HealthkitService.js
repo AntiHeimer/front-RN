@@ -39,7 +39,7 @@ export const HealthKitService = {
    * @param {string} endDate - 데이터 검색 종료 날짜 (ISO 8601 형식)
    * @returns {Promise<object>} 수면 데이터 객체를 포함하는 Promise
    */
-  async getSleepData(startDate, endDate) {
+  async getSleepData({startDate, endDate}) {
     return new Promise((resolve, reject) => {
       // 수면 데이터 옵션 설정
       const sleepOptions = {
@@ -62,15 +62,15 @@ export const HealthKitService = {
   /**
    * 지정된 날짜 범위의 활동 요약 데이터를 가져옴
    * @param {string} startDate - 데이터 검색 시작 날짜 (ISO 8601 형식)
-   * @param {string} endDate - 데이터 검색 종료 날짜 (ISO 8601 형식)
    * @returns {Promise<object>} 활동 요약 데이터 객체를 포함하는 Promise
    */
-  async getActivitySummary(startDate, endDate) {
+  async getActivitySummary({startDate}) {
     return new Promise((resolve, reject) => {
       // 활동 요약 데이터 옵션 설정
       const activityOptions = {
         startDate: new Date(startDate).toISOString(),
-        endDate: new Date(endDate).toISOString(),
+        endDate: new Date(startDate).toISOString(),
+        ascending: true, // optional
       };
 
       // 활동 요약 데이터 요청
@@ -90,7 +90,7 @@ export const HealthKitService = {
    * @param {string} endDate - 데이터 검색 종료 날짜 (ISO 8601 형식)
    * @returns {Promise<object>} 일일 걸음 수 데이터 객체를 포함하는 Promise
    */
-  async getStepCount(startDate, endDate) {
+  async getStepCount({startDate, endDate}) {
     return new Promise((resolve, reject) => {
       // 걸음 수 데이터 옵션 설정
       const stepCountOptions = {
@@ -106,6 +106,36 @@ export const HealthKitService = {
             reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
           } else {
             resolve(result); // 걸음 수 데이터 반환
+          }
+        },
+      );
+    });
+  },
+
+  /**
+   * 지정된 날짜 범위의 일일 걷기 및 달리기 거리 데이터를 가져옴
+   * @param {string} startDate - 데이터 검색 시작 날짜 (ISO 8601 형식)
+   * @param {string} endDate - 데이터 검색 종료 날짜 (ISO 8601 형식)
+   * @returns {Promise<object>} 일일 걷기 및 달리기 거리 데이터 객체를 포함하는 Promise
+   */
+  async getDailyDistanceWalkingRunning({startDate, endDate}) {
+    return new Promise((resolve, reject) => {
+      // 걷기 및 달리기 거리 데이터 옵션 설정
+      const distanceWalkingRunningOptions = {
+        startDate: new Date(startDate).toISOString(),
+        endDate: new Date(endDate).toISOString(),
+        ascending: false, // 내림차순 정렬
+        unit: 'meter', // 거리 단위 설정 (미터)
+      };
+
+      // 일일 걷기 및 달리기 거리 데이터 요청
+      appleHealthKit.getDailyDistanceWalkingRunningSamples(
+        distanceWalkingRunningOptions,
+        (error, result) => {
+          if (error) {
+            reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
+          } else {
+            resolve(result); // 거리 데이터 반환
           }
         },
       );
@@ -168,36 +198,6 @@ export const HealthKitService = {
           resolve(result); // 체중 데이터 반환
         }
       });
-    });
-  },
-
-  /**
-   * 지정된 날짜 범위의 일일 걷기 및 달리기 거리 데이터를 가져옴
-   * @param {string} startDate - 데이터 검색 시작 날짜 (ISO 8601 형식)
-   * @param {string} endDate - 데이터 검색 종료 날짜 (ISO 8601 형식)
-   * @returns {Promise<object>} 일일 걷기 및 달리기 거리 데이터 객체를 포함하는 Promise
-   */
-  async getDailyDistanceWalkingRunning(startDate, endDate) {
-    return new Promise((resolve, reject) => {
-      // 걷기 및 달리기 거리 데이터 옵션 설정
-      const distanceWalkingRunningOptions = {
-        startDate: new Date(startDate).toISOString(),
-        endDate: new Date(endDate).toISOString(),
-        ascending: false, // 내림차순 정렬
-        unit: 'meter', // 거리 단위 설정 (미터)
-      };
-
-      // 일일 걷기 및 달리기 거리 데이터 요청
-      appleHealthKit.getDailyDistanceWalkingRunningSamples(
-        distanceWalkingRunningOptions,
-        (error, result) => {
-          if (error) {
-            reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
-          } else {
-            resolve(result); // 거리 데이터 반환
-          }
-        },
-      );
     });
   },
 };
