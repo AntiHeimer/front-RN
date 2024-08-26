@@ -16,7 +16,7 @@ async function PostSleepDataFunction() {
       await sendCumulativeSleepData({latestData: latestSleepeData.date});
     }
   } catch (error) {
-    console.error('Error in PostActiveDataFunction:', error);
+    console.error('Error in PostSleepDataFunction:', error);
   }
 }
 

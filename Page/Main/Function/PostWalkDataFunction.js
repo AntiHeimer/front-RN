@@ -14,7 +14,7 @@ async function PostWalkDataFunction() {
       await sendCumulativeWalkData({latestDate: latestWalkData.date});
     }
   } catch (error) {
-    console.error('Error in PostMoveDataFunction:', error);
+    console.error('Error in PostWalkDataFunction:', error);
   }
 
   await Promise.all(requests);

@@ -24,15 +24,13 @@ export default async function PostMoveFunction({startDate, endDate}) {
   );
 
   const userState = await Storage.getItem('userState');
-
   const uuid = userState.uuid;
-  const token = userState.jwtToken;
 
   const result = await fetch(`${process.env.API}/save/move`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      auth: process.env.AUTH_KEY,
     },
     body: JSON.stringify({
       memberUuid: uuid,
