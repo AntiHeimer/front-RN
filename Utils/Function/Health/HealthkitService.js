@@ -13,7 +13,6 @@ export const HealthKitService = {
           read: [
             appleHealthKit.Constants.Permissions.SleepAnalysis,
             appleHealthKit.Constants.Permissions.ActivitySummary,
-            appleHealthKit.Constants.Permissions.EnergyConsumed,
             appleHealthKit.Constants.Permissions.StepCount,
             appleHealthKit.Constants.Permissions.DistanceWalkingRunning,
             appleHealthKit.Constants.Permissions.BiologicalSex,
@@ -63,25 +62,22 @@ export const HealthKitService = {
   /**
    * 지정된 날짜 범위의 활동 요약 데이터를 가져옴
    * @param {string} startDate - 데이터 검색 시작 날짜 (ISO 8601 형식)
-   * @param {string} endDate - 데이터 검색 종료 날짜 (ISO 8601 형식)
    * @returns {Promise<object>} 활동 요약 데이터 객체를 포함하는 Promise
    */
-  async getActivitySummary({startDate, endDate}) {
+  async getActivitySummary({startDate}) {
     return new Promise((resolve, reject) => {
       // 활동 요약 데이터 옵션 설정
       const activityOptions = {
         startDate: new Date(startDate).toISOString(),
-        endDate: new Date(endDate).toISOString(),
+        endDate: new Date(startDate).toISOString(),
         ascending: true, // optional
-        includeManuallyAdded: true,
       };
 
       // 활동 요약 데이터 요청
-      appleHealthKit.getActiveEnergyBurned(activityOptions, (error, result) => {
+      appleHealthKit.getActivitySummary(activityOptions, (error, result) => {
         if (error) {
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
-          console.log(result);
           resolve(result); // 활동 데이터 반환
         }
       });

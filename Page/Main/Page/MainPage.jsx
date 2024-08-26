@@ -1,14 +1,12 @@
 import {useEffect, useState} from 'react';
 import {StyleSheet, View, RefreshControl, ScrollView} from 'react-native';
-import moment from 'moment';
 
 import Graph from '../Component/Graph';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import GetGeoLocationFunction from '../../Location/Function/GetGeolocationFunction';
-import GetLatestHealthDateFunction from '../Function/GetLatestHealthDateFunction';
-import PostActiveFunction from '../../../Utils/Function/Health/PostActiveFunction';
-import PostMoveFunction from '../../../Utils/Function/Health/PostMoveFunction';
+import PostMoveDataFunction from '../Function/PostMoveDataFunction';
+import PostActiveDataFunction from '../Function/\bPostActiveDataFunction';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -16,6 +14,7 @@ function MainPage({navigation}) {
   async function handleRefresh() {
     setIsRefreshing(true);
     // GetGeoLocationFunction();
+
     setIsRefreshing(false);
   }
 

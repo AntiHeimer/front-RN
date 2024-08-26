@@ -6,15 +6,15 @@ import {Storage} from '../Storage';
  *
  * @param {Object} props - 컴포넌트에 전달되는 props
  * @param {string} props.startDate - 건강 데이터 조회 시작 날짜
- * @param {string} props.endDate - 건강 데이터 조회 끝 날짜
  *
  * @returns {Promise<void>} - 전송 성공 여부를 포함하는 JSON 객체
  */
-export default async function PostActiveFunction({startDate, endDate}) {
-  const activeData = await HealthKitService.getActivitySummary(
+export default async function PostActiveFunction({startDate}) {
+  const activeData = await HealthKitService.getActivitySummary({
     startDate,
-    endDate,
-  );
+  });
+
+  if (activeData.length == 0) return;
 
   const userState = await Storage.getItem('userState');
 
@@ -30,7 +30,7 @@ export default async function PostActiveFunction({startDate, endDate}) {
     body: JSON.stringify({
       memberUuid: uuid,
       date: startDate,
-      activeData: activeData,
+      activeData: activeData[0].activeEnergyBurned,
     }),
   });
 

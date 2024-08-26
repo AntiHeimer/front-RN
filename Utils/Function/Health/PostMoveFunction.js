@@ -15,7 +15,7 @@ import DateFormattingFunction from './DateFormattingFunction';
 export default async function PostMoveFunction({startDate, endDate}) {
   const moveData = await HealthKitService.getDailyDistanceWalkingRunning({
     startDate,
-    endDate,
+    startDate,
   });
 
   const formattedMoveData = DateFormattingFunction(moveData);
