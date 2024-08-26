@@ -11,7 +11,7 @@ import EncryptFunction from '../../../Utils/Function/EncryptFunction';
  * @param {string} params.id - 사용자의 ID
  * @param {string} params.password - 사용자의 비밀번호
  *
- * @returns {Promise<Object>} - 서버의 응답을 포함하는 JSON 객체
+ * @returns {Promise<Object>} - 로그인 성공 여부를 포함하는 JSON 객체
  */
 
 export default async function LoginFunction({id, password}) {
