@@ -10,7 +10,7 @@ import DateFormattingFunction from './DateFormattingFunction';
  * @param {string} props.startDate - 건강 데이터 조회 시작 날짜
  * @param {string} props.endDate - 건강 데이터 조회 끝 날짜
  *
- * @returns {Promise<void>} - 데이터 전송이 완료되면 완료되는 Promise
+ * @returns {Promise<void>} - 전송 성공 여부를 포함하는 JSON 객체
  */
 export default async function PostWalkFunction({startDate, endDate}) {
   const walkData = await HealthKitService.getStepCount(startDate, endDate);

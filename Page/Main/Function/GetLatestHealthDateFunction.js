@@ -11,7 +11,7 @@ import {Storage} from '../../../Utils/Function/Storage';
  * @returns {Promise<Object>} - DB에 저장된 데이터의 가장 마지막 날짜를 포함하는 JSON 객체
  */
 
-export default async function GetLatestHealthDate({data}) {
+export default async function GetLatestHealthDateFunction({data}) {
   const userState = await Storage.getItem('userState');
   const uuid = userState.uuid;
 
@@ -28,7 +28,7 @@ export default async function GetLatestHealthDate({data}) {
   );
 
   const res = result.json();
-  console.log('%o latest date: %o', data, res);
+  console.log('latest %o date: %o', data, res);
 
   return res;
 }
