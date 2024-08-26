@@ -13,7 +13,7 @@ async function PostActiveDataFunction() {
       await sendRecentActiveData();
     } else {
       // 누적된 날짜부터 현재까지의 active 데이터를 전송하는 함수
-      await sendCumulativeActiveData({latestActiveData: latestActiveData.date});
+      await sendCumulativeActiveData({latestDate: latestActiveData.date});
     }
   } catch (error) {
     console.error('Error in PostActiveDataFunction:', error);

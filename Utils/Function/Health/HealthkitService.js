@@ -52,7 +52,6 @@ export const HealthKitService = {
         if (error) {
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
-          console.log('sleep data', result); // 수면 데이터 로깅
           resolve(result); // 수면 데이터 반환
         }
       });

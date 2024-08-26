@@ -8,6 +8,7 @@ import GetGeoLocationFunction from '../../Location/Function/GetGeolocationFuncti
 import PostMoveDataFunction from '../Function/PostMoveDataFunction';
 import PostActiveDataFunction from '../Function/PostActiveDataFunction';
 import PostWalkDataFunction from '../Function/PostWalkDataFunction';
+import PostSleepDataFunction from '../Function/PostSleepDataFunction';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
