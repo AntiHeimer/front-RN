@@ -109,7 +109,6 @@ export const HealthKitService = {
           if (error) {
             reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
           } else {
-            console.log(result);
             resolve(result); // 걸음 수 데이터 반환
           }
         },
@@ -129,7 +128,6 @@ export const HealthKitService = {
       const distanceWalkingRunningOptions = {
         startDate: new Date(startDate).toISOString(),
         endDate: new Date(endDate).toISOString(),
-
         ascending: false, // 내림차순 정렬
         unit: 'meter', // 거리 단위 설정 (미터)
       };
@@ -141,7 +139,6 @@ export const HealthKitService = {
           if (error) {
             reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
           } else {
-            console.log(result);
             resolve(result); // 거리 데이터 반환
           }
         },

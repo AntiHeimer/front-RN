@@ -13,12 +13,15 @@ import DateFormattingFunction from './DateFormattingFunction';
  * @returns {Promise<void>} - 데이터 전송이 완료되면 완료되는 Promise
  */
 export default async function PostMoveFunction({startDate, endDate}) {
-  const moveData = await HealthKitService.getDailyDistanceWalkingRunning(
+  const moveData = await HealthKitService.getDailyDistanceWalkingRunning({
     startDate,
     endDate,
-  );
+  });
 
   const formattedMoveData = DateFormattingFunction(moveData);
+  const filteredData = formattedMoveData.filter(item =>
+    item.startDateTime.startsWith(startDate),
+  );
 
   const userState = await Storage.getItem('userState');
 
@@ -34,10 +37,12 @@ export default async function PostMoveFunction({startDate, endDate}) {
     body: JSON.stringify({
       memberUuid: uuid,
       date: startDate,
-      moveData: formattedMoveData,
+      moveData: filteredData,
     }),
   });
 
   const res = await result.json();
   console.log(res);
+
+  return res;
 }
