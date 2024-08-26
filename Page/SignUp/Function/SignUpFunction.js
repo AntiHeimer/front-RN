@@ -32,7 +32,7 @@ export default async function SignUpFunction({name, id, password}) {
 
   // 데이터 암호화
   const encryptedData = EncryptFunction({data: data});
-
+  console.log(encryptedData);
   const result = await fetch(`${process.env.API}/signup`, {
     method: 'POST',
     headers: {

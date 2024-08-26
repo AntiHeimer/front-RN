@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import Input from '../../../Utils/Component/Input';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
+import RegisterWardFunction from '../Function/RegisterWardFunction';
 
 /**
  * 피보호자 등록 화면 컴포넌트
@@ -18,17 +19,28 @@ import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
  */
 
 function RegisterWard({navigation, value, onChange}) {
-  /**
-   * 요청 전송 완료 후 알림을 표시하고, 'Location' 화면으로 네비게이션합니다.
-   */
-  function AlertFunction() {
+  async function RegisterFunction() {
+    const result = await RegisterWardFunction({userId: value});
+    if (result.statusCode == '200') {
+      ConfirmAlert({
+        title: '요청 전송 완료',
+        message: '피보호자 요청이\n성공적으로 전송되었습니다.',
+        onPress: () => {
+          navigation.navigate('Location Tab');
+        },
+      });
+
+      onChange(null);
+      return;
+    }
+
     ConfirmAlert({
-      title: '요청 전송 완료',
-      message: '보호자 요청이\n성공적으로 전송되었습니다.',
-      onPress: () => {
-        navigation.navigate('Location Tab');
-      },
+      title: '요청 전송 실패',
+      message: '피보호자 요청 전송을\n실패하였습니다.',
+      onPress: () => {},
     });
+
+    return;
   }
 
   return (
@@ -42,7 +54,7 @@ function RegisterWard({navigation, value, onChange}) {
           security={false}
         />
       </View>
-      <MainButtonBlack text="피보호자 등록" onPress={AlertFunction} />
+      <MainButtonBlack text="피보호자 등록" onPress={RegisterFunction} />
     </View>
   );
 }

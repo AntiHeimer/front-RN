@@ -5,9 +5,7 @@ import Graph from '../Component/Graph';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import GetGeoLocationFunction from '../../Location/Function/GetGeolocationFunction';
-import PostActiveFunction from '../../../Utils/Function/Health/PostActiveFunction';
-import PostMoveFunction from '../../../Utils/Function/Health/PostMoveFunction';
-import PostWalkFunction from '../../../Utils/Function/Health/PostWalkFunction';
+import GetLatestHealthDateFunction from '../Function/GetLatestHealthDateFunction';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -18,12 +16,15 @@ function MainPage({navigation}) {
     setIsRefreshing(false);
   }
 
+  async function GetLatestHealthDate() {
+    const latestActiveDate = GetLatestHealthDateFunction({data: 'active'});
+    const latestMoveDate = GetLatestHealthDateFunction({data: 'move'});
+    const latestSleepDate = GetLatestHealthDateFunction({data: 'sleep'});
+  }
+
   useEffect(() => {
     GetGeoLocationFunction();
-
-    // PostActiveFunction();
-    // PostMoveFunction();
-    // PostWalkFunction();
+    GetLatestHealthDate();
   }, []);
 
   return (

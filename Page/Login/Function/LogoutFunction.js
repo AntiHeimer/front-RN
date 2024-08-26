@@ -9,7 +9,7 @@ import {Storage} from '../../../Utils/Function/Storage';
  *
  * 서버의 응답을 JSON 형식으로 반환
  *
- * @returns {Promise<Object>} - 서버의 응답을 포함하는 JSON 객체
+ * @returns {Promise<Object>} - 로그아웃 성공 여부를 포함하는 JSON 객체
  */
 
 export default async function LogoutFunction() {
