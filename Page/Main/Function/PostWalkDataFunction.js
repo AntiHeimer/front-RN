@@ -1,24 +1,26 @@
 import moment from 'moment';
 import GetLatestHealthDateFunction from './GetLatestHealthDateFunction';
-import PostMoveFunction from '../../../Utils/Function/Health/PostMoveFunction';
+import PostWalkFunction from '../../../Utils/Function/Health/PostWalkFunction';
 
-async function PostMoveDataFunction() {
+async function PostWalkDataFunction() {
   try {
-    const latestMoveDate = await GetLatestHealthDateFunction({data: 'move'});
+    const latestWalkData = await GetLatestHealthDateFunction({data: 'walk'});
 
-    if (latestMoveDate.date === null || latestMoveDate.date === 'null') {
-      // 최신 10일치의 move 데이터를 전송하는 함수
-      await sendRecentMoveData();
+    if (latestWalkData.date === null || latestWalkData.date === 'null') {
+      // 최신 10일치의 walk 데이터를 전송하는 함수
+      await sendRecentWalkData();
     } else {
-      // 누적된 날짜부터 현재까지의 move 데이터를 전송하는 함수
-      await sendCumulativeMoveData({latestMoveDate: latestMoveDate.date});
+      // 누적된 날짜부터 현재까지의 walk 데이터를 전송하는 함수
+      await sendCumulativeWalkData({latestDate: latestWalkData.date});
     }
   } catch (error) {
     console.error('Error in PostMoveDataFunction:', error);
   }
+
+  await Promise.all(requests);
 }
 
-async function sendRecentMoveData() {
+async function sendRecentWalkData() {
   const today = moment();
   const requests = [];
 
@@ -31,7 +33,7 @@ async function sendRecentMoveData() {
 
     // 비동기 요청을 배열에 저장
     requests.push(
-      PostMoveFunction({startDate, endDate}).catch(error =>
+      PostWalkFunction({startDate, endDate}).catch(error =>
         console.error(
           `Error fetching data for ${startDate} to ${endDate}:`,
           error,
@@ -44,7 +46,7 @@ async function sendRecentMoveData() {
   await Promise.all(requests);
 }
 
-async function sendCumulativeMoveData({latestDate}) {
+async function sendCumulativeWalkData({latestDate}) {
   const startDate = moment(latestDate).add(1, 'days'); // 시작 날짜
   const endDate = moment().subtract(1, 'days'); // 오늘 날짜에서 하루를 뺀 날짜
   const totalDaysDifference = endDate.diff(startDate, 'days'); // 날짜 차이 계산
@@ -61,7 +63,7 @@ async function sendCumulativeMoveData({latestDate}) {
 
     // 비동기 요청을 배열에 저장
     requests.push(
-      PostMoveFunction({
+      PostWalkFunction({
         startDate: formattedStartDate,
         endDate: formattedEndDate,
       }).catch(error =>
@@ -77,4 +79,4 @@ async function sendCumulativeMoveData({latestDate}) {
   await Promise.all(requests);
 }
 
-export default PostMoveDataFunction;
+export default PostWalkDataFunction;

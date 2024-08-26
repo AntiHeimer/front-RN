@@ -6,7 +6,8 @@ import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import GetGeoLocationFunction from '../../Location/Function/GetGeolocationFunction';
 import PostMoveDataFunction from '../Function/PostMoveDataFunction';
-import PostActiveDataFunction from '../Function/\bPostActiveDataFunction';
+import PostActiveDataFunction from '../Function/PostActiveDataFunction';
+import PostWalkDataFunction from '../Function/PostWalkDataFunction';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -14,7 +15,6 @@ function MainPage({navigation}) {
   async function handleRefresh() {
     setIsRefreshing(true);
     // GetGeoLocationFunction();
-
     setIsRefreshing(false);
   }
 

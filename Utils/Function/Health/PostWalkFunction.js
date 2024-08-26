@@ -13,7 +13,7 @@ import DateFormattingFunction from './DateFormattingFunction';
  * @returns {Promise<void>} - 전송 성공 여부를 포함하는 JSON 객체
  */
 export default async function PostWalkFunction({startDate, endDate}) {
-  const walkData = await HealthKitService.getStepCount(startDate, endDate);
+  const walkData = await HealthKitService.getStepCount({startDate, endDate});
 
   const formattedWalkData = DateFormattingFunction(walkData);
 

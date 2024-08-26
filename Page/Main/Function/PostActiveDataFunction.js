@@ -13,7 +13,7 @@ async function PostActiveDataFunction() {
       await sendRecentActiveData();
     } else {
       // 누적된 날짜부터 현재까지의 active 데이터를 전송하는 함수
-      await sendCumulativeActiveData(latestActiveData.date);
+      await sendCumulativeActiveData({latestActiveData: latestActiveData.date});
     }
   } catch (error) {
     console.error('Error in PostActiveDataFunction:', error);
@@ -40,7 +40,7 @@ async function sendRecentActiveData() {
   await Promise.all(requests);
 }
 
-async function sendCumulativeActiveData(latestDate) {
+async function sendCumulativeActiveData({latestDate}) {
   const startDate = moment(latestDate).add(1, 'days');
   const endDate = moment().subtract(1, 'days');
   const totalDaysDifference = endDate.diff(startDate, 'days');
