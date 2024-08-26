@@ -1,5 +1,6 @@
 import EncryptFunction from '../../../Utils/Function/EncryptFunction';
 import {Storage} from '../../../Utils/Function/Storage';
+
 /**
  * 저장된 헬스 데이터의 마지막 날짜를 리턴하는 함수
  *
@@ -14,21 +15,23 @@ import {Storage} from '../../../Utils/Function/Storage';
 export default async function GetLatestHealthDateFunction({data}) {
   const userState = await Storage.getItem('userState');
   const uuid = userState.uuid;
+  const token = userState.jwtToken;
 
   const encryptedUuid = EncryptFunction({data: uuid});
+  const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/recent/${data}?uuid=${encryptedUuid}`,
+    `${process.env.API}/recent?data=${data}&uuid=${encodedUuid}`,
     {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     },
   );
 
-  const res = result.json();
-  console.log('latest %o date: %o', data, res);
+  const res = await result.json();
+  console.log('latest %o date: %o', data, res.date);
 
   return res;
 }

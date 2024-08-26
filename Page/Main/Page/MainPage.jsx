@@ -1,29 +1,64 @@
 import {useEffect, useState} from 'react';
 import {StyleSheet, View, RefreshControl, ScrollView} from 'react-native';
+import moment from 'moment';
 
 import Graph from '../Component/Graph';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import GetGeoLocationFunction from '../../Location/Function/GetGeolocationFunction';
 import GetLatestHealthDateFunction from '../Function/GetLatestHealthDateFunction';
+import HealthKitService from '../../../Utils/Function/Health/HealthkitService';
+import PostActiveFunction from '../../../Utils/Function/Health/PostActiveFunction';
+import PostMoveFunction from '../../../Utils/Function/Health/PostMoveFunction';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   async function handleRefresh() {
     setIsRefreshing(true);
-    GetGeoLocationFunction();
+    // GetGeoLocationFunction();
+    // GetLatestHealthDate();
+    GetLatestHealthDate();
     setIsRefreshing(false);
   }
 
   async function GetLatestHealthDate() {
-    const latestActiveDate = GetLatestHealthDateFunction({data: 'active'});
-    const latestMoveDate = GetLatestHealthDateFunction({data: 'move'});
-    const latestSleepDate = GetLatestHealthDateFunction({data: 'sleep'});
+    const yesterday = moment().subtract(1, 'days');
+    const formattedDate = yesterday.format('YYYY-MM-DD');
+
+    const latestActiveDate = await GetLatestHealthDateFunction({
+      data: 'active',
+    });
+    // if (latestActiveDate.statusCode == '200') {
+    //   if (latestActiveDate.date != formattedDate) {
+    //     const result = await PostActiveFunction({
+    //       startDate: latestActiveDate.date,
+    //       endDate: formattedDate,
+    //     });
+    //   }
+    // }
+
+    const latestMoveDate = await GetLatestHealthDateFunction({data: 'move'});
+    // if (latestMoveDate.statusCode == '200') {
+    //   if (latestMoveDate.date != formattedDate) {
+    //     const result = await PostMoveFunction({
+    //       startDate: latestActiveDate.date,
+    //       endDate: formattedDate,
+    //     });
+    //   }
+    // }
+
+    const latestSleepDate = await GetLatestHealthDateFunction({data: 'sleep'});
+    // if (latestSleepDate.statusCode == '200') {
+    //   if (latestSleepDate.date != formattedDate) {
+    //     // postsleepfunction
+    //   }
+    // }
   }
 
   useEffect(() => {
-    GetGeoLocationFunction();
+    // GetGeoLocationFunction();
+    // GetLatestHealthDate();
     GetLatestHealthDate();
   }, []);
 
