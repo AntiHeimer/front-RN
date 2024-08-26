@@ -19,9 +19,6 @@ import RegisterProtectorFunction from '../Function/RegisterProtectorFunction';
  */
 
 function RegisterProtector({navigation, value, onChange}) {
-  /**
-   * 요청 전송 완료 후 알림을 표시하고, 'Location' 화면으로 네비게이션합니다.
-   */
   async function RegisterFunction() {
     const result = await RegisterProtectorFunction({userId: value});
 
