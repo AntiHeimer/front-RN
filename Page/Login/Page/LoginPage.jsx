@@ -41,6 +41,7 @@ function LoginPage({navigation}) {
 
   async function LoadLoginState() {
     const userState = await Storage.getItem('userState');
+    if (userState == null) return;
 
     if (userState.isLoggedIn) navigation.navigate('Main');
 
