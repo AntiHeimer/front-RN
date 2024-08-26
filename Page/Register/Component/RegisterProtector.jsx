@@ -40,7 +40,7 @@ function RegisterProtector({navigation, value, onChange}) {
 
     ConfirmAlert({
       title: '요청 전송 실패',
-      message: '보호자 요청 전송이\n실패되었습니다.',
+      message: '보호자 요청 전송을\n실패하였습니다..',
       onPress: () => {},
     });
 
