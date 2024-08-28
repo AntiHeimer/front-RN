@@ -32,6 +32,7 @@ export default async function LogoutFunction() {
 
   // 서버 응답을 JSON 형식으로 파싱
   const res = await result.json();
+  console.log('Logout Function: %o', res);
 
   return res;
 }
