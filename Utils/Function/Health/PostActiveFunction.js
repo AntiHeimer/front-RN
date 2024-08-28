@@ -17,13 +17,21 @@ export default async function PostActiveFunction({startDate}) {
   if (activeData.length == 0) return;
 
   const userState = await Storage.getItem('userState');
+  const token = userState.jwtToken;
   const uuid = userState.uuid;
 
+  console.log(
+    JSON.stringify({
+      memberUuid: uuid,
+      date: startDate,
+      activeData: activeData[0].activeEnergyBurned,
+    }),
+  );
   const result = await fetch(`${process.env.API}/save/active`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      auth: process.env.AUTH_KEY,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       memberUuid: uuid,

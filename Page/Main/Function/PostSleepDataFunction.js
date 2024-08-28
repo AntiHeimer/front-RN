@@ -7,11 +7,12 @@ async function PostSleepDataFunction() {
     const latestSleepeData = await GetLatestHealthDateFunction({
       data: 'sleep',
     });
+    const yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD');
 
     if (latestSleepeData.date === null || latestSleepeData.date === 'null') {
       // 최신 10일치의 sleep 데이터를 전송하는 함수
       await sendRecentSleepData();
-    } else {
+    } else if (latestSleepeData.date !== yesterday) {
       // 누적된 날짜부터 현재까지의 sleep 데이터를 전송하는 함수
       await sendCumulativeSleepData({latestData: latestSleepeData.date});
     }

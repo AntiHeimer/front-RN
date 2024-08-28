@@ -134,6 +134,7 @@ export const HealthKitService = {
           if (error) {
             reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
           } else {
+            console.log(result);
             resolve(result); // 거리 데이터 반환
           }
         },

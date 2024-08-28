@@ -18,13 +18,14 @@ export default async function PostWalkFunction({startDate, endDate}) {
   const formattedWalkData = DateFormattingFunction(walkData);
 
   const userState = await Storage.getItem('userState');
+  const token = userState.jwtToken;
   const uuid = userState.uuid;
 
   const result = await fetch(`${process.env.API}/save/walk`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      auth: process.env.AUTH_KEY,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       memberUuid: uuid,

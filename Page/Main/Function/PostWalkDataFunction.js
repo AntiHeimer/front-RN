@@ -5,11 +5,12 @@ import PostWalkFunction from '../../../Utils/Function/Health/PostWalkFunction';
 async function PostWalkDataFunction() {
   try {
     const latestWalkData = await GetLatestHealthDateFunction({data: 'walk'});
+    const yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD');
 
     if (latestWalkData.date === null || latestWalkData.date === 'null') {
       // 최신 10일치의 walk 데이터를 전송하는 함수
       await sendRecentWalkData();
-    } else {
+    } else if (latestWalkData.date !== yesterday) {
       // 누적된 날짜부터 현재까지의 walk 데이터를 전송하는 함수
       await sendCumulativeWalkData({latestDate: latestWalkData.date});
     }

@@ -10,13 +10,14 @@ export default async function PostSleepFunction({startDate, endDate}) {
   const formattedSleepData = DateFormattingFunction2(sleepData);
 
   const userState = await Storage.getItem('userState');
+  const token = userState.jwtToken;
   const uuid = userState.uuid;
 
   const result = await fetch(`${process.env.API}/save/sleep`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      auth: process.env.AUTH_KEY,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       memberUuid: uuid,
@@ -26,4 +27,5 @@ export default async function PostSleepFunction({startDate, endDate}) {
   });
 
   const res = await result.json();
+  console.log(res);
 }
