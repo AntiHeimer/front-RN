@@ -1,5 +1,5 @@
-import HealthKitService from './HealthkitService';
-import {Storage} from '../Storage';
+import {Storage} from '../../../../Utils/Function/Storage';
+import HealthKitService from '../../../../Utils/Function/HealthkitService';
 
 /**
  * iOS HealthKit 활동 데이터를 가져와 서버로 전송하는 함수
@@ -20,13 +20,6 @@ export default async function PostActiveFunction({startDate}) {
   const token = userState.jwtToken;
   const uuid = userState.uuid;
 
-  console.log(
-    JSON.stringify({
-      memberUuid: uuid,
-      date: startDate,
-      activeData: activeData[0].activeEnergyBurned,
-    }),
-  );
   const result = await fetch(`${process.env.API}/save/active`, {
     method: 'POST',
     headers: {
@@ -42,4 +35,6 @@ export default async function PostActiveFunction({startDate}) {
 
   const res = await result.json();
   console.log(res);
+
+  return res;
 }

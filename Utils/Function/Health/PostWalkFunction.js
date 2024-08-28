@@ -1,7 +1,7 @@
-import {Storage} from '../Storage';
-import HealthKitService from './HealthkitService';
+import {Storage} from '../../../../Utils/Function/Storage';
+import HealthKitService from '../../../../Utils/Function/HealthkitService';
 
-import DateFormattingFunction from '../DateFormattingFunction';
+import DateFormattingFunction from '../../../../Utils/Function/DateFormattingFunction';
 
 /**
  * iOS HealthKit 걸음 수 데이터를 가져와 서버로 전송하는 함수
@@ -36,4 +36,6 @@ export default async function PostWalkFunction({startDate, endDate}) {
 
   const res = await result.json();
   console.log(res);
+
+  return res;
 }

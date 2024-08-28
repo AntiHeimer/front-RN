@@ -1,8 +1,17 @@
-import {Storage} from '../Storage';
-import {DateFormattingFunction2} from '../DateFormattingFunction';
+import {Storage} from '../../../../Utils/Function/Storage';
+import HealthKitService from '../../../../Utils/Function/HealthkitService';
 
-import HealthKitService from './HealthkitService';
+import {DateFormattingFunction2} from '../../../../Utils/Function/DateFormattingFunction';
 
+/**
+ * iOS HealthKit 수면 데이터를 가져와 서버로 전송하는 함수
+ *
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {string} props.startDate - 건강 데이터 조회 시작 날짜
+ * @param {string} props.endDate - 건강 데이터 조회 끝 날짜
+ *
+ * @returns {Promise<void>} - 전송 성공 여부를 포함하는 JSON 객체
+ */
 export default async function PostSleepFunction({startDate, endDate}) {
   const sleepData = await HealthKitService.getSleepData({startDate, endDate});
 
@@ -29,4 +38,6 @@ export default async function PostSleepFunction({startDate, endDate}) {
 
   const res = await result.json();
   console.log(res);
+
+  return res;
 }

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import HealthKitService from '../../../Utils/Function/Health/HealthkitService';
+import HealthKitService from '../../../Utils/Function/HealthkitService';
 
 export default async function GetBirthFunction() {
   const dateOfBirth = await HealthKitService.getDateOfBirth(); // healthkit에서 생년월일 불러옴

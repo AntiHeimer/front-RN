@@ -22,10 +22,10 @@ function MainPage({navigation}) {
 
   useEffect(() => {
     GetGeoLocationFunction();
-    // PostSleepDataFunction();
-    // PostActiveDataFunction();
-    // PostMoveDataFunction();
-    // PostWalkDataFunction();
+    PostSleepDataFunction();
+    PostActiveDataFunction();
+    PostMoveDataFunction();
+    PostWalkDataFunction();
   }, []);
 
   return (
