@@ -1,5 +1,5 @@
-import {Storage} from '../../../../Utils/Function/Storage';
-import HealthKitService from '../../../../Utils/Function/HealthkitService';
+import {Storage} from '../Storage';
+import HealthKitService from '../HealthkitService';
 
 /**
  * iOS HealthKit 활동 데이터를 가져와 서버로 전송하는 함수

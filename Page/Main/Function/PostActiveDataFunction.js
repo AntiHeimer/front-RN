@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import GetLatestHealthDateFunction from './GetLatestHealthDateFunction';
+import GetLatestHealthDateFunction from '../../../Utils/Function/Health/GetLatestHealthDateFunction';
 import PostActiveFunction from '../../../Utils/Function/Health/PostActiveFunction';
 
 async function PostActiveDataFunction() {
@@ -22,6 +22,7 @@ async function PostActiveDataFunction() {
   }
 }
 
+// 최신 10일치의 active 데이터를 전송하는 함수
 async function sendRecentActiveData() {
   const today = moment();
   const requests = [];
@@ -42,6 +43,7 @@ async function sendRecentActiveData() {
   await Promise.all(requests);
 }
 
+// 누적된 날짜부터 현재까지의 active 데이터를 전송하는 함수
 async function sendCumulativeActiveData({latestDate}) {
   const startDate = moment(latestDate).add(1, 'days');
   const endDate = moment().subtract(1, 'days');

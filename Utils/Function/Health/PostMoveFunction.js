@@ -1,7 +1,7 @@
-import {Storage} from '../../../../Utils/Function/Storage';
-import HealthKitService from '../../../../Utils/Function/HealthkitService';
+import {Storage} from '../Storage';
+import HealthKitService from '../HealthkitService';
 
-import DateFormattingFunction from '../../../../Utils/Function/DateFormattingFunction';
+import {DateFormattingFunction1} from '../DateFormattingFunction';
 
 /**
  * iOS HealthKit 거리 데이터를 가져와 서버로 전송하는 함수
@@ -18,7 +18,7 @@ export default async function PostMoveFunction({startDate, endDate}) {
     endDate,
   });
 
-  const formattedMoveData = DateFormattingFunction(moveData);
+  const formattedMoveData = DateFormattingFunction1(moveData);
   const filteredData = formattedMoveData.filter(item =>
     item.startDateTime.startsWith(startDate),
   );

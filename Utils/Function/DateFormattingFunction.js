@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-function DateFormattingFunction(data) {
+function DateFormattingFunction1(data) {
   function convertToLocalDateTime(dateString) {
     return moment(dateString).format('YYYY-MM-DDTHH:mm:ss');
   }
@@ -24,4 +24,4 @@ function DateFormattingFunction2(data) {
   }));
 }
 
-export {DateFormattingFunction, DateFormattingFunction2};
+export {DateFormattingFunction1, DateFormattingFunction2};

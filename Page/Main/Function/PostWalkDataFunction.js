@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import GetLatestHealthDateFunction from './GetLatestHealthDateFunction';
+import GetLatestHealthDateFunction from '../../../Utils/Function/Health/GetLatestHealthDateFunction';
 import PostWalkFunction from '../../../Utils/Function/Health/PostWalkFunction';
 
 async function PostWalkDataFunction() {

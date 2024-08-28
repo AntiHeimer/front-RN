@@ -1,7 +1,7 @@
-import {Storage} from '../../../../Utils/Function/Storage';
-import HealthKitService from '../../../../Utils/Function/HealthkitService';
+import {Storage} from '../Storage';
+import HealthKitService from '../HealthkitService';
 
-import {DateFormattingFunction2} from '../../../../Utils/Function/DateFormattingFunction';
+import {DateFormattingFunction2} from '../DateFormattingFunction';
 
 /**
  * iOS HealthKit 수면 데이터를 가져와 서버로 전송하는 함수
