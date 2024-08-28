@@ -15,7 +15,7 @@ import DateFormattingFunction from './DateFormattingFunction';
 export default async function PostMoveFunction({startDate, endDate}) {
   const moveData = await HealthKitService.getDailyDistanceWalkingRunning({
     startDate,
-    startDate,
+    endDate,
   });
 
   const formattedMoveData = DateFormattingFunction(moveData);
@@ -24,9 +24,8 @@ export default async function PostMoveFunction({startDate, endDate}) {
   );
 
   const userState = await Storage.getItem('userState');
-
-  const uuid = userState.uuid;
   const token = userState.jwtToken;
+  const uuid = userState.uuid;
 
   const result = await fetch(`${process.env.API}/save/move`, {
     method: 'POST',

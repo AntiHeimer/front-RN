@@ -7,11 +7,12 @@ async function PostActiveDataFunction() {
     const latestActiveData = await GetLatestHealthDateFunction({
       data: 'active',
     });
+    const yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD');
 
     if (latestActiveData.date === null || latestActiveData.date === 'null') {
       // 최신 10일치의 active 데이터를 전송하는 함수
       await sendRecentActiveData();
-    } else {
+    } else if (latestActiveData.date !== yesterday) {
       // 누적된 날짜부터 현재까지의 active 데이터를 전송하는 함수
       await sendCumulativeActiveData({latestDate: latestActiveData.date});
     }

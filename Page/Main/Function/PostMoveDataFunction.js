@@ -5,11 +5,12 @@ import PostMoveFunction from '../../../Utils/Function/Health/PostMoveFunction';
 async function PostMoveDataFunction() {
   try {
     const latestMoveDate = await GetLatestHealthDateFunction({data: 'move'});
+    const yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD');
 
     if (latestMoveDate.date === null || latestMoveDate.date === 'null') {
       // 최신 10일치의 move 데이터를 전송하는 함수
       await sendRecentMoveData();
-    } else {
+    } else if (latestMoveDate.date !== yesterday) {
       // 누적된 날짜부터 현재까지의 move 데이터를 전송하는 함수
       await sendCumulativeMoveData({latestDate: latestMoveDate.date});
     }
