@@ -1,5 +1,5 @@
 import {Storage} from '../Storage';
-import {DateFormattingFunction2} from './DateFormattingFunction';
+import {DateFormattingFunction2} from '../DateFormattingFunction';
 
 import HealthKitService from './HealthkitService';
 

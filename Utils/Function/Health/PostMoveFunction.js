@@ -1,7 +1,7 @@
 import {Storage} from '../Storage';
 import HealthKitService from './HealthkitService';
 
-import DateFormattingFunction from './DateFormattingFunction';
+import DateFormattingFunction from '../DateFormattingFunction';
 
 /**
  * iOS HealthKit 거리 데이터를 가져와 서버로 전송하는 함수
