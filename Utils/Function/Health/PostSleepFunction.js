@@ -1,5 +1,6 @@
 import {Storage} from '../Storage';
-import DateFormattingFunction2 from './DateFormattingFunction2';
+import {DateFormattingFunction2} from './DateFormattingFunction';
+
 import HealthKitService from './HealthkitService';
 
 export default async function PostSleepFunction({startDate, endDate}) {
