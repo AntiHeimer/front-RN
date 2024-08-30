@@ -7,13 +7,17 @@ export default async function GetWardsFunction() {
   const token = userState.jwtToken;
 
   const encryptedUuid = EncryptFunction({data: uuid});
+  const encodedUuid = encodeURIComponent({encryptedUuid});
 
-  const result = await fetch(`${process.env.API}/get/ward/${encryptedUuid}`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${token}`,
+  const result = await fetch(
+    `${process.env.API}/get/ward?uuid=${encodedUuid}`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
-  });
+  );
 
   const res = await result.json();
 

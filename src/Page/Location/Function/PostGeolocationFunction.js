@@ -14,7 +14,7 @@ export default async function PostGeolocationFunction({location}) {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
-      Authorization: `Bearer ${token}`,
+      auth: process.env.AUTH_KEY,
     },
     body: encryptedLocation,
   });
