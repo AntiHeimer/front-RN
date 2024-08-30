@@ -2,8 +2,8 @@ import {
   DateFormattingFunction1,
   DateFormattingFunction2,
 } from '../../Health/DateFormattingFunction';
-import HealthKitService from '../../Health/HealthkitService';
 import {Storage} from '../Utils/Function/Storage';
+import HealthKitService from './HealthkitService';
 
 /**
  * iOS HealthKit 데이터를 가져와 서버로 전송하는 공통 함수

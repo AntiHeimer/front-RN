@@ -5,27 +5,27 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {Image} from 'react-native';
 
-import PersonImg from './Utils/Asset/Tab/person.png';
-import MapImg from './Utils/Asset/Tab/map.png';
-import HouseImg from './Utils/Asset/Tab/house.png';
+import PersonImg from './src/Utils/Asset/Tab/person.png';
+import MapImg from './src/Utils/Asset/Tab/map.png';
+import HouseImg from './src/Utils/Asset/Tab/house.png';
 
-import PersonGrayImg from './Utils/Asset/Tab/person_gray.png';
-import MapGrayImg from './Utils/Asset/Tab/map_gray.png';
-import HouseGrayImg from './Utils/Asset/Tab/house_gray.png';
+import PersonGrayImg from './src/Utils/Asset/Tab/person_gray.png';
+import MapGrayImg from './src/Utils/Asset/Tab/map_gray.png';
+import HouseGrayImg from './src/Utils/Asset/Tab/house_gray.png';
 
-import LoginPage from './Page/Login/Page/LoginPage';
-import SignUpPage from './Page/SignUp/Page/SignUpPage';
+import LoginPage from './src/Page/Login/Page/LoginPage';
+import SignUpPage from './src/Page/SignUp/Page/SignUpPage';
 
-import MainPage from './Page/Main/Page/MainPage';
-import LocationPage from './Page/Location/Page/LocationPage';
-import AccountPage from './Page/Account/Page/AccountPage';
+import MainPage from './src/Page/Main/Page/MainPage';
+import LocationPage from './src/Page/Location/Page/LocationPage';
+import AccountPage from './src/Page/Account/Page/AccountPage';
 
-import DiagnosisPage from './Page/Diagnosis/Page/DiagnosisPage';
-import DiagnosisResultInquiryPage from './Page/DiagnosisResultInquiry/Page/DiagnosisResultInquiryPage';
-import DiagnosisResultPage from './Page/DiagnosisResult/Page/DiagnosisResultPage';
-import RegisterPage from './Page/Register/Page/RegisterPage';
-import Notification from './Utils/Component/Notification';
-import NotificationPage from './Page/Notification/Page/NotificationPage';
+import DiagnosisPage from './src/Page/Diagnosis/Page/DiagnosisPage';
+import DiagnosisResultInquiryPage from './src/Page/DiagnosisResultInquiry/Page/DiagnosisResultInquiryPage';
+import DiagnosisResultPage from './src/Page/DiagnosisResult/Page/DiagnosisResultPage';
+import RegisterPage from './src/Page/Register/Page/RegisterPage';
+import Notification from './src/Utils/Component/Notification';
+import NotificationPage from './src/Page/Notification/Page/NotificationPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
