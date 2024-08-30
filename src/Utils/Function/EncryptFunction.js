@@ -1,5 +1,12 @@
 import CryptoJS from 'react-native-crypto-js';
 
+/**
+ * AES 암호화 알고리즘을 사용하여 주어진 데이터를 암호화하는 함수
+ *
+ * @param {Object} params - 함수에 전달되는 매개변수 객체
+ * @param {string} params.data - 암호화할 문자열 데이터
+ * @returns {string} 암호화된 데이터 문자열
+ */
 export default function EncryptFunction({data}) {
   // 비밀 키와 초기화 벡터를 환경 변수에서 가져옴
   const secretKey = process.env.SECRET_KEY; // 문자열 형태의 비밀 키

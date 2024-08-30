@@ -9,7 +9,7 @@ import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import LoginFunction from '../Function/LoginFunction';
 import {Storage} from '../../../Utils/Function/Storage';
-import {HealthKitService} from '../../../Utils/Function/Health/HealthkitService';
+import {HealthKitService} from '../../../Health/HealthkitService';
 
 function LoginPage({navigation}) {
   const [userId, setUserId] = useState(null);

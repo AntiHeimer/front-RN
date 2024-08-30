@@ -1,40 +1,40 @@
 import moment from 'moment';
-import GetLatestHealthDateFunction from './GetLatestHealthDateFunction';
-import PostWalkFunction from '../../../Utils/Function/Health/PostWalkFunction';
 
-async function PostWalkDataFunction() {
+import GetLatestHealthDateFunction from '../../../Health/GetLatestHealthDateFunction';
+import {PostSleepFunction} from '../../../Utils/Function/PostHealthDataFunction';
+
+async function PostSleepDataFunction() {
   try {
-    const latestWalkData = await GetLatestHealthDateFunction({data: 'walk'});
+    const latestSleepeData = await GetLatestHealthDateFunction({
+      data: 'sleep',
+    });
     const yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD');
 
-    if (latestWalkData.date === null || latestWalkData.date === 'null') {
-      // 최신 10일치의 walk 데이터를 전송하는 함수
-      await sendRecentWalkData();
-    } else if (latestWalkData.date !== yesterday) {
-      // 누적된 날짜부터 현재까지의 walk 데이터를 전송하는 함수
-      await sendCumulativeWalkData({latestDate: latestWalkData.date});
+    if (latestSleepeData.date === null || latestSleepeData.date === 'null') {
+      // 최신 10일치의 sleep 데이터를 전송하는 함수
+      await sendRecentSleepData();
+    } else if (latestSleepeData.date !== yesterday) {
+      // 누적된 날짜부터 현재까지의 sleep 데이터를 전송하는 함수
+      await sendCumulativeSleepData({latestData: latestSleepeData.date});
     }
   } catch (error) {
-    console.error('Error in PostWalkDataFunction:', error);
+    console.error('Error in PostSleepDataFunction:', error);
   }
-
-  await Promise.all(requests);
 }
 
-async function sendRecentWalkData() {
+async function sendRecentSleepData() {
   const today = moment();
   const requests = [];
 
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 60; i <= 70; i++) {
     const startDate = today.clone().subtract(i, 'days').format('YYYY-MM-DD');
     const endDate = today
       .clone()
       .subtract(i - 1, 'days')
       .format('YYYY-MM-DD');
 
-    // 비동기 요청을 배열에 저장
     requests.push(
-      PostWalkFunction({startDate, endDate}).catch(error =>
+      PostSleepFunction({startDate, endDate}).catch(error =>
         console.error(
           `Error fetching data for ${startDate} to ${endDate}:`,
           error,
@@ -43,11 +43,10 @@ async function sendRecentWalkData() {
     );
   }
 
-  // 모든 요청이 완료될 때까지 대기
   await Promise.all(requests);
 }
 
-async function sendCumulativeWalkData({latestDate}) {
+async function sendCumulativeSleepData({latestDate}) {
   const startDate = moment(latestDate).add(1, 'days'); // 시작 날짜
   const endDate = moment().subtract(1, 'days'); // 오늘 날짜에서 하루를 뺀 날짜
   const totalDaysDifference = endDate.diff(startDate, 'days'); // 날짜 차이 계산
@@ -64,7 +63,7 @@ async function sendCumulativeWalkData({latestDate}) {
 
     // 비동기 요청을 배열에 저장
     requests.push(
-      PostWalkFunction({
+      PostSleepFunction({
         startDate: formattedStartDate,
         endDate: formattedEndDate,
       }).catch(error =>
@@ -76,8 +75,7 @@ async function sendCumulativeWalkData({latestDate}) {
     );
   }
 
-  // 모든 요청이 완료될 때까지 대기
   await Promise.all(requests);
 }
 
-export default PostWalkDataFunction;
+export default PostSleepDataFunction;

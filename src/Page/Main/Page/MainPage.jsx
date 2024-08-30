@@ -5,29 +5,27 @@ import Graph from '../Component/Graph';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 import GetGeoLocationFunction from '../../Location/Function/GetGeolocationFunction';
+
 import PostMoveDataFunction from '../Function/PostMoveDataFunction';
 import PostActiveDataFunction from '../Function/PostActiveDataFunction';
 import PostWalkDataFunction from '../Function/PostWalkDataFunction';
 import PostSleepDataFunction from '../Function/PostSleepDataFunction';
-import GetLatestHealthDateFunction from '../Function/GetLatestHealthDateFunction';
-import HealthKitService from '../../../Utils/Function/Health/HealthkitService';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   async function handleRefresh() {
     setIsRefreshing(true);
-    // GetGeoLocationFunction();
-
+    GetGeoLocationFunction();
     setIsRefreshing(false);
   }
 
   useEffect(() => {
-    // GetGeoLocationFunction();
-    // PostSleepDataFunction();
-    // PostActiveDataFunction();
-    // PostMoveDataFunction();
-    // PostWalkDataFunction();
+    GetGeoLocationFunction();
+    PostSleepDataFunction();
+    PostActiveDataFunction();
+    PostMoveDataFunction();
+    PostWalkDataFunction();
   }, []);
 
   return (
