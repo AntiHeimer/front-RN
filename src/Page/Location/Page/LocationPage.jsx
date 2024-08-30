@@ -4,22 +4,20 @@ import {StyleSheet, View, ScrollView, RefreshControl} from 'react-native';
 import RegisterButton from '../Component/RegisterButton';
 import Map from '../Component/Map';
 
-import GetGeoLocationFunction from '../Function/GetGeolocationFunction';
-import PostGeolocationFunction from '../Function/PostGeolocationFunction';
+import GetGeoLocationFromDeviceFunction from '../../../Location/GetGeolocationFromDeviceFunction';
 
 function LocationPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [location, setLocation] = useState(null);
 
   async function getGeoLocationFunction() {
-    const res = await GetGeoLocationFunction();
+    const res = await GetGeoLocationFromDeviceFunction();
     setLocation(res);
   }
 
   async function handleRefresh() {
     setIsRefreshing(true);
     getGeoLocationFunction();
-    // PostGeolocationFunction({location: location});
     setIsRefreshing(false);
   }
 

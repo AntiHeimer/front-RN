@@ -4,8 +4,6 @@ import {StyleSheet, View, RefreshControl, ScrollView} from 'react-native';
 import Graph from '../Component/Graph';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
-import GetGeoLocationFunction from '../../Location/Function/GetGeolocationFunction';
-
 import PostMoveDataFunction from '../Function/PostMoveDataFunction';
 import PostActiveDataFunction from '../Function/PostActiveDataFunction';
 import PostWalkDataFunction from '../Function/PostWalkDataFunction';
@@ -16,13 +14,11 @@ function MainPage({navigation}) {
 
   async function handleRefresh() {
     setIsRefreshing(true);
-    GetGeoLocationFunction();
 
     setIsRefreshing(false);
   }
 
   useEffect(() => {
-    GetGeoLocationFunction();
     PostSleepDataFunction();
     PostActiveDataFunction();
     PostMoveDataFunction();

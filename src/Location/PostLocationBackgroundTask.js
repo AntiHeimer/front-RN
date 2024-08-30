@@ -1,9 +1,9 @@
 import BackgroundFetch from 'react-native-background-fetch';
-import GetGeoLocationFunction from '../Page/Location/Function/GetGeolocationFunction';
+import GetGeoLocationFromDeviceFunction from './GetGeolocationFromDeviceFunction';
 import PostGeolocationFunction from '../Page/Location/Function/PostGeolocationFunction';
 
-async function BackgroundTask() {
-  const location = await GetGeoLocationFunction();
+async function PostLocationBackgroundTask() {
+  const location = await GetGeoLocationFromDeviceFunction();
   PostGeolocationFunction({location: location});
 
   return;
@@ -24,4 +24,4 @@ BackgroundFetch.configure(
   },
 );
 
-export default BackgroundTask;
+export default PostLocationBackgroundTask;
