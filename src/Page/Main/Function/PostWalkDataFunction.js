@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 import GetLatestHealthDateFunction from '../../../Health/GetLatestHealthDateFunction';
-import {PostWalkFunction} from '../../../Utils/Function/PostHealthDataFunction';
+import {PostWalkFunction} from '../../../Health/PostHealthDataFunction';
 
 async function PostWalkDataFunction() {
   try {

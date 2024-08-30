@@ -1,8 +1,8 @@
+import {Storage} from '../Utils/Function/Storage';
 import {
   DateFormattingFunction1,
   DateFormattingFunction2,
-} from '../../Health/DateFormattingFunction';
-import {Storage} from '../Utils/Function/Storage';
+} from './DateFormattingFunction';
 import HealthKitService from './HealthkitService';
 
 /**

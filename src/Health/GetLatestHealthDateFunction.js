@@ -1,5 +1,5 @@
-import EncryptFunction from '../../Utils/Function/EncryptFunction';
-import {Storage} from '../../Utils/Function/Storage';
+import EncryptFunction from '../Utils/Function/EncryptFunction';
+import {Storage} from '../Utils/Function/Storage';
 
 /**
  * 저장된 헬스 데이터의 마지막 날짜를 리턴하는 함수

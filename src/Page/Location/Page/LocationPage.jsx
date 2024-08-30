@@ -5,6 +5,7 @@ import RegisterButton from '../Component/RegisterButton';
 import Map from '../Component/Map';
 
 import GetGeoLocationFunction from '../Function/GetGeolocationFunction';
+import PostGeolocationFunction from '../Function/PostGeolocationFunction';
 
 function LocationPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -18,6 +19,7 @@ function LocationPage({navigation}) {
   async function handleRefresh() {
     setIsRefreshing(true);
     getGeoLocationFunction();
+    // PostGeolocationFunction({location: location});
     setIsRefreshing(false);
   }
 

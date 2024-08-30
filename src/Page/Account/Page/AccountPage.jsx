@@ -41,7 +41,9 @@ function AccountPage({navigation}) {
       <Text style={styles.text}>나의 피보호자 정보</Text>
       <Row name="강민숙" id="minsook0627" />
       <View style={styles.hr} />
-      <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+      <View style={styles.buttonDiv}>
+        <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+      </View>
     </View>
   );
 }
@@ -69,5 +71,8 @@ const styles = StyleSheet.create({
     height: 1,
     borderTopWidth: 0.2,
     marginTop: 20,
+  },
+  buttonDiv: {
+    marginTop: 40,
   },
 });
