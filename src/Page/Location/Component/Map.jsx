@@ -5,7 +5,7 @@ import MapView, {Marker} from 'react-native-maps';
 
 import DropDown from './DropDown';
 
-function Map({location}) {
+function Map({location, wardList}) {
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function Map({location}) {
   return (
     <View>
       <Text style={styles.description}>피보호자 위치 추적</Text>
-      <DropDown />
+      <DropDown wardList={wardList} />
       <View style={styles.map}>
         {location && (
           <MapView
