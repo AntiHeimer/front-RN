@@ -4,7 +4,6 @@ import {Storage} from '../../../Utils/Function/Storage';
 export default async function PostGeolocationFunction({location}) {
   const userState = await Storage.getItem('userState');
   const uuid = userState.uuid;
-  const token = userState.jwtToken;
 
   location.uuid = uuid;
 
