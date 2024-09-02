@@ -32,10 +32,7 @@ async function sendRecentActiveData() {
 
     requests.push(
       PostActiveFunction({startDate: startDate}).catch(error =>
-        console.error(
-          `Error fetching data for ${startDate} to ${endDate}:`,
-          error,
-        ),
+        console.error(`Error fetching data for ${startDate}:`, error),
       ),
     );
   }

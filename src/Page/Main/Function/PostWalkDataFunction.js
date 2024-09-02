@@ -18,8 +18,6 @@ async function PostWalkDataFunction() {
   } catch (error) {
     console.error('Error in PostWalkDataFunction:', error);
   }
-
-  await Promise.all(requests);
 }
 
 async function sendRecentWalkData() {
