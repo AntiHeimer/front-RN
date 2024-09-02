@@ -76,7 +76,6 @@ async function PostHealthDataFunction({type, startDate, endDate}) {
   });
 
   const res = await result.json();
-  console.log(res);
 
   return res;
 }

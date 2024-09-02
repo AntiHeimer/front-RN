@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {StyleSheet, View, ScrollView, RefreshControl} from 'react-native';
+import {StyleSheet, View, FlatList, RefreshControl} from 'react-native';
 
 import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 
@@ -23,6 +23,7 @@ function LocationPage({navigation}) {
   async function handleRefresh() {
     setIsRefreshing(true);
     getGeoLocationFromDeviceFunction();
+    // PostGeolocationFunction({location: location});
     setIsRefreshing(false);
   }
 
@@ -47,18 +48,28 @@ function LocationPage({navigation}) {
     // GetWardsList();
   }, []);
 
+  // useEffect(() => {
+  //   if (location) {
+  //     PostGeolocationFunction({location: location});
+  //   }
+  // }, [location]);
+
   return (
     <View style={styles.container}>
-      <ScrollView
+      <FlatList
+        data={wardsList}
+        keyExtractor={(item, index) => index.toString()}
         refreshControl={
           <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
         }
-        style={styles.scrollViewContent}>
-        <View style={styles.subContainer}>
-          <RegisterButton navigation={navigation} />
-          <Map location={location} wardList={wardsList} />
-        </View>
-      </ScrollView>
+        ListHeaderComponent={
+          <View style={styles.subContainer}>
+            <RegisterButton navigation={navigation} />
+            <Map location={location} wardList={wardsList} />
+          </View>
+        }
+        renderItem={null}
+      />
     </View>
   );
 }
@@ -69,10 +80,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     flex: 1,
-  },
-  scrollViewContent: {
-    flexGrow: 1,
-    backgroundColor: 'white',
   },
   subContainer: {
     alignItems: 'center',

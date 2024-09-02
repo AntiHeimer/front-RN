@@ -43,7 +43,7 @@ async function sendRecentMoveData() {
   }
 
   // 모든 요청이 완료될 때까지 대기
-  await Promise.all(requests);
+  if (requests.length > 0) await Promise.all(requests);
 }
 
 async function sendCumulativeMoveData({latestDate}) {
@@ -76,7 +76,7 @@ async function sendCumulativeMoveData({latestDate}) {
   }
 
   // 모든 요청이 완료될 때까지 대기
-  await Promise.all(requests);
+  if (requests.length > 0) await Promise.all(requests);
 }
 
 export default PostMoveDataFunction;
