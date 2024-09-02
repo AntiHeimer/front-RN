@@ -30,6 +30,7 @@ export default async function GetLatestHealthDateFunction({data}) {
   );
 
   const res = await result.json();
+  console.log(res);
 
   return res;
 }

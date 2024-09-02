@@ -43,7 +43,7 @@ async function sendRecentSleepData() {
     );
   }
 
-  await Promise.all(requests);
+  if (requests.length > 0) await Promise.all(requests);
 }
 
 async function sendCumulativeSleepData({latestDate}) {
@@ -75,7 +75,7 @@ async function sendCumulativeSleepData({latestDate}) {
     );
   }
 
-  await Promise.all(requests);
+  if (requests.length > 0) await Promise.all(requests);
 }
 
 export default PostSleepDataFunction;
