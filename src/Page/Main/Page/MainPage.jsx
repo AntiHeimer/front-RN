@@ -8,7 +8,6 @@ import PostMoveDataFunction from '../Function/PostMoveDataFunction';
 import PostActiveDataFunction from '../Function/PostActiveDataFunction';
 import PostWalkDataFunction from '../Function/PostWalkDataFunction';
 import PostSleepDataFunction from '../Function/PostSleepDataFunction';
-import {Storage} from '../../../Utils/Function/Storage';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
