@@ -11,6 +11,7 @@ import PostSleepDataFunction from '../Function/PostSleepDataFunction';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [permission, setPermission] = useState(false);
 
   async function handleRefresh() {
     setIsRefreshing(true);
@@ -24,6 +25,12 @@ function MainPage({navigation}) {
     PostMoveDataFunction();
     PostWalkDataFunction();
   }, []);
+
+  useEffect(() => {
+    if (permission) {
+      getTokenFunction();
+    }
+  }, [permission]);
 
   return (
     <View style={styles.container}>
