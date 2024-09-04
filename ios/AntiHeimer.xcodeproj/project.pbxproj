@@ -11,8 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2981E1FA286589C8D7CAA68C /* libPods-AntiHeimer-AntiHeimerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2078EF922968DD320CB58F /* libPods-AntiHeimer-AntiHeimerTests.a */; };
-		3EBE169EA5F6F570552B4533 /* libPods-AntiHeimer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8AA95C63B31C711BDDA218 /* libPods-AntiHeimer.a */; };
+		4B70EC2694738732639A20FA /* libPods-AntiHeimer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9302A3969716981FAFDB213 /* libPods-AntiHeimer.a */; };
+		5803D7199BBA41ADCE9589E5 /* libPods-AntiHeimer-AntiHeimerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E76956B4DC7D0E12CBF938 /* libPods-AntiHeimer-AntiHeimerTests.a */; };
+		663CC60F2C8839B400A8A78F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 663CC60E2C8839B400A8A78F /* GoogleService-Info.plist */; };
 		72EF7BAADD7076440B3692D3 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 382DFAB7E273BF71B860B1F8 /* PrivacyInfo.xcprivacy */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -38,14 +39,15 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AntiHeimer/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AntiHeimer/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = AntiHeimer/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		1D2078EF922968DD320CB58F /* libPods-AntiHeimer-AntiHeimerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AntiHeimer-AntiHeimerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32E76956B4DC7D0E12CBF938 /* libPods-AntiHeimer-AntiHeimerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AntiHeimer-AntiHeimerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		382DFAB7E273BF71B860B1F8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = AntiHeimer/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3E732EF4D3AA49524B228A79 /* Pods-AntiHeimer-AntiHeimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntiHeimer-AntiHeimerTests.release.xcconfig"; path = "Target Support Files/Pods-AntiHeimer-AntiHeimerTests/Pods-AntiHeimer-AntiHeimerTests.release.xcconfig"; sourceTree = "<group>"; };
 		6534EB605C249606B921EC0D /* Pods-AntiHeimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntiHeimer.debug.xcconfig"; path = "Target Support Files/Pods-AntiHeimer/Pods-AntiHeimer.debug.xcconfig"; sourceTree = "<group>"; };
+		663CC60E2C8839B400A8A78F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		665580012C637F680093A070 /* AntiHeimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = AntiHeimer.entitlements; path = AntiHeimer/AntiHeimer.entitlements; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AntiHeimer/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8728D79466BD0C6AB9EB139B /* Pods-AntiHeimer-AntiHeimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntiHeimer-AntiHeimerTests.debug.xcconfig"; path = "Target Support Files/Pods-AntiHeimer-AntiHeimerTests/Pods-AntiHeimer-AntiHeimerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9D8AA95C63B31C711BDDA218 /* libPods-AntiHeimer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AntiHeimer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9302A3969716981FAFDB213 /* libPods-AntiHeimer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AntiHeimer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEDD061FB9A5FD1F57A4A696 /* Pods-AntiHeimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntiHeimer.release.xcconfig"; path = "Target Support Files/Pods-AntiHeimer/Pods-AntiHeimer.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -55,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2981E1FA286589C8D7CAA68C /* libPods-AntiHeimer-AntiHeimerTests.a in Frameworks */,
+				5803D7199BBA41ADCE9589E5 /* libPods-AntiHeimer-AntiHeimerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EBE169EA5F6F570552B4533 /* libPods-AntiHeimer.a in Frameworks */,
+				4B70EC2694738732639A20FA /* libPods-AntiHeimer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +92,7 @@
 		13B07FAE1A68108700A75B9A /* AntiHeimer */ = {
 			isa = PBXGroup;
 			children = (
+				663CC60E2C8839B400A8A78F /* GoogleService-Info.plist */,
 				665580012C637F680093A070 /* AntiHeimer.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -107,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				9D8AA95C63B31C711BDDA218 /* libPods-AntiHeimer.a */,
-				1D2078EF922968DD320CB58F /* libPods-AntiHeimer-AntiHeimerTests.a */,
+				A9302A3969716981FAFDB213 /* libPods-AntiHeimer.a */,
+				32E76956B4DC7D0E12CBF938 /* libPods-AntiHeimer-AntiHeimerTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				663CC60F2C8839B400A8A78F /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				72EF7BAADD7076440B3692D3 /* PrivacyInfo.xcprivacy in Resources */,
 			);
@@ -576,6 +580,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD = "";
 				LDPLUSPLUS = "";
@@ -598,7 +613,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -649,6 +667,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD = "";
 				LDPLUSPLUS = "";
@@ -670,7 +699,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
