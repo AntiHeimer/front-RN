@@ -25,12 +25,6 @@ function MainPage({navigation}) {
     PostWalkDataFunction();
   }, []);
 
-  useEffect(() => {
-    if (permission) {
-      getTokenFunction();
-    }
-  }, [permission]);
-
   return (
     <View style={styles.container}>
       <ScrollView
