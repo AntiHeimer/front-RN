@@ -11,7 +11,6 @@ import PostSleepDataFunction from '../Function/PostSleepDataFunction';
 
 function MainPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [permission, setPermission] = useState(false);
 
   async function handleRefresh() {
     setIsRefreshing(true);
