@@ -21,12 +21,8 @@ target 'AntiHeimer' do
 
   use_react_native!(
     :path => config[:reactNativePath],
-    # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-
-  # pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
-  # pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
 
   target 'AntiHeimerTests' do
     inherit! :complete
