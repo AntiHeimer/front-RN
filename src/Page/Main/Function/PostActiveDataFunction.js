@@ -32,15 +32,12 @@ async function sendRecentActiveData() {
 
     requests.push(
       PostActiveFunction({startDate: startDate}).catch(error =>
-        console.error(
-          `Error fetching data for ${startDate} to ${endDate}:`,
-          error,
-        ),
+        console.error(`Error fetching data for ${startDate}:`, error),
       ),
     );
   }
 
-  await Promise.all(requests);
+  if (requests.length > 0) await Promise.all(requests);
 }
 
 // 누적된 날짜부터 현재까지의 active 데이터를 전송하는 함수
@@ -65,7 +62,7 @@ async function sendCumulativeActiveData({latestDate}) {
     );
   }
 
-  await Promise.all(requests);
+  if (requests.length > 0) await Promise.all(requests);
 }
 
 export default PostActiveDataFunction;

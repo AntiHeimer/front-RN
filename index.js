@@ -10,9 +10,6 @@ import PostLocationBackgroundTask from './src/Location/PostLocationBackgroundTas
 import BackgroundFetch from 'react-native-background-fetch';
 import {Storage} from './src/Utils/Function/Storage';
 
-// const userState = Storage.getItem('userState');
-// if (userState) {
-//   BackgroundFetch.start();
-// }
+// BackgroundFetch.start();
 
 AppRegistry.registerComponent(appName, () => App);
