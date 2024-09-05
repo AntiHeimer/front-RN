@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import {View, StyleSheet, ScrollView, RefreshControl} from 'react-native';
 
 import Row from '../Component/Row';
+import SocketComponent from '../../../Utils/Component/SocketComponent';
 
 function NotificationPage() {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -33,6 +34,7 @@ function NotificationPage() {
           <Row />
           <Row />
           <Row />
+          <SocketComponent />
         </View>
       </ScrollView>
     </View>
