@@ -4,6 +4,8 @@ import Input from '../../../Utils/Component/Input';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 import RegisterProtectorFunction from '../Function/RegisterProtectorFunction';
+import {Storage} from '../../../Utils/Function/Storage';
+import {useEffect, useState} from 'react';
 
 /**
  * 보호자 등록 화면 컴포넌트
@@ -19,6 +21,40 @@ import RegisterProtectorFunction from '../Function/RegisterProtectorFunction';
  */
 
 function RegisterProtector({navigation, value, onChange}) {
+  const [socket, setSocket] = useState(null);
+
+  async function sendMessage() {
+    const userState = await Storage.getItem('userState');
+    const uuid = userState.uuid;
+
+    const payload = {
+      toMemberId: value,
+      fromMemberUuid: uuid,
+      message: 'example message',
+    };
+
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      socket.send(JSON.stringify(payload));
+
+      ConfirmAlert({
+        title: '요청 전송 완료',
+        message: '보호자 요청이\n성공적으로 전송되었습니다.',
+        onPress: () => {
+          navigation.navigate('Location Tab');
+        },
+      });
+
+      onChange(null);
+    } else {
+      ConfirmAlert({
+        title: '요청 전송 실패',
+        message: '보호자 요청 전송을\n실패하였습니다..',
+        onPress: () => {},
+      });
+      console.log('WebSocket is not connected');
+    }
+  }
+
   async function RegisterFunction() {
     const result = await RegisterProtectorFunction({userId: value});
 
@@ -44,6 +80,35 @@ function RegisterProtector({navigation, value, onChange}) {
     return;
   }
 
+  useEffect(() => {
+    const ws = new WebSocket(`${process.env.SOCKET_API}/wss`);
+
+    ws.onopen = () => {
+      console.log('Connected to WebSocket');
+    };
+
+    ws.onmessage = event => {
+      console.log('Message received:', event.data);
+      setReceivedMessage(`Received: ${event.data}`);
+    };
+
+    ws.onclose = () => {
+      console.log('Disconnected from WebSocket');
+    };
+
+    ws.onerror = error => {
+      console.error('WebSocket error:', error.message);
+    };
+
+    setSocket(ws);
+
+    return () => {
+      if (ws) {
+        ws.close();
+      }
+    };
+  }, []);
+
   return (
     <View>
       <Text style={styles.text}>보호자 등록</Text>
@@ -55,7 +120,7 @@ function RegisterProtector({navigation, value, onChange}) {
           security={false}
         />
       </View>
-      <MainButtonBlack text="보호자 등록" onPress={RegisterFunction} />
+      <MainButtonBlack text="보호자 등록" onPress={sendMessage} />
     </View>
   );
 }
