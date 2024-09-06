@@ -9,6 +9,7 @@ import Map from '../Component/Map';
 import GetGeoLocationFromDeviceFunction from '../../../Location/GetGeolocationFromDeviceFunction';
 import GetWardsFunction from '../../Account/Function/GetWardsFunction';
 import PostGeolocationFunction from '../Function/PostGeolocationFunction';
+import GetRecentLocationFunction from '../Function/GetRecentLocationFunction';
 
 function LocationPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -18,6 +19,10 @@ function LocationPage({navigation}) {
   async function getGeoLocationFromDeviceFunction() {
     const res = await GetGeoLocationFromDeviceFunction();
     setLocation(res);
+  }
+
+  async function getRecentLocationFunction() {
+    const result = await GetRecentLocationFunction();
   }
 
   async function handleRefresh() {
@@ -45,6 +50,7 @@ function LocationPage({navigation}) {
 
   useEffect(() => {
     getGeoLocationFromDeviceFunction();
+    getRecentLocationFunction();
     // GetWardsList();
   }, []);
 
