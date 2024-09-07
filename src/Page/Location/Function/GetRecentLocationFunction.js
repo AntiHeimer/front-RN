@@ -7,11 +7,7 @@ export default async function GetRecentLocationFunction() {
   const uuid = userState.uuid;
 
   const encryptedUuid = EncryptFunction({data: uuid});
-  console.log(encryptedUuid);
-
   const encodedUuid = encodeURIComponent(encryptedUuid);
-  console.log(encodedUuid);
-  return;
 
   const result = await fetch(
     `${process.env.API}/recent/location?memberUuid=${encodedUuid}`,

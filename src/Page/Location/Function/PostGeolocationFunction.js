@@ -8,8 +8,6 @@ export default async function PostGeolocationFunction({location}) {
   location.memberUuid = uuid;
 
   const encryptedLocation = EncryptFunction({data: JSON.stringify(location)});
-  console.log(encryptedLocation);
-  return;
 
   const result = await fetch(`${process.env.API}/save/location`, {
     method: 'POST',

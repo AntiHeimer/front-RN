@@ -28,7 +28,6 @@ function LocationPage({navigation}) {
   async function handleRefresh() {
     setIsRefreshing(true);
     getGeoLocationFromDeviceFunction();
-    // PostGeolocationFunction({location: location});
     setIsRefreshing(false);
   }
 
@@ -54,11 +53,11 @@ function LocationPage({navigation}) {
     // GetWardsList();
   }, []);
 
-  // useEffect(() => {
-  //   if (location) {
-  //     PostGeolocationFunction({location: location});
-  //   }
-  // }, [location]);
+  useEffect(() => {
+    if (location) {
+      PostGeolocationFunction({location: location});
+    }
+  }, [location]);
 
   return (
     <View style={styles.container}>
