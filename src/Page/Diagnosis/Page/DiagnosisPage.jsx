@@ -12,7 +12,7 @@ import Diagnosis3Component from '../Component/Diagnosis3Component';
 function DiagnosisPage({navigation}) {
   return (
     <View style={styles.container}>
-      <Diagnosis3Component />
+      <Diagnosis2Component />
       <View style={styles.buttonDiv}>
         <MainMediumButtonGray text="이전" />
         <MainMediumButtonBlack

@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-function DropDown({wardList}) {
+function SeasonDropDown({value, setValue}) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    {label: '강민재', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
-    {label: 'Pear', value: 'pear'},
+    {label: '봄', value: '봄'},
+    {label: '여름', value: '여름'},
+    {label: '가을', value: '가을'},
+    {label: '겨울', value: '겨울'},
   ]);
 
   return (
@@ -21,7 +21,7 @@ function DropDown({wardList}) {
           setOpen={setOpen}
           setValue={setValue}
           setItems={setItems}
-          placeholder={'피보호자를 선택해주세요'}
+          placeholder={'계절'}
           style={styles.dropdown}
           dropDownContainerStyle={styles.dropdown}
         />
@@ -30,7 +30,7 @@ function DropDown({wardList}) {
   );
 }
 
-export default DropDown;
+export default SeasonDropDown;
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   subContainer: {
     flex: 1,
     alignItems: 'center',
-    width: 308,
+    width: 100,
   },
   dropdown: {
     borderWidth: 0.2,
