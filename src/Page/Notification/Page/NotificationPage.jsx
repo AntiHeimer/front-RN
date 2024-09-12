@@ -3,6 +3,8 @@ import {View, StyleSheet, ScrollView, RefreshControl} from 'react-native';
 
 import Row from '../Component/Row';
 import SocketComponent from '../../../Utils/Component/SocketComponent';
+import Row2 from '../Component/Row2';
+import Row3 from '../Component/Row3';
 
 function NotificationPage() {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -31,10 +33,11 @@ function NotificationPage() {
         style={styles.scrollViewContent}>
         <View style={styles.subContainer}>
           <Row />
-          <Row />
-          <Row />
-          <Row />
-          <SocketComponent />
+          <Row3 />
+          <Row2 />
+          {/* <Row />
+          <Row /> */}
+          {/* <SocketComponent /> */}
         </View>
       </ScrollView>
     </View>

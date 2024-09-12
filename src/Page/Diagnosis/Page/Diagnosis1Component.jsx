@@ -9,17 +9,24 @@ import checkMark from '../../../Utils/Asset/checkmark.png';
  * @returns
  */
 
-function Diagnosis1Component({number}) {
+function Diagnosis1Component({diagnosisSheet}) {
   return (
     <View>
       <View style={styles.numberDiv}>
-        <Text style={styles.number}>문제 1</Text>
+        <Text style={styles.number}>문제 {diagnosisSheet.number}</Text>
       </View>
-      <View style={styles.questionBox}></View>
+      <View style={styles.questionBox}>{diagnosisSheet.question}</View>
+
+      <View style={styles.numberDiv}>
+        <Text style={styles.number}>메뉴얼</Text>
+      </View>
+      <View style={styles.menualBox}>{diagnosisSheet.direction}</View>
+
       <View style={styles.numberDiv}>
         <Text style={styles.number}>정답</Text>
       </View>
-      <View style={styles.answerBox}></View>
+      <View style={styles.answerBox}>{diagnosisSheet.answer}</View>
+
       <View style={styles.markButtonDiv}>
         <TouchableOpacity>
           <Image source={xMark} style={styles.markImg} />
@@ -46,12 +53,16 @@ const styles = StyleSheet.create({
   questionBox: {
     borderWidth: 0.2,
     width: 318,
-    height: 202,
+    height: 80,
   },
-  answerBox: {
+  menualBox: {
     borderWidth: 0.2,
     width: 318,
     height: 60,
+  },
+  answerBox: {
+    width: 318,
+    height: 200,
   },
   markButtonDiv: {
     width: 308,

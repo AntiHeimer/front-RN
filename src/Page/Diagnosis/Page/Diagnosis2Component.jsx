@@ -1,9 +1,11 @@
 import {useState} from 'react';
 
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
-import InputSmall from './InputSmall';
-import InputMedium from './InputMedium';
+import InputSmall from '../Component/InputSmall';
+import InputMedium from '../Component/InputMedium';
+import SeasonDropDown from '../Component/SeasonDropDown';
+import DayOfWeekDropDown from '../Component/DayOfWeekDropDown';
 
 /**
  * 날짜 문제
@@ -12,84 +14,27 @@ import InputMedium from './InputMedium';
  * @returns
  */
 
-function Diagnosis2Component({number}) {
+function Diagnosis2Component({diagnosisSheet}) {
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
   const [date, setDate] = useState('');
   const [dayOfTheWeek, setDayOfTheWeek] = useState(null);
   const [season, setSeason] = useState(null);
 
-  function DayOfTheWeekButtonRender() {
-    const buttons = ['월', '화', '수', '목', '금', '토', '일'];
-
-    const handleButtonPress = index => {
-      setDayOfTheWeek(index);
-    };
-
-    return (
-      <View style={styles.inputDiv}>
-        {buttons.map((buttonLabel, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[
-              styles.button,
-              dayOfTheWeek === index && styles.selectedButton,
-            ]}
-            onPress={() => handleButtonPress(index)}>
-            <Text
-              style={[
-                styles.buttonText,
-                dayOfTheWeek === index && styles.selectedButtonText,
-              ]}>
-              {buttonLabel}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    );
-  }
-
-  function SeasonButtonRender() {
-    const buttons = ['봄', '여름', '가을', '겨울'];
-
-    const handleButtonPress = index => {
-      setSeason(index);
-    };
-
-    return (
-      <View style={styles.inputDiv}>
-        {buttons.map((buttonLabel, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[styles.button, season === index && styles.selectedButton]}
-            onPress={() => handleButtonPress(index)}>
-            <Text
-              style={[
-                styles.seasonButtonText,
-                season === index && styles.selectedButtonText,
-              ]}>
-              {buttonLabel}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    );
-  }
-
   return (
     <View>
       <View style={styles.numberDiv}>
-        <Text style={styles.number}>문제 1</Text>
+        <Text style={styles.number}>문제 {diagnosisSheet.number}</Text>
       </View>
       <View style={styles.questionBox}>
-        <Text>오늘 날짜를 입력해주세요</Text>
+        <Text>{diagnosisSheet.question}</Text>
       </View>
 
       <View style={styles.numberDiv}>
         <Text style={styles.number}>메뉴얼</Text>
       </View>
       <View style={styles.menualBox}>
-        <Text>오늘 날짜를 입력해주세요</Text>
+        <Text>{diagnosisSheet.direction}</Text>
       </View>
 
       <View style={styles.numberDiv}>
@@ -125,8 +70,10 @@ function Diagnosis2Component({number}) {
             <Text style={styles.answerBoxText}>일</Text>
           </View>
         </View>
-        <DayOfTheWeekButtonRender />
-        <SeasonButtonRender />
+        <View style={styles.dropdownView}>
+          <DayOfWeekDropDown value={dayOfTheWeek} setValue={setDayOfTheWeek} />
+          <SeasonDropDown value={season} setValue={setSeason} />
+        </View>
       </View>
     </View>
   );
@@ -162,7 +109,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginTop: 10,
-    // borderWidth: 1,
   },
   inputInnerDiv: {
     display: 'flex',
@@ -189,5 +135,11 @@ const styles = StyleSheet.create({
   seasonButtonText: {
     width: 30,
     textAlign: 'center',
+  },
+  dropdownView: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginLeft: -50,
   },
 });

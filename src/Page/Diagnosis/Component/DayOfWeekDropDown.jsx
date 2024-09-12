@@ -2,13 +2,16 @@ import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-function DropDown({wardList}) {
+function DayOfWeekDropDown({value, setValue}) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    {label: '강민재', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
-    {label: 'Pear', value: 'pear'},
+    {label: '일', value: '일'},
+    {label: '월', value: '월'},
+    {label: '화', value: '화'},
+    {label: '수', value: '수'},
+    {label: '목', value: '목'},
+    {label: '금', value: '금'},
+    {label: '토', value: '토'},
   ]);
 
   return (
@@ -21,7 +24,8 @@ function DropDown({wardList}) {
           setOpen={setOpen}
           setValue={setValue}
           setItems={setItems}
-          placeholder={'피보호자를 선택해주세요'}
+          placeholder={'요일'}
+          maxHeight={100}
           style={styles.dropdown}
           dropDownContainerStyle={styles.dropdown}
         />
@@ -30,7 +34,7 @@ function DropDown({wardList}) {
   );
 }
 
-export default DropDown;
+export default DayOfWeekDropDown;
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +45,7 @@ const styles = StyleSheet.create({
   subContainer: {
     flex: 1,
     alignItems: 'center',
-    width: 308,
+    width: 100,
   },
   dropdown: {
     borderWidth: 0.2,
