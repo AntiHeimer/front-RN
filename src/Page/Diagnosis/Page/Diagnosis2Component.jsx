@@ -14,7 +14,7 @@ import DayOfWeekDropDown from '../Component/DayOfWeekDropDown';
  * @returns
  */
 
-function Diagnosis2Component({number}) {
+function Diagnosis2Component({diagnosisSheet}) {
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
   const [date, setDate] = useState('');
@@ -24,17 +24,17 @@ function Diagnosis2Component({number}) {
   return (
     <View>
       <View style={styles.numberDiv}>
-        <Text style={styles.number}>문제 1</Text>
+        <Text style={styles.number}>문제 {diagnosisSheet.number}</Text>
       </View>
       <View style={styles.questionBox}>
-        <Text>오늘 날짜를 입력해주세요</Text>
+        <Text>{diagnosisSheet.question}</Text>
       </View>
 
       <View style={styles.numberDiv}>
         <Text style={styles.number}>메뉴얼</Text>
       </View>
       <View style={styles.menualBox}>
-        <Text>오늘 날짜를 입력해주세요</Text>
+        <Text>{diagnosisSheet.direction}</Text>
       </View>
 
       <View style={styles.numberDiv}>

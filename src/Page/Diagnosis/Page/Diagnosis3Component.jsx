@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 /**
  * 암산 문제
@@ -9,7 +9,7 @@ import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
  * @returns
  */
 
-function Diagnosis3Component({number}) {
+function Diagnosis3Component({diagnosisSheet}) {
   // useState로 calcArray 상태 선언
   const [calcArray, setCalcArray] = useState([0, 0, 0, 0, 0]);
 
@@ -24,19 +24,19 @@ function Diagnosis3Component({number}) {
   return (
     <View>
       <View style={styles.numberDiv}>
-        <Text style={styles.number}>문제 1</Text>
+        <Text style={styles.number}>문제 {diagnosisSheet.number}</Text>
       </View>
-      <View style={styles.questionBox}></View>
+      <View style={styles.questionBox}>{diagnosisSheet.question}</View>
       <View style={styles.numberDiv}>
         <Text style={styles.number}>메뉴얼</Text>
       </View>
       <View style={styles.menualBox}>
-        <Text>menual</Text>
+        <Text>{diagnosisSheet.direction}</Text>
       </View>
       <View style={styles.numberDiv}>
         <Text style={styles.number}>정답</Text>
       </View>
-      <View style={styles.answerBox}></View>
+      <View style={styles.answerBox}>{diagnosisSheet.answer}</View>
     </View>
   );
 }

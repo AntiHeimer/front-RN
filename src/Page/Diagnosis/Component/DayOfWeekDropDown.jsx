@@ -25,6 +25,7 @@ function DayOfWeekDropDown({value, setValue}) {
           setValue={setValue}
           setItems={setItems}
           placeholder={'요일'}
+          maxHeight={100}
           style={styles.dropdown}
           dropDownContainerStyle={styles.dropdown}
         />

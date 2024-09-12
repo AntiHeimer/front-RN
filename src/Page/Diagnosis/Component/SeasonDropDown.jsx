@@ -22,6 +22,7 @@ function SeasonDropDown({value, setValue}) {
           setValue={setValue}
           setItems={setItems}
           placeholder={'계절'}
+          maxHeight={100}
           style={styles.dropdown}
           dropDownContainerStyle={styles.dropdown}
         />

@@ -1,23 +1,93 @@
+import {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 
 import {
   MainMediumButtonBlack,
   MainMediumButtonGray,
 } from '../../../Utils/Component/MainButton';
+import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 
 import Diagnosis1Component from './Diagnosis1Component';
 import Diagnosis2Component from './Diagnosis2Component';
 import Diagnosis3Component from './Diagnosis3Component';
 
+import GetDiagnosisSheet from '../Function/GetDiagnosisSheet';
+
 function DiagnosisPage({navigation}) {
+  const [diagnosisSheet, setDiagnosisSheet] = useState(null);
+  const [num, setNum] = useState(1);
+
+  async function getFirstDiagnosisSheet() {
+    const result = await GetDiagnosisSheet({num: 1});
+    if (result.statusCode === '200') {
+      setDiagnosisSheet(result.diagnosisSheet);
+      return;
+    }
+
+    ConfirmAlert({
+      title: '진단지 로드 실패',
+      message: '진단지 로드에 실패하였습니다.',
+      onPress: () => {},
+    });
+  }
+
+  async function getPrevDiagnosisSheet() {
+    if (num == 1) {
+      return;
+    }
+
+    setNum(prev => (prev -= 1));
+    const result = await GetDiagnosisSheet({num: num});
+    if (result.statusCode === '200') {
+      setDiagnosisSheet(result.diagnosisSheet);
+      return;
+    }
+
+    ConfirmAlert({
+      title: '진단지 로드 실패',
+      message: '진단지 로드에 실패하였습니다.',
+      onPress: () => {},
+    });
+  }
+
+  async function getNextDiagnosisSheet() {
+    if (num == 13) {
+      navigation.navigate('Diagnosis Result');
+      setNum(1);
+      return;
+    }
+
+    setNum(prev => (prev += 1));
+    const result = await GetDiagnosisSheet({num: num});
+    if (result.statusCode === '200') {
+      setDiagnosisSheet(result.diagnosisSheet);
+      return;
+    }
+
+    ConfirmAlert({
+      title: '진단지 로드 실패',
+      message: '진단지 로드에 실패하였습니다.',
+      onPress: () => {},
+    });
+  }
+
+  useEffect(() => {
+    getFirstDiagnosisSheet();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Diagnosis2Component />
+      <Diagnosis1Component diagnosisSheet={diagnosisSheet} />
+      {/* <Diagnosis2Component diagnosisSheet={diagnosisSheet} />
+      <Diagnosis3Component diagnosisSheet={diagnosisSheet} /> */}
       <View style={styles.buttonDiv}>
-        <MainMediumButtonGray text="이전" />
+        <MainMediumButtonGray
+          text="이전"
+          onPress={() => getPrevDiagnosisSheet()}
+        />
         <MainMediumButtonBlack
           text="다음"
-          onPress={() => navigation.navigate('Diagnosis Result')}
+          onPress={() => getNextDiagnosisSheet()}
         />
       </View>
     </View>
