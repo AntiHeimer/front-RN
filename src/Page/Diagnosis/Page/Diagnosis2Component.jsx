@@ -2,10 +2,10 @@ import {useState} from 'react';
 
 import {View, Text, StyleSheet} from 'react-native';
 
-import InputSmall from './InputSmall';
-import InputMedium from './InputMedium';
-import SeasonDropDown from './SeasonDropDown';
-import DayOfWeekDropDown from './DayOfWeekDropDown';
+import InputSmall from '../Component/InputSmall';
+import InputMedium from '../Component/InputMedium';
+import SeasonDropDown from '../Component/SeasonDropDown';
+import DayOfWeekDropDown from '../Component/DayOfWeekDropDown';
 
 /**
  * 날짜 문제

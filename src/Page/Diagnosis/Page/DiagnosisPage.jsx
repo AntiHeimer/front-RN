@@ -5,9 +5,9 @@ import {
   MainMediumButtonGray,
 } from '../../../Utils/Component/MainButton';
 
-import Diagnosis1Component from '../Component/Diagnosis1Component';
-import Diagnosis2Component from '../Component/Diagnosis2Component';
-import Diagnosis3Component from '../Component/Diagnosis3Component';
+import Diagnosis1Component from './Diagnosis1Component';
+import Diagnosis2Component from './Diagnosis2Component';
+import Diagnosis3Component from './Diagnosis3Component';
 
 function DiagnosisPage({navigation}) {
   return (
