@@ -17,26 +17,7 @@ function DiagnosisPage({navigation}) {
   const [diagnosisSheet, setDiagnosisSheet] = useState(null);
   const [num, setNum] = useState(1);
 
-  async function getFirstDiagnosisSheet() {
-    const result = await GetDiagnosisSheet({num: 1});
-    if (result.statusCode === '200') {
-      setDiagnosisSheet(result.diagnosisSheet);
-      return;
-    }
-
-    ConfirmAlert({
-      title: '진단지 로드 실패',
-      message: '진단지 로드에 실패하였습니다.',
-      onPress: () => {},
-    });
-  }
-
-  async function getPrevDiagnosisSheet() {
-    if (num == 1) {
-      return;
-    }
-
-    setNum(prev => (prev -= 1));
+  async function getDiagnosisSheet() {
     const result = await GetDiagnosisSheet({num: num});
     if (result.statusCode === '200') {
       setDiagnosisSheet(result.diagnosisSheet);
@@ -50,48 +31,49 @@ function DiagnosisPage({navigation}) {
     });
   }
 
-  async function getNextDiagnosisSheet() {
-    if (num == 13) {
+  function getPrevDiagnosisSheet() {
+    if (num >= 2) {
+      setNum(prev => prev - 1);
+    }
+  }
+
+  function getNextDiagnosisSheet() {
+    if (num < 11) {
+      setNum(prev => prev + 1);
+    } else {
       navigation.navigate('Diagnosis Result');
       setNum(1);
-      return;
     }
-
-    setNum(prev => (prev += 1));
-    const result = await GetDiagnosisSheet({num: num});
-    if (result.statusCode === '200') {
-      setDiagnosisSheet(result.diagnosisSheet);
-      return;
-    }
-
-    ConfirmAlert({
-      title: '진단지 로드 실패',
-      message: '진단지 로드에 실패하였습니다.',
-      onPress: () => {},
-    });
   }
 
   useEffect(() => {
-    getFirstDiagnosisSheet();
-  }, []);
+    getDiagnosisSheet();
+  }, [num]);
 
-  return (
-    <View style={styles.container}>
-      <Diagnosis1Component diagnosisSheet={diagnosisSheet} />
-      {/* <Diagnosis2Component diagnosisSheet={diagnosisSheet} />
-      <Diagnosis3Component diagnosisSheet={diagnosisSheet} /> */}
-      <View style={styles.buttonDiv}>
-        <MainMediumButtonGray
-          text="이전"
-          onPress={() => getPrevDiagnosisSheet()}
-        />
-        <MainMediumButtonBlack
-          text="다음"
-          onPress={() => getNextDiagnosisSheet()}
-        />
+  if (diagnosisSheet) {
+    return (
+      <View style={styles.container}>
+        {num == 2 ? (
+          <Diagnosis2Component diagnosisSheet={diagnosisSheet} />
+        ) : num == 4 ? (
+          <Diagnosis3Component diagnosisSheet={diagnosisSheet} />
+        ) : (
+          <Diagnosis1Component diagnosisSheet={diagnosisSheet} />
+        )}
+
+        <View style={styles.buttonDiv}>
+          <MainMediumButtonGray
+            text="이전"
+            onPress={() => getPrevDiagnosisSheet()}
+          />
+          <MainMediumButtonBlack
+            text={num == 11 ? '제출하기' : '다음'}
+            onPress={() => getNextDiagnosisSheet()}
+          />
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 export default DiagnosisPage;
@@ -99,18 +81,15 @@ export default DiagnosisPage;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     flex: 1,
-    marginTop: -100,
   },
   buttonDiv: {
     width: 330,
-    height: 30,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    marginTop: 50,
   },
 });

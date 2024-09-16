@@ -12,7 +12,7 @@ export default async function GetDiagnosisSheet({num}) {
   });
 
   const res = await result.json();
-  console.log(res);
+  // console.log(res);
 
   return res;
 }
