@@ -1,38 +1,43 @@
+import {useState} from 'react';
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
-import xMark from '../../../Utils/Asset/xmark.png';
-import checkMark from '../../../Utils/Asset/checkmark.png';
 
+import InputSmall from '../Component/InputSmall';
+
+/**
+ * score 기입 문제
+ *
+ * @param {} param0
+ * @returns
+ */
 function Diagnosis1Component({diagnosisSheet}) {
+  const [score, setScore] = useState(null);
+
   return (
     <View>
-      <View style={styles.numberDiv}>
-        <Text style={styles.number}>문제 {diagnosisSheet.number}</Text>
-      </View>
-      <View style={styles.questionBox}>
-        <Text style={styles.questionText}>{diagnosisSheet.question}</Text>
-      </View>
+      <View style={styles.outerBox}>
+        <View style={styles.numberDiv}>
+          <Text style={styles.number}>문제 {diagnosisSheet.number}</Text>
+        </View>
+        <View style={styles.questionBox}>
+          <Text style={styles.questionText}>{diagnosisSheet.question}</Text>
+        </View>
 
-      <View style={styles.numberDiv}>
-        <Text style={styles.number}>메뉴얼</Text>
-      </View>
-      <View style={styles.menualBox}>
-        <Text>{diagnosisSheet.direction}</Text>
-      </View>
+        <View style={styles.numberDiv}>
+          <Text style={styles.number}>메뉴얼</Text>
+        </View>
+        <View style={styles.menualBox}>
+          <Text style={styles.menualText}>{diagnosisSheet.direction}</Text>
+        </View>
 
-      <View style={styles.numberDiv}>
-        <Text style={styles.number}>정답</Text>
-      </View>
-      <View style={styles.answerBox}>
-        <Text>{diagnosisSheet.answer}</Text>
-      </View>
-
-      <View style={styles.markButtonDiv}>
-        <TouchableOpacity>
-          <Image source={xMark} style={styles.markImg} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={checkMark} style={styles.markImg} />
-        </TouchableOpacity>
+        <View style={styles.numberDiv}>
+          <Text style={styles.number}>점수</Text>
+        </View>
+        <View style={styles.answerBox}>
+          <InputSmall placeholder="" value={score} onChange={setScore} />
+          <Text style={styles.scoreText}>
+            점 {`(가산한 점수를 입력하여주세요)`}
+          </Text>
+        </View>
       </View>
     </View>
   );
@@ -41,6 +46,9 @@ function Diagnosis1Component({diagnosisSheet}) {
 export default Diagnosis1Component;
 
 const styles = StyleSheet.create({
+  outerBox: {
+    height: 500,
+  },
   numberDiv: {
     width: 318,
     height: 32,
@@ -57,26 +65,25 @@ const styles = StyleSheet.create({
   questionText: {
     width: 278,
     flexWrap: 'wrap',
+    lineHeight: 20,
   },
   menualBox: {
     borderWidth: 0.2,
     width: 318,
     padding: 20,
   },
+  menualText: {
+    lineHeight: 20,
+  },
   answerBox: {
     width: 318,
-    borderWidth: 0.2,
-  },
-  markButtonDiv: {
-    width: 308,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 30,
-    marginBottom: 30,
+    marginTop: 20,
+    gap: 10,
   },
-  markImg: {
-    width: 40,
-    height: 40,
+  scoreText: {
+    fontSize: 15,
+    marginTop: 10,
   },
 });

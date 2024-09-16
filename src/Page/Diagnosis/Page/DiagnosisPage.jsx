@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
   },
   buttonDiv: {
     width: 330,
-    // height: 30,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
