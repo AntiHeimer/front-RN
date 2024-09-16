@@ -1,6 +1,7 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {View, Text, StyleSheet} from 'react-native';
+import InputSmall from '../Component/InputSmall';
 
 /**
  * 암산 문제
@@ -11,7 +12,7 @@ import {View, Text, StyleSheet} from 'react-native';
 
 function Diagnosis3Component({diagnosisSheet}) {
   // useState로 calcArray 상태 선언
-  const [calcArray, setCalcArray] = useState([0, 0, 0, 0, 0]);
+  const [calcArray, setCalcArray] = useState(['', '', '', '', '']);
 
   // 배열의 특정 인덱스 값을 업데이트하는 함수
   const updateArrayValue = (index, newValue) => {
@@ -20,6 +21,10 @@ function Diagnosis3Component({diagnosisSheet}) {
     newArray[index] = newValue;
     setCalcArray(newArray);
   };
+
+  useEffect(() => {
+    console.log(calcArray);
+  }, [calcArray]);
 
   return (
     <View style={styles.outerBox}>
@@ -39,7 +44,44 @@ function Diagnosis3Component({diagnosisSheet}) {
         <Text style={styles.number}>정답</Text>
       </View>
       <View style={styles.answerBox}>
-        <Text>{diagnosisSheet.answer}</Text>
+        <View style={styles.row}>
+          <Text style={styles.answerText}>100 - 7 = </Text>
+          <InputSmall
+            placeholder=""
+            value={calcArray[0].toString()}
+            onChange={value => updateArrayValue(0, value)}
+          />
+
+          <Text style={styles.answerText}> - 7 = </Text>
+          <InputSmall
+            placeholder=""
+            value={calcArray[1].toString()}
+            onChange={value => updateArrayValue(1, value)}
+          />
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.answerText}> - 7 = </Text>
+          <InputSmall
+            placeholder=""
+            value={calcArray[2].toString()}
+            onChange={value => updateArrayValue(2, value)}
+          />
+
+          <Text style={styles.answerText}> - 7 = </Text>
+          <InputSmall
+            placeholder=""
+            value={calcArray[3].toString()}
+            onChange={value => updateArrayValue(3, value)}
+          />
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.answerText}> - 7 = </Text>
+          <InputSmall
+            placeholder=""
+            value={calcArray[4].toString()}
+            onChange={value => updateArrayValue(4, value)}
+          />
+        </View>
       </View>
     </View>
   );
@@ -80,5 +122,15 @@ const styles = StyleSheet.create({
   answerBox: {
     width: 318,
     height: 200,
+    display: 'flex',
+    padding: 10,
+  },
+  answerText: {
+    fontSize: 15,
+    marginTop: 5,
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
   },
 });

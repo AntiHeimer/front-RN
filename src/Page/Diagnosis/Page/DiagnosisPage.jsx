@@ -67,7 +67,7 @@ function DiagnosisPage({navigation}) {
             onPress={() => getPrevDiagnosisSheet()}
           />
           <MainMediumButtonBlack
-            text="다음"
+            text={num == 11 ? '제출하기' : '다음'}
             onPress={() => getNextDiagnosisSheet()}
           />
         </View>

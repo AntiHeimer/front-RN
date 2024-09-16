@@ -131,26 +131,10 @@ const styles = StyleSheet.create({
     marginLeft: 7,
     marginRight: 14,
   },
-  button: {
-    borderWidth: 0.2,
-    borderRadius: 90,
-    padding: 10,
-    margin: 6,
-  },
-  selectedButton: {
-    backgroundColor: 'black',
-  },
-  selectedButtonText: {
-    color: 'white',
-  },
-  seasonButtonText: {
-    width: 30,
-    textAlign: 'center',
-  },
   dropdownView: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginLeft: -50,
+    marginLeft: -80,
   },
 });
