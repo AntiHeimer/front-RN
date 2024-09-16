@@ -17,27 +17,7 @@ function DiagnosisPage({navigation}) {
   const [diagnosisSheet, setDiagnosisSheet] = useState(null);
   const [num, setNum] = useState(1);
 
-  async function getFirstDiagnosisSheet() {
-    const result = await GetDiagnosisSheet({num: 1});
-    if (result.statusCode === '200') {
-      setDiagnosisSheet(result.diagnosisSheet);
-
-      return;
-    }
-
-    ConfirmAlert({
-      title: '진단지 로드 실패',
-      message: '진단지 로드에 실패하였습니다.',
-      onPress: () => {},
-    });
-  }
-
-  async function getPrevDiagnosisSheet() {
-    if (num == 1) {
-      return;
-    }
-
-    setNum(prev => (prev -= 1));
+  async function getDiagnosisSheet() {
     const result = await GetDiagnosisSheet({num: num});
     if (result.statusCode === '200') {
       setDiagnosisSheet(result.diagnosisSheet);
@@ -51,37 +31,30 @@ function DiagnosisPage({navigation}) {
     });
   }
 
-  async function getNextDiagnosisSheet() {
-    if (num == 12) {
+  function getPrevDiagnosisSheet() {
+    if (num > 2) {
+      setNum(prev => prev - 1);
+    }
+  }
+
+  function getNextDiagnosisSheet() {
+    if (num < 11) {
+      setNum(prev => prev + 1);
+    } else {
       navigation.navigate('Diagnosis Result');
       setNum(1);
-      return;
     }
-
-    setNum(prev => (prev += 1));
-    const result = await GetDiagnosisSheet({num: num});
-    if (result.statusCode === '200') {
-      setDiagnosisSheet(result.diagnosisSheet);
-      return;
-    }
-
-    ConfirmAlert({
-      title: '진단지 로드 실패',
-      message: '진단지 로드에 실패하였습니다.',
-      onPress: () => {},
-    });
   }
 
   useEffect(() => {
-    getFirstDiagnosisSheet();
-  }, []);
+    getDiagnosisSheet();
+  }, [num]);
 
   if (diagnosisSheet) {
     return (
       <View style={styles.container}>
         <Diagnosis1Component diagnosisSheet={diagnosisSheet} />
-        {/* <Diagnosis2Component diagnosisSheet={diagnosisSheet} />
-      <Diagnosis3Component diagnosisSheet={diagnosisSheet} /> */}
+
         <View style={styles.buttonDiv}>
           <MainMediumButtonGray
             text="이전"
