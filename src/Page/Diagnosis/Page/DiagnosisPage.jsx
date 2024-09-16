@@ -32,7 +32,7 @@ function DiagnosisPage({navigation}) {
   }
 
   function getPrevDiagnosisSheet() {
-    if (num > 2) {
+    if (num >= 2) {
       setNum(prev => prev - 1);
     }
   }
@@ -75,18 +75,16 @@ export default DiagnosisPage;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     flex: 1,
-    marginTop: -100,
   },
   buttonDiv: {
     width: 330,
-    height: 30,
+    // height: 30,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    marginTop: 50,
   },
 });

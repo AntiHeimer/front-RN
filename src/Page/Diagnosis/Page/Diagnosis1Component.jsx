@@ -2,13 +2,6 @@ import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import xMark from '../../../Utils/Asset/xmark.png';
 import checkMark from '../../../Utils/Asset/checkmark.png';
 
-/**
- * score return 문제
- *
- * @param {} param0
- * @returns
- */
-
 function Diagnosis1Component({diagnosisSheet}) {
   return (
     <View>
@@ -16,7 +9,7 @@ function Diagnosis1Component({diagnosisSheet}) {
         <Text style={styles.number}>문제 {diagnosisSheet.number}</Text>
       </View>
       <View style={styles.questionBox}>
-        <Text>{diagnosisSheet.question}</Text>
+        <Text style={styles.questionText}>{diagnosisSheet.question}</Text>
       </View>
 
       <View style={styles.numberDiv}>
@@ -59,16 +52,20 @@ const styles = StyleSheet.create({
   questionBox: {
     borderWidth: 0.2,
     width: 318,
-    height: 80,
+    padding: 20,
+  },
+  questionText: {
+    width: 278,
+    flexWrap: 'wrap',
   },
   menualBox: {
     borderWidth: 0.2,
     width: 318,
-    height: 60,
+    padding: 20,
   },
   answerBox: {
     width: 318,
-    height: 200,
+    borderWidth: 0.2,
   },
   markButtonDiv: {
     width: 308,
@@ -76,6 +73,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 30,
+    marginBottom: 30,
   },
   markImg: {
     width: 40,
