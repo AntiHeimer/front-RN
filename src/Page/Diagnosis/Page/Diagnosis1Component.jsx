@@ -15,17 +15,23 @@ function Diagnosis1Component({diagnosisSheet}) {
       <View style={styles.numberDiv}>
         <Text style={styles.number}>문제 {diagnosisSheet.number}</Text>
       </View>
-      <View style={styles.questionBox}>{diagnosisSheet.question}</View>
+      <View style={styles.questionBox}>
+        <Text>{diagnosisSheet.question}</Text>
+      </View>
 
       <View style={styles.numberDiv}>
         <Text style={styles.number}>메뉴얼</Text>
       </View>
-      <View style={styles.menualBox}>{diagnosisSheet.direction}</View>
+      <View style={styles.menualBox}>
+        <Text>{diagnosisSheet.direction}</Text>
+      </View>
 
       <View style={styles.numberDiv}>
         <Text style={styles.number}>정답</Text>
       </View>
-      <View style={styles.answerBox}>{diagnosisSheet.answer}</View>
+      <View style={styles.answerBox}>
+        <Text>{diagnosisSheet.answer}</Text>
+      </View>
 
       <View style={styles.markButtonDiv}>
         <TouchableOpacity>

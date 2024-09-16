@@ -21,6 +21,7 @@ function DiagnosisPage({navigation}) {
     const result = await GetDiagnosisSheet({num: 1});
     if (result.statusCode === '200') {
       setDiagnosisSheet(result.diagnosisSheet);
+
       return;
     }
 
@@ -51,7 +52,7 @@ function DiagnosisPage({navigation}) {
   }
 
   async function getNextDiagnosisSheet() {
-    if (num == 13) {
+    if (num == 12) {
       navigation.navigate('Diagnosis Result');
       setNum(1);
       return;
@@ -75,23 +76,25 @@ function DiagnosisPage({navigation}) {
     getFirstDiagnosisSheet();
   }, []);
 
-  return (
-    <View style={styles.container}>
-      <Diagnosis1Component diagnosisSheet={diagnosisSheet} />
-      {/* <Diagnosis2Component diagnosisSheet={diagnosisSheet} />
+  if (diagnosisSheet) {
+    return (
+      <View style={styles.container}>
+        <Diagnosis1Component diagnosisSheet={diagnosisSheet} />
+        {/* <Diagnosis2Component diagnosisSheet={diagnosisSheet} />
       <Diagnosis3Component diagnosisSheet={diagnosisSheet} /> */}
-      <View style={styles.buttonDiv}>
-        <MainMediumButtonGray
-          text="이전"
-          onPress={() => getPrevDiagnosisSheet()}
-        />
-        <MainMediumButtonBlack
-          text="다음"
-          onPress={() => getNextDiagnosisSheet()}
-        />
+        <View style={styles.buttonDiv}>
+          <MainMediumButtonGray
+            text="이전"
+            onPress={() => getPrevDiagnosisSheet()}
+          />
+          <MainMediumButtonBlack
+            text="다음"
+            onPress={() => getNextDiagnosisSheet()}
+          />
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 export default DiagnosisPage;
