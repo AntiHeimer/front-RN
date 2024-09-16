@@ -53,7 +53,13 @@ function DiagnosisPage({navigation}) {
   if (diagnosisSheet) {
     return (
       <View style={styles.container}>
-        <Diagnosis1Component diagnosisSheet={diagnosisSheet} />
+        {num == 2 ? (
+          <Diagnosis2Component diagnosisSheet={diagnosisSheet} />
+        ) : num == 4 ? (
+          <Diagnosis3Component diagnosisSheet={diagnosisSheet} />
+        ) : (
+          <Diagnosis1Component diagnosisSheet={diagnosisSheet} />
+        )}
 
         <View style={styles.buttonDiv}>
           <MainMediumButtonGray

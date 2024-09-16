@@ -22,19 +22,19 @@ function Diagnosis2Component({diagnosisSheet}) {
   const [season, setSeason] = useState(null);
 
   return (
-    <View>
+    <View style={styles.outerBox}>
       <View style={styles.numberDiv}>
         <Text style={styles.number}>문제 {diagnosisSheet.number}</Text>
       </View>
       <View style={styles.questionBox}>
-        <Text>{diagnosisSheet.question}</Text>
+        <Text style={styles.questionText}>{diagnosisSheet.question}</Text>
       </View>
 
       <View style={styles.numberDiv}>
         <Text style={styles.number}>메뉴얼</Text>
       </View>
       <View style={styles.menualBox}>
-        <Text>{diagnosisSheet.direction}</Text>
+        <Text style={styles.menualText}>{diagnosisSheet.direction}</Text>
       </View>
 
       <View style={styles.numberDiv}>
@@ -82,6 +82,9 @@ function Diagnosis2Component({diagnosisSheet}) {
 export default Diagnosis2Component;
 
 const styles = StyleSheet.create({
+  outerBox: {
+    height: 500,
+  },
   numberDiv: {
     width: 318,
     height: 32,
@@ -93,12 +96,20 @@ const styles = StyleSheet.create({
   questionBox: {
     borderWidth: 0.2,
     width: 318,
-    height: 80,
+    padding: 20,
+  },
+  questionText: {
+    width: 278,
+    flexWrap: 'wrap',
+    lineHeight: 20,
   },
   menualBox: {
     borderWidth: 0.2,
     width: 318,
-    height: 60,
+    padding: 20,
+  },
+  menualText: {
+    lineHeight: 20,
   },
   answerBox: {
     width: 318,
