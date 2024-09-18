@@ -10,7 +10,7 @@ export default async function FindNotificationFunction() {
   const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/find-notification/${encodedUuid}`,
+    `${process.env.API}/find-notification?memberUuid=${encodedUuid}`,
     {
       method: 'GET',
       headers: {
