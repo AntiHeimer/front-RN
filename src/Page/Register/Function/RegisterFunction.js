@@ -9,7 +9,8 @@ export default async function RegisterFunction({userId, requestType}) {
   const result = await fetch(`${process.env.API}/request-relation`, {
     method: 'POST',
     headers: {
-      Autorization: `Bearer ${token}`,
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       fromMemberUuid: uuid,
