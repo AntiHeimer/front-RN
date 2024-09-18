@@ -2,14 +2,9 @@ import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-function Dropdown2() {
+function Dropdown2({wardList, setWardList}) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    {label: '강민재', value: '강민재'},
-    {label: '강민숙', value: '강민숙'},
-    {label: '홍길동', value: '홍길동'},
-  ]);
 
   return (
     <View style={styles.container}>
@@ -17,10 +12,10 @@ function Dropdown2() {
         <DropDownPicker
           open={open}
           value={value}
-          items={items}
+          items={wardList}
           setOpen={setOpen}
           setValue={setValue}
-          setItems={setItems}
+          setItems={setWardList}
           placeholder={'피보호자'}
           style={styles.dropdown}
           dropDownContainerStyle={styles.dropdown}

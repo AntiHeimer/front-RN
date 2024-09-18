@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {StyleSheet, View, RefreshControl, ScrollView} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import Graph from '../Component/Graph';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
@@ -10,14 +10,6 @@ import PostWalkDataFunction from '../Function/PostWalkDataFunction';
 import PostSleepDataFunction from '../Function/PostSleepDataFunction';
 
 function MainPage({navigation}) {
-  const [isRefreshing, setIsRefreshing] = useState(false);
-
-  async function handleRefresh() {
-    setIsRefreshing(true);
-
-    setIsRefreshing(false);
-  }
-
   useEffect(() => {
     PostSleepDataFunction();
     PostActiveDataFunction();
@@ -27,29 +19,23 @@ function MainPage({navigation}) {
 
   return (
     <View style={styles.container}>
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
-        }
-        style={styles.scrollViewContent}>
-        <View style={styles.subContainer}>
-          <View style={styles.graphContainer}>
-            <Graph />
-          </View>
-          <View style={styles.buttonDiv}>
-            <MainButtonBlack
-              text="진단하기"
-              onPress={() => navigation.navigate('Diagnosis')}
-            />
-          </View>
-          <View style={styles.buttonDiv}>
-            <MainButtonBlack
-              text="진단 결과조회하기"
-              onPress={() => navigation.navigate('Diagnosis Result Inquiry')}
-            />
-          </View>
+      <View style={styles.subContainer}>
+        <View style={styles.graphContainer}>
+          <Graph />
         </View>
-      </ScrollView>
+        <View style={styles.buttonDiv}>
+          <MainButtonBlack
+            text="진단하기"
+            onPress={() => navigation.navigate('Diagnosis')}
+          />
+        </View>
+        <View style={styles.buttonDiv}>
+          <MainButtonBlack
+            text="진단 결과조회하기"
+            onPress={() => navigation.navigate('Diagnosis Result Inquiry')}
+          />
+        </View>
+      </View>
     </View>
   );
 }
