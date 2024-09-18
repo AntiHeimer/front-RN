@@ -1,4 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
+import {useEffect, useState} from 'react';
 
 import Row from '../Component/Row';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
@@ -6,8 +7,13 @@ import {Storage} from '../../../Utils/Function/Storage';
 import {CancelAlert} from '../../../Utils/Component/CustomAlert';
 
 import LogoutFunction from '../../Login/Function/LogoutFunction';
+import GetProtectorsFunction from '../Function/GetProtectorsFunction';
+import GetWardsFunction from '../Function/GetWardsFunction';
 
 function AccountPage({navigation}) {
+  const [protectorList, setProtectorList] = useState(null);
+  const [wardList, setWardList] = useState(null);
+
   async function Logout() {
     CancelAlert({
       title: '로그아웃',
@@ -27,6 +33,19 @@ function AccountPage({navigation}) {
       onPressCancel: () => {},
     });
   }
+
+  async function getProtector() {
+    const result = await GetProtectorsFunction();
+  }
+
+  async function getWard() {
+    const result = await GetWardsFunction();
+  }
+
+  useEffect(() => {
+    getProtector();
+    getWard();
+  }, []);
 
   return (
     <View style={styles.container}>

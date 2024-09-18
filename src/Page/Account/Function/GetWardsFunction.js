@@ -10,7 +10,7 @@ export default async function GetWardsFunction() {
   const encodedUuid = encodeURIComponent({encryptedUuid});
 
   const result = await fetch(
-    `${process.env.API}/get/ward?uuid=${encodedUuid}`,
+    `${process.env.API}/info-relation/ward/${encodedUuid}`,
     {
       method: 'GET',
       headers: {
@@ -20,6 +20,7 @@ export default async function GetWardsFunction() {
   );
 
   const res = await result.json();
+  console.log(res);
 
   return res;
 }
