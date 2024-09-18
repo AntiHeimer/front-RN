@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import Row from '../Component/Row';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 import {Storage} from '../../../Utils/Function/Storage';
-import {CancelAlert} from '../../../Utils/Component/CustomAlert';
+import {CancelAlert, ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 
 import LogoutFunction from '../../Login/Function/LogoutFunction';
 import GetProtectorsFunction from '../Function/GetProtectorsFunction';
@@ -36,10 +36,32 @@ function AccountPage({navigation}) {
 
   async function getProtector() {
     const result = await GetProtectorsFunction();
+    if (result.statusCode === '200') {
+      setProtectorList(result.infoGuardianDtoList);
+      return;
+    }
+
+    ConfirmAlert({
+      title: '보호자 정보 로드 실패',
+      message: '보호자 정보를 불러오는데 실패하였습니다.',
+      onPress: () => {},
+    });
+    return;
   }
 
   async function getWard() {
     const result = await GetWardsFunction();
+    if (result.statusCode === '200') {
+      setWardList(result.infoWardDtoList);
+      return;
+    }
+
+    ConfirmAlert({
+      title: '피보호자 정보 로드 실패',
+      message: '피보호자 정보를 불러오는데 실패하였습니다.',
+      onPress: () => {},
+    });
+    return;
   }
 
   useEffect(() => {
@@ -47,24 +69,38 @@ function AccountPage({navigation}) {
     getWard();
   }, []);
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>나의 정보</Text>
-      <Row name="강민재" id="minijae011030" />
-      <View style={styles.hr} />
+  if (protectorList && wardList) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>나의 정보</Text>
+        <Row name="강민재" id="minijae011030" />
+        <View style={styles.hr} />
 
-      <Text style={styles.text}>나의 보호자 정보</Text>
-      <Row name="홍길동" id="gildong1122" />
-      <View style={styles.hr} />
+        <Text style={styles.text}>나의 보호자 정보</Text>
+        {protectorList.map(protector => {
+          return (
+            <View key={protector.memberUuid}>
+              <Row name={protector.name} id={protector.id} />
+            </View>
+          );
+        })}
+        <View style={styles.hr} />
 
-      <Text style={styles.text}>나의 피보호자 정보</Text>
-      <Row name="강민숙" id="minsook0627" />
-      <View style={styles.hr} />
-      <View style={styles.buttonDiv}>
-        <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+        <Text style={styles.text}>나의 피보호자 정보</Text>
+        {wardList.map(ward => {
+          return (
+            <View key={ward.memberUuid}>
+              <Row name={ward.name} id={ward.id} />
+            </View>
+          );
+        })}
+        <View style={styles.hr} />
+        <View style={styles.buttonDiv}>
+          <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 export default AccountPage;
