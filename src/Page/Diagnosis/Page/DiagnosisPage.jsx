@@ -12,9 +12,12 @@ import Diagnosis2Component from './Diagnosis2Component';
 import Diagnosis3Component from './Diagnosis3Component';
 
 import GetDiagnosisSheet from '../Function/GetDiagnosisSheet';
+import GetRandomWordFunction from '../Function/GetRandomWordFunction';
 
 function DiagnosisPage({navigation}) {
   const [diagnosisSheet, setDiagnosisSheet] = useState(null);
+  const [randomWords, setRandomWords] = useState(null);
+  const [isRandomWordsLoaded, setIsRandomWordsLoaded] = useState(false);
   const [num, setNum] = useState(1);
 
   async function getDiagnosisSheet() {
@@ -29,6 +32,26 @@ function DiagnosisPage({navigation}) {
       message: '진단지 로드에 실패하였습니다.',
       onPress: () => {},
     });
+
+    return;
+  }
+
+  async function getRandomWords() {
+    const result = await GetRandomWordFunction();
+
+    if (result.statusCode === '200') {
+      setRandomWords(result.randomWords);
+      setIsRandomWordsLoaded(true);
+      return;
+    }
+
+    ConfirmAlert({
+      title: '단어 로드 실패',
+      message: '단어 로드에 실패하였습니다.',
+      onPress: () => {},
+    });
+
+    return;
   }
 
   function getPrevDiagnosisSheet() {
@@ -47,6 +70,12 @@ function DiagnosisPage({navigation}) {
   }
 
   useEffect(() => {
+    if (!isRandomWordsLoaded) {
+      getRandomWords();
+    }
+  }, []);
+
+  useEffect(() => {
     getDiagnosisSheet();
   }, [num]);
 
@@ -58,7 +87,11 @@ function DiagnosisPage({navigation}) {
         ) : num == 4 ? (
           <Diagnosis3Component diagnosisSheet={diagnosisSheet} />
         ) : (
-          <Diagnosis1Component diagnosisSheet={diagnosisSheet} />
+          <Diagnosis1Component
+            diagnosisSheet={diagnosisSheet}
+            randomWords={randomWords}
+            num={num}
+          />
         )}
 
         <View style={styles.buttonDiv}>
