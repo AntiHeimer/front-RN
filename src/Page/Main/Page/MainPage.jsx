@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 
 import Graph from '../Component/Graph';

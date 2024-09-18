@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
+
 import DropDownPicker from 'react-native-dropdown-picker';
 
 function Dropdown2({wardList, setWardList}) {

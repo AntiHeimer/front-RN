@@ -1,12 +1,14 @@
 import {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
+import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
+
 import Dropdown1 from './Dropdown1';
 import Dropdown2 from './Dropdown2';
 import SleepChart from './SleepChart';
 import WalkChart from './WalkChart';
+
 import GetWardsFunction from '../../Account/Function/GetWardsFunction';
-import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 
 function Graph() {
   const [kindOfData, setKindOfData] = useState('수면');
