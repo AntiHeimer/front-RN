@@ -7,10 +7,10 @@ export default async function GetProtectorsFunction() {
   const token = userState.jwtToken;
 
   const encryptedUuid = EncryptFunction({data: uuid});
-  const encodedUuid = encodeURIComponent({encryptedUuid});
+  const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/info-relation/guardian/${encodedUuid}`,
+    `${process.env.API}/info-relation/guardian?memberUuid=${encodedUuid}`,
     {
       method: 'GET',
       headers: {

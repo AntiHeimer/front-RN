@@ -7,7 +7,7 @@ export default async function GetUserAccountFunction() {
   const token = userState.jwtToken;
 
   const encryptedUuid = EncryptFunction({data: uuid});
-  const encodedUuid = encodeURIComponent({encryptedUuid});
+  const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
     `${process.env.API}/get/user?uuid=${encodedUuid}`,
