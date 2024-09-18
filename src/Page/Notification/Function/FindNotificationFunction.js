@@ -1,7 +1,7 @@
 import EncryptFunction from '../../../Utils/Function/EncryptFunction';
 import {Storage} from '../../../Utils/Function/Storage';
 
-export default async function GetUserAccountFunction() {
+export default async function FindNotificationFunction() {
   const userState = await Storage.getItem('userState');
   const uuid = userState.uuid;
   const token = userState.jwtToken;
@@ -10,7 +10,7 @@ export default async function GetUserAccountFunction() {
   const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/get/user?uuid=${encodedUuid}`,
+    `${process.env.API}/find-notification?memberUuid=${encodedUuid}`,
     {
       method: 'GET',
       headers: {

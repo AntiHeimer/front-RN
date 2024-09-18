@@ -1,18 +1,35 @@
-import {StyleSheet, Text, View} from 'react-native';
-import {
-  MainSmallButtonBlack,
-  MainSmallButtonGray,
-} from '../../../Utils/Component/MainButton';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
-function Row3() {
+import DeleteNotificationFunction from '../Function/DeleteNotificationFunction';
+
+function Row3({notification, navigation}) {
+  async function DeleteNotification() {
+    const result = await DeleteNotificationFunction({
+      notificationUuid: notification.notificationUuid,
+    });
+
+    if (result.statusCode === '200') {
+      navigation.replace('Notification');
+    }
+
+    return;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.circle} />
-      <Text style={styles.message}>홍길동님이 보호자 요청을 수락했습니다.</Text>
-      {/* <View style={styles.buttonDiv}>
-        <MainSmallButtonBlack text="수락" />
-        <MainSmallButtonGray text="거절" />
-      </View> */}
+      <Text style={styles.message}>
+        {notification.fromMemberName}님이{' '}
+        {notification.notificationType === 'resultGuardian'
+          ? '보호자'
+          : '피보호자'}{' '}
+        요청을 수락했습니다.
+      </Text>
+      <TouchableOpacity
+        style={styles.removeButton}
+        onPress={() => DeleteNotification()}>
+        <Text style={styles.removeButtonText}>x</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -33,11 +50,10 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     height: 40,
     width: 40,
-    marginLeft: 25,
+
     marginRight: 15,
   },
   message: {
-    // width: 150,
     marginRight: 10,
     marginTop: 10,
     fontSize: 13,
@@ -46,5 +62,21 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     gap: 10,
+  },
+  removeButton: {
+    marginTop: 5,
+    marginLeft: 25,
+    borderWidth: 0.2,
+    borderRadius: 40,
+    width: 30,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  removeButtonText: {
+    fontSize: 20,
+    marginBottom: 4,
+    marginLeft: 1,
+    fontWeight: '200',
   },
 });

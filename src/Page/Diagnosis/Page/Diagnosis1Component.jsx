@@ -9,7 +9,7 @@ import InputSmall from '../Component/InputSmall';
  * @param {} param0
  * @returns
  */
-function Diagnosis1Component({diagnosisSheet}) {
+function Diagnosis1Component({diagnosisSheet, randomWords, num}) {
   const [score, setScore] = useState(null);
 
   return (
@@ -20,6 +20,12 @@ function Diagnosis1Component({diagnosisSheet}) {
         </View>
         <View style={styles.questionBox}>
           <Text style={styles.questionText}>{diagnosisSheet.question}</Text>
+          <View style={styles.randomWords}>
+            {(num === 1 || num === 11) &&
+              randomWords.map((word, index) => {
+                return <Text key={index}>{word}</Text>;
+              })}
+          </View>
         </View>
 
         <View style={styles.numberDiv}>
@@ -84,6 +90,12 @@ const styles = StyleSheet.create({
   },
   scoreText: {
     fontSize: 15,
+    marginTop: 10,
+  },
+  randomWords: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 10,
     marginTop: 10,
   },
 });

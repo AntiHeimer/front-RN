@@ -1,18 +1,17 @@
 import EncryptFunction from '../../../Utils/Function/EncryptFunction';
 import {Storage} from '../../../Utils/Function/Storage';
 
-export default async function GetUserAccountFunction() {
+export default async function DeleteNotificationFunction({notificationUuid}) {
   const userState = await Storage.getItem('userState');
-  const uuid = userState.uuid;
   const token = userState.jwtToken;
 
-  const encryptedUuid = EncryptFunction({data: uuid});
+  const encryptedUuid = EncryptFunction({data: notificationUuid});
   const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/get/user?uuid=${encodedUuid}`,
+    `${process.env.API}/delete-notification?notificationUuid=${encodedUuid}`,
     {
-      method: 'GET',
+      method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,
       },
