@@ -1,25 +1,25 @@
 import {Storage} from '../../../Utils/Function/Storage';
 
-export default async function RegisterProtectorFunction({userId}) {
+export default async function RegisterFunction({userId, requestType}) {
   const userState = await Storage.getItem('userState');
 
   const uuid = userState.uuid;
   const token = userState.jwtToken;
 
-  const result = await fetch(`${process.env.API}/register/protector`, {
+  const result = await fetch(`${process.env.API}/request-relation`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'text/plain',
       Autorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      protector: userId,
-      uuid: uuid,
+      fromMemberUuid: uuid,
+      toMemberId: userId,
+      requestType: requestType,
     }),
   });
 
   const res = await result.json();
-  console.log('Register Protector result: %o', res);
+  console.log(`Register ${requestType} function result: %o`, res);
 
   return res;
 }

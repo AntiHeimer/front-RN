@@ -1,9 +1,10 @@
 import {StyleSheet, Text, View} from 'react-native';
 
-import Input from '../../../Utils/Component/Input';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
-import RegisterWardFunction from '../Function/RegisterWardFunction';
+import Input from '../../../Utils/Component/Input';
+
+import RegisterFunction from '../Function/RegisterFunction';
 
 /**
  * 피보호자 등록 화면 컴포넌트
@@ -19,8 +20,8 @@ import RegisterWardFunction from '../Function/RegisterWardFunction';
  */
 
 function RegisterWard({navigation, value, onChange}) {
-  async function RegisterFunction() {
-    const result = await RegisterWardFunction({userId: value});
+  async function registerFunction() {
+    const result = await RegisterFunction({userId: value, requestType: 'ward'});
     if (result.statusCode == '200') {
       ConfirmAlert({
         title: '요청 전송 완료',
@@ -54,7 +55,10 @@ function RegisterWard({navigation, value, onChange}) {
           security={false}
         />
       </View>
-      <MainButtonBlack text="피보호자 등록" onPress={RegisterFunction} />
+      <MainButtonBlack
+        text="피보호자 등록"
+        onPress={() => registerFunction()}
+      />
     </View>
   );
 }
