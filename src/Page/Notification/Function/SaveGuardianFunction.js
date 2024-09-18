@@ -23,7 +23,5 @@ export default async function SaveGuardianFunction({
 
   const res = await result.json();
 
-  console.log(res);
-
   return res;
 }

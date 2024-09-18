@@ -3,19 +3,18 @@ import {View, StyleSheet} from 'react-native';
 
 import DropDownPicker from 'react-native-dropdown-picker';
 
-function Dropdown2({wardList, setWardList}) {
+function Dropdown2({selectedUser, setSelectedUser, wardList, setWardList}) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
 
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <DropDownPicker
           open={open}
-          value={value}
+          value={selectedUser}
           items={wardList}
           setOpen={setOpen}
-          setValue={setValue}
+          setValue={setSelectedUser}
           setItems={setWardList}
           placeholder={'피보호자'}
           style={styles.dropdown}

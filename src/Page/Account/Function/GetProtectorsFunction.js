@@ -20,7 +20,6 @@ export default async function GetProtectorsFunction() {
   );
 
   const res = await result.json();
-  console.log(res);
 
   return res;
 }

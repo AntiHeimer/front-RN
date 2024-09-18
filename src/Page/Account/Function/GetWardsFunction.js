@@ -9,7 +9,6 @@ export default async function GetWardsFunction() {
   const encryptedUuid = EncryptFunction({data: uuid});
   const encodedUuid = encodeURIComponent(encryptedUuid);
 
-  console.log(encodedUuid);
   const result = await fetch(
     `${process.env.API}/info-relation/ward?memberUuid=${encodedUuid}`,
     {

@@ -20,7 +20,6 @@ export default async function RegisterFunction({userId, requestType}) {
   });
 
   const res = await result.json();
-  console.log(`Register ${requestType} function result: %o`, res);
 
   return res;
 }

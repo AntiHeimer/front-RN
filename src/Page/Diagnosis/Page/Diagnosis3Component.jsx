@@ -22,10 +22,6 @@ function Diagnosis3Component({diagnosisSheet}) {
     setCalcArray(newArray);
   };
 
-  useEffect(() => {
-    console.log(calcArray);
-  }, [calcArray]);
-
   return (
     <View style={styles.outerBox}>
       <View style={styles.numberDiv}>

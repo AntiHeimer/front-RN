@@ -12,6 +12,7 @@ import GetWardsFunction from '../../Account/Function/GetWardsFunction';
 
 function Graph() {
   const [kindOfData, setKindOfData] = useState('수면');
+  const [selectedUser, setSelectedUser] = useState(null);
   const [wardList, setWardList] = useState(null);
 
   async function getWardList() {
@@ -45,7 +46,14 @@ function Graph() {
       <Text style={styles.title}>수면 및 걸음 차트</Text>
       <View style={styles.dropdownContainer}>
         <Dropdown1 kindOfData={kindOfData} setKindOfData={setKindOfData} />
-        <Dropdown2 wardList={wardList} setWardList={setWardList} />
+        {wardList && (
+          <Dropdown2
+            selectedUser={selectedUser}
+            setSelectedUser={setSelectedUser}
+            wardList={wardList}
+            setWardList={setWardList}
+          />
+        )}
       </View>
       {kindOfData === '수면' ? <SleepChart /> : <WalkChart />}
     </View>

@@ -36,7 +36,6 @@ export default async function LoginFunction({id, password}) {
 
   // 서버 응답을 JSON 형식으로 파싱
   const res = await result.json();
-  console.log('Login Function: %o', res);
 
   return res;
 }
