@@ -4,11 +4,13 @@ import {View, StyleSheet, ScrollView, RefreshControl} from 'react-native';
 import Row from '../Component/Row';
 import Row2 from '../Component/Row2';
 import Row3 from '../Component/Row3';
+import FindNotificationFunction from '../Function/FindNotificationFunction';
 
 function NotificationPage() {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   async function LoadNotification() {
+    const res = await FindNotificationFunction();
     return;
   }
 
