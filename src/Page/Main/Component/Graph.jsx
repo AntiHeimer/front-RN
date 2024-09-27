@@ -9,9 +9,10 @@ import SleepChart from './SleepChart';
 import WalkChart from './WalkChart';
 
 import GetWardsFunction from '../../Account/Function/GetWardsFunction';
+import GetSleepDataFunction from '../Function/GetSleepDataFunction';
 
 function Graph() {
-  const [kindOfData, setKindOfData] = useState('수면');
+  const [kindOfData, setKindOfData] = useState('sleep');
   const [selectedUser, setSelectedUser] = useState(null);
   const [wardList, setWardList] = useState(null);
 
@@ -37,15 +38,30 @@ function Graph() {
     });
   }
 
+  async function GetSleepData() {
+    const result = await GetSleepDataFunction({
+      uuid: selectedUser,
+      date: '2024-09-22',
+    });
+  }
+
   useEffect(() => {
     getWardList();
   }, []);
+
+  useEffect(() => {
+    console.log(kindOfData, selectedUser);
+    if (kindOfData === 'sleep' && selectedUser) {
+      GetSleepData();
+    }
+  }, [kindOfData, selectedUser]);
 
   return (
     <View style={styles.graphContainer}>
       <Text style={styles.title}>수면 및 걸음 차트</Text>
       <View style={styles.dropdownContainer}>
         <Dropdown1 kindOfData={kindOfData} setKindOfData={setKindOfData} />
+
         {wardList && (
           <Dropdown2
             selectedUser={selectedUser}
@@ -55,7 +71,7 @@ function Graph() {
           />
         )}
       </View>
-      {kindOfData === '수면' ? <SleepChart /> : <WalkChart />}
+      {kindOfData === 'sleep' ? <SleepChart /> : <WalkChart />}
     </View>
   );
 }
