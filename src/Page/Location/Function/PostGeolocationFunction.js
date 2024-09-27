@@ -9,7 +9,7 @@ export default async function PostGeolocationFunction({location}) {
 
   const encryptedLocation = EncryptFunction({data: JSON.stringify(location)});
 
-  const result = await fetch(`${process.env.API}/save/location`, {
+  const result = await fetch(`${process.env.API}/location/save`, {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
@@ -19,6 +19,6 @@ export default async function PostGeolocationFunction({location}) {
   });
 
   const res = await result.json();
-
+  console.log('post geolocation function', res);
   return res;
 }

@@ -25,6 +25,7 @@ async function PostHealthDataFunction({type, startDate, endDate}) {
       if (data.length === 0) return; // 데이터가 없으면 반환
       // 'active' 타입의 경우 첫 번째 요소의 activeEnergyBurned를 추출
       data = data[0].activeEnergyBurned;
+      console.log(data);
       break;
 
     case 'move':
@@ -62,7 +63,7 @@ async function PostHealthDataFunction({type, startDate, endDate}) {
   const uuid = userState.uuid;
 
   // 서버로 데이터 전송
-  const result = await fetch(`${process.env.API}/save/${type}`, {
+  const result = await fetch(`${process.env.API}/health-data/save/${type}`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',

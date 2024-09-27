@@ -20,7 +20,7 @@ export default async function GetLatestHealthDateFunction({data}) {
   const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/recent?data=${data}&uuid=${encodedUuid}`,
+    `${process.env.API}/health-data/recent?data=${data}&memberUuid=${encodedUuid}`,
     {
       method: 'GET',
       headers: {

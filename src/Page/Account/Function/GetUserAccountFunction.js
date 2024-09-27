@@ -10,7 +10,7 @@ export default async function GetUserAccountFunction() {
   const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/get/user?uuid=${encodedUuid}`,
+    `${process.env.API}/member/info?memberUuid=${encodedUuid}`,
     {
       method: 'GET',
       headers: {
@@ -20,6 +20,6 @@ export default async function GetUserAccountFunction() {
   );
 
   const res = await result.json();
-
+  console.log(res);
   return res;
 }

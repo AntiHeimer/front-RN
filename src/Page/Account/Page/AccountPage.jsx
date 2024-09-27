@@ -9,8 +9,10 @@ import {CancelAlert, ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 import LogoutFunction from '../../Login/Function/LogoutFunction';
 import GetProtectorsFunction from '../Function/GetProtectorsFunction';
 import GetWardsFunction from '../Function/GetWardsFunction';
+import GetUserAccountFunction from '../Function/GetUserAccountFunction';
 
 function AccountPage({navigation}) {
+  const [userInfo, setUserInfo] = useState(null);
   const [protectorList, setProtectorList] = useState(null);
   const [wardList, setWardList] = useState(null);
 
@@ -32,6 +34,13 @@ function AccountPage({navigation}) {
       },
       onPressCancel: () => {},
     });
+  }
+
+  async function getUserInfo() {
+    const result = await GetUserAccountFunction();
+    if (result.statusCode === '200') {
+      setUserInfo;
+    }
   }
 
   async function getProtector() {
@@ -67,6 +76,7 @@ function AccountPage({navigation}) {
   useEffect(() => {
     getProtector();
     getWard();
+    getUserInfo();
   }, []);
 
   if (protectorList && wardList) {
@@ -101,6 +111,12 @@ function AccountPage({navigation}) {
       </View>
     );
   }
+
+  return (
+    <View style={styles.buttonDiv}>
+      <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+    </View>
+  );
 }
 
 export default AccountPage;
