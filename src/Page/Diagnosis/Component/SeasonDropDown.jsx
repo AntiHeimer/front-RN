@@ -5,10 +5,10 @@ import DropDownPicker from 'react-native-dropdown-picker';
 function SeasonDropDown({value, setValue}) {
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState([
-    {label: '봄', value: '봄'},
-    {label: '여름', value: '여름'},
-    {label: '가을', value: '가을'},
-    {label: '겨울', value: '겨울'},
+    {label: '봄', value: '1'},
+    {label: '여름', value: '2'},
+    {label: '가을', value: '3'},
+    {label: '겨울', value: '4'},
   ]);
 
   return (

@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {useEffect, useState} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 
 import InputSmall from '../Component/InputSmall';
 
@@ -9,9 +9,13 @@ import InputSmall from '../Component/InputSmall';
  * @param {} param0
  * @returns
  */
-function Diagnosis1Component({diagnosisSheet, randomWords, num}) {
-  const [score, setScore] = useState(null);
-
+function Diagnosis1Component({
+  diagnosisSheet,
+  randomWords,
+  num,
+  score,
+  setScore,
+}) {
   return (
     <View>
       <View style={styles.outerBox}>

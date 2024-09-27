@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {View, Text, StyleSheet} from 'react-native';
 
@@ -14,12 +14,18 @@ import DayOfWeekDropDown from '../Component/DayOfWeekDropDown';
  * @returns
  */
 
-function Diagnosis2Component({diagnosisSheet}) {
+function Diagnosis2Component({num, diagnosisSheet, setDianosisAnswer}) {
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
   const [date, setDate] = useState('');
   const [dayOfTheWeek, setDayOfTheWeek] = useState(null);
   const [season, setSeason] = useState(null);
+
+  useEffect(() => {
+    const anserArray = [year, month, date, dayOfTheWeek, season];
+
+    setDianosisAnswer(prev => ({...prev, [num]: anserArray}));
+  }, [year, month, date, dayOfTheWeek, season]);
 
   return (
     <View style={styles.outerBox}>
