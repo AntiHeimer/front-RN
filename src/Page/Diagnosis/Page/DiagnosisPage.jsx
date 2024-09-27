@@ -79,7 +79,7 @@ function DiagnosisPage({navigation}) {
     getDiagnosisSheet();
   }, [num]);
 
-  if (diagnosisSheet) {
+  if (diagnosisSheet && randomWords) {
     return (
       <View style={styles.container}>
         {num == 2 ? (
