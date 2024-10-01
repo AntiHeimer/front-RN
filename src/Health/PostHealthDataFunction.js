@@ -17,7 +17,6 @@ import HealthKitService from './HealthkitService';
  */
 async function PostHealthDataFunction({type, startDate, endDate}) {
   let data;
-  console.log(`post ${type}data start`);
 
   switch (type) {
     case 'active':
@@ -26,7 +25,6 @@ async function PostHealthDataFunction({type, startDate, endDate}) {
       if (data.length === 0) return; // 데이터가 없으면 반환
       // 'active' 타입의 경우 첫 번째 요소의 activeEnergyBurned를 추출
       data = data[0].activeEnergyBurned;
-      console.log(data);
       break;
 
     case 'move':

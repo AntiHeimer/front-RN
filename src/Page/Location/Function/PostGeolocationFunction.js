@@ -19,6 +19,6 @@ export default async function PostGeolocationFunction({location}) {
   });
 
   const res = await result.json();
-  console.log('post geolocation function', res);
+
   return res;
 }

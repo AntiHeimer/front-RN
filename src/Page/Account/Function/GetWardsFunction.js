@@ -20,6 +20,6 @@ export default async function GetWardsFunction() {
   );
 
   const res = await result.json();
-  console.log(res);
+
   return res;
 }

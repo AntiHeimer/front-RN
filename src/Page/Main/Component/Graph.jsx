@@ -41,7 +41,7 @@ function Graph() {
   async function GetSleepData() {
     const result = await GetSleepDataFunction({
       uuid: selectedUser,
-      date: '2024-09-22',
+      date: '2024-09-10',
     });
   }
 

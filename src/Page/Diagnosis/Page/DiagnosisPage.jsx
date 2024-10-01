@@ -100,6 +100,7 @@ function DiagnosisPage({navigation}) {
   useEffect(() => {
     console.log(diagnosisAnswer);
   }, [diagnosisAnswer]);
+
   if (diagnosisSheet && randomWords) {
     return (
       <View style={styles.container}>

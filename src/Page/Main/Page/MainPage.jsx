@@ -14,7 +14,7 @@ function MainPage({navigation}) {
     // PostSleepDataFunction();
     // PostActiveDataFunction();
     // PostMoveDataFunction();
-    PostWalkDataFunction();
+    // PostWalkDataFunction();
   }, []);
 
   return (
