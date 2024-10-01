@@ -39,8 +39,16 @@ function AccountPage({navigation}) {
   async function getUserInfo() {
     const result = await GetUserAccountFunction();
     if (result.statusCode === '200') {
-      setUserInfo;
+      setUserInfo(result.memberInfoDto);
+      return;
     }
+
+    ConfirmAlert({
+      title: '회원 정보 로드 실패',
+      message: '회원 정보를 불러오는데 실패하였습니다.',
+      onPress: () => {},
+    });
+    return;
   }
 
   async function getProtector() {
@@ -79,11 +87,11 @@ function AccountPage({navigation}) {
     getUserInfo();
   }, []);
 
-  if (protectorList && wardList) {
+  if (userInfo && protectorList && wardList) {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>나의 정보</Text>
-        <Row name="강민재" id="minijae011030" />
+        <Row name={userInfo.name} id={userInfo.id} />
         <View style={styles.hr} />
 
         <Text style={styles.text}>나의 보호자 정보</Text>

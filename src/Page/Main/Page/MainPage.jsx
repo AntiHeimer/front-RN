@@ -11,9 +11,9 @@ import PostSleepDataFunction from '../Function/PostSleepDataFunction';
 
 function MainPage({navigation}) {
   useEffect(() => {
-    PostSleepDataFunction();
-    PostActiveDataFunction();
-    PostMoveDataFunction();
+    // PostSleepDataFunction();
+    // PostActiveDataFunction();
+    // PostMoveDataFunction();
     PostWalkDataFunction();
   }, []);
 

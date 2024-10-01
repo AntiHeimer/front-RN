@@ -17,6 +17,7 @@ import HealthKitService from './HealthkitService';
  */
 async function PostHealthDataFunction({type, startDate, endDate}) {
   let data;
+  console.log(`post ${type}data start`);
 
   switch (type) {
     case 'active':

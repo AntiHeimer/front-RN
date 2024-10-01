@@ -18,8 +18,7 @@ export default async function GetUserAccountFunction() {
       },
     },
   );
-
   const res = await result.json();
-  console.log(res);
+
   return res;
 }

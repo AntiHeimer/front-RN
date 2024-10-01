@@ -10,7 +10,7 @@ export default async function GetProtectorsFunction() {
   const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/relation/info-relation/guardian?memberUuid=${encodedUuid}`,
+    `${process.env.API}/relation/info/guardian?memberUuid=${encodedUuid}`,
     {
       method: 'GET',
       headers: {
@@ -20,6 +20,6 @@ export default async function GetProtectorsFunction() {
   );
 
   const res = await result.json();
-
+  console.log(res);
   return res;
 }
