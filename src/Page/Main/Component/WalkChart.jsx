@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {BarChart} from 'react-native-gifted-charts';
 
-function WalkChart() {
+function WalkChart({walkData}) {
   const stackData = [
     {
       stacks: [{value: 10244, color: '#4ABFF4'}],
