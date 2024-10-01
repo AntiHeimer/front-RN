@@ -24,7 +24,7 @@ function LoginPage({navigation}) {
 
       Storage.setItem('userState', {
         jwtToken: result.jwtToken,
-        uuid: result.uuid,
+        uuid: result.memberUuid,
         isLoggedIn: true,
       });
 

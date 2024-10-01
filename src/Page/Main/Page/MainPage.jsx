@@ -11,10 +11,10 @@ import PostSleepDataFunction from '../Function/PostSleepDataFunction';
 
 function MainPage({navigation}) {
   useEffect(() => {
-    // PostSleepDataFunction();
-    // PostActiveDataFunction();
-    // PostMoveDataFunction();
-    // PostWalkDataFunction();
+    PostSleepDataFunction();
+    PostActiveDataFunction();
+    PostMoveDataFunction();
+    PostWalkDataFunction();
   }, []);
 
   return (

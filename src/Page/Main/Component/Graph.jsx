@@ -10,14 +10,22 @@ import WalkChart from './WalkChart';
 
 import GetWardsFunction from '../../Account/Function/GetWardsFunction';
 import GetSleepDataFunction from '../Function/GetSleepDataFunction';
+import GetWalkDataFunction from '../Function/GetWalkDataFunction';
+import {Storage} from '../../../Utils/Function/Storage';
 
 function Graph() {
   const [kindOfData, setKindOfData] = useState('sleep');
   const [selectedUser, setSelectedUser] = useState(null);
   const [wardList, setWardList] = useState(null);
 
+  const [sleepData, setSleepData] = useState(null);
+  const [walkData, setWalkData] = useState(null);
+
   async function getWardList() {
     const result = await GetWardsFunction();
+    const userState = await Storage.getItem('userState');
+    const uuid = userState.uuid;
+
     if (result.statusCode === '200') {
       const data = result.infoWardDtoList;
 
@@ -26,7 +34,12 @@ function Graph() {
         label: name,
       }));
 
-      setWardList(transformedData);
+      const userData = {
+        value: uuid,
+        label: '본인',
+      };
+
+      setWardList([userData, ...transformedData]);
 
       return;
     }
@@ -41,8 +54,41 @@ function Graph() {
   async function GetSleepData() {
     const result = await GetSleepDataFunction({
       uuid: selectedUser,
-      date: '2024-09-10',
+      date: '2024-06-27',
     });
+
+    if (result.statusCode === '200') {
+      setSleepData(result.sleepList);
+      return;
+    }
+
+    ConfirmAlert({
+      title: '수면 데이터 로드 실패',
+      message: '수면 데이터를 불러오는데 실패하였습니다.',
+      onPress: () => {},
+    });
+
+    return;
+  }
+
+  async function GetWalkData() {
+    const result = await GetWalkDataFunction({
+      uuid: selectedUser,
+      date: '2024-10-01',
+    });
+
+    if (result.statusCode === '200') {
+      setWalkData(result.walkList);
+      return;
+    }
+
+    ConfirmAlert({
+      title: '걸음 데이터 로드 실패',
+      message: '걸음 데이터를 불러오는데 실패하였습니다.',
+      onPress: () => {},
+    });
+
+    return;
   }
 
   useEffect(() => {
@@ -50,9 +96,12 @@ function Graph() {
   }, []);
 
   useEffect(() => {
-    console.log(kindOfData, selectedUser);
     if (kindOfData === 'sleep' && selectedUser) {
       GetSleepData();
+    }
+
+    if (kindOfData === 'walk' && selectedUser) {
+      GetWalkData();
     }
   }, [kindOfData, selectedUser]);
 

@@ -7,6 +7,7 @@ export default async function GetSleepDataFunction({uuid, date}) {
   const result = await fetch(`${process.env.API}/health-data/find/sleep`, {
     method: 'POST',
     headers: {
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({

@@ -33,7 +33,6 @@ function LocationPage({navigation}) {
   }
 
   async function GetWardList() {
-    console.log('get wards list');
     const result = await GetWardsFunction();
     if (result.statusCode == '200') {
       const data = result.infoWardDtoList;
