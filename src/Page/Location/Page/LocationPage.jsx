@@ -14,10 +14,11 @@ import GetRecentLocationFunction from '../Function/GetRecentLocationFunction';
 function LocationPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [location, setLocation] = useState(null);
-  const [wardsList, setWardsList] = useState(null);
+  const [wardList, setWardList] = useState(null);
 
   async function getGeoLocationFromDeviceFunction() {
     const res = await GetGeoLocationFromDeviceFunction();
+
     setLocation(res);
   }
 
@@ -31,10 +32,17 @@ function LocationPage({navigation}) {
     setIsRefreshing(false);
   }
 
-  async function GetWardsList() {
+  async function GetWardList() {
     const result = await GetWardsFunction();
     if (result.statusCode == '200') {
-      setWardsList(result.ward);
+      const data = result.infoWardDtoList;
+
+      const transformedData = data.map(({memberUuid, name}) => ({
+        value: memberUuid,
+        label: name,
+      }));
+
+      setWardList(transformedData);
       return;
     }
 
@@ -50,7 +58,7 @@ function LocationPage({navigation}) {
   useEffect(() => {
     getGeoLocationFromDeviceFunction();
     getRecentLocationFunction();
-    // GetWardsList();
+    GetWardList();
   }, []);
 
   useEffect(() => {
@@ -62,7 +70,7 @@ function LocationPage({navigation}) {
   return (
     <View style={styles.container}>
       <FlatList
-        data={wardsList}
+        data={wardList}
         keyExtractor={(item, index) => index.toString()}
         refreshControl={
           <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
@@ -70,7 +78,7 @@ function LocationPage({navigation}) {
         ListHeaderComponent={
           <View style={styles.subContainer}>
             <RegisterButton navigation={navigation} />
-            <Map location={location} wardList={wardsList} />
+            <Map location={location} wardList={wardList} />
           </View>
         }
         renderItem={null}

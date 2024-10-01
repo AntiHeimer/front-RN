@@ -10,7 +10,7 @@ import InputSmall from '../Component/InputSmall';
  * @returns
  */
 
-function Diagnosis3Component({diagnosisSheet}) {
+function Diagnosis3Component({num, diagnosisSheet, setDianosisAnswer}) {
   // useState로 calcArray 상태 선언
   const [calcArray, setCalcArray] = useState(['', '', '', '', '']);
 
@@ -23,7 +23,7 @@ function Diagnosis3Component({diagnosisSheet}) {
   };
 
   useEffect(() => {
-    console.log(calcArray);
+    setDianosisAnswer(prev => ({...prev, [num]: calcArray}));
   }, [calcArray]);
 
   return (

@@ -62,7 +62,7 @@ async function PostHealthDataFunction({type, startDate, endDate}) {
   const uuid = userState.uuid;
 
   // 서버로 데이터 전송
-  const result = await fetch(`${process.env.API}/save/${type}`, {
+  const result = await fetch(`${process.env.API}/health-data/save/${type}`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',

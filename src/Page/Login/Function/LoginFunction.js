@@ -25,7 +25,7 @@ export default async function LoginFunction({id, password}) {
   const encryptedData = EncryptFunction({data: data});
 
   // 로그인 API 요청 보내기
-  const result = await fetch(`${process.env.API}/login`, {
+  const result = await fetch(`${process.env.API}/member/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain', // 요청 본문은 텍스트 형식으로 전송
@@ -36,7 +36,7 @@ export default async function LoginFunction({id, password}) {
 
   // 서버 응답을 JSON 형식으로 파싱
   const res = await result.json();
-  console.log('Login Function: %o', res);
+  console.log('login function', res);
 
   return res;
 }

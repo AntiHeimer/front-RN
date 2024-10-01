@@ -9,8 +9,10 @@ import {CancelAlert, ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 import LogoutFunction from '../../Login/Function/LogoutFunction';
 import GetProtectorsFunction from '../Function/GetProtectorsFunction';
 import GetWardsFunction from '../Function/GetWardsFunction';
+import GetUserAccountFunction from '../Function/GetUserAccountFunction';
 
 function AccountPage({navigation}) {
+  const [userInfo, setUserInfo] = useState(null);
   const [protectorList, setProtectorList] = useState(null);
   const [wardList, setWardList] = useState(null);
 
@@ -32,6 +34,21 @@ function AccountPage({navigation}) {
       },
       onPressCancel: () => {},
     });
+  }
+
+  async function getUserInfo() {
+    const result = await GetUserAccountFunction();
+    if (result.statusCode === '200') {
+      setUserInfo(result.memberInfoDto);
+      return;
+    }
+
+    ConfirmAlert({
+      title: '회원 정보 로드 실패',
+      message: '회원 정보를 불러오는데 실패하였습니다.',
+      onPress: () => {},
+    });
+    return;
   }
 
   async function getProtector() {
@@ -67,13 +84,14 @@ function AccountPage({navigation}) {
   useEffect(() => {
     getProtector();
     getWard();
+    getUserInfo();
   }, []);
 
-  if (protectorList && wardList) {
+  if (userInfo && protectorList && wardList) {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>나의 정보</Text>
-        <Row name="강민재" id="minijae011030" />
+        <Row name={userInfo.name} id={userInfo.id} />
         <View style={styles.hr} />
 
         <Text style={styles.text}>나의 보호자 정보</Text>
@@ -101,6 +119,12 @@ function AccountPage({navigation}) {
       </View>
     );
   }
+
+  return (
+    <View style={styles.buttonDiv}>
+      <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+    </View>
+  );
 }
 
 export default AccountPage;

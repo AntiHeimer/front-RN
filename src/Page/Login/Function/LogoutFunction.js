@@ -23,16 +23,18 @@ export default async function LogoutFunction() {
   const encryptedUuid = EncryptFunction({data: uuid});
 
   // 로그아웃 API 요청 보내기
-  const result = await fetch(`${process.env.API}/logout/${encryptedUuid}`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${token}`, // 인증 토큰을 헤더에 포함
+  const result = await fetch(
+    `${process.env.API}/member/logout/${encryptedUuid}`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`, // 인증 토큰을 헤더에 포함
+      },
     },
-  });
+  );
 
   // 서버 응답을 JSON 형식으로 파싱
   const res = await result.json();
-  console.log('Logout Function: %o', res);
 
   return res;
 }

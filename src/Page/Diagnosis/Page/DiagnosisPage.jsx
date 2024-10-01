@@ -19,6 +19,19 @@ function DiagnosisPage({navigation}) {
   const [randomWords, setRandomWords] = useState(null);
   const [isRandomWordsLoaded, setIsRandomWordsLoaded] = useState(false);
   const [num, setNum] = useState(1);
+  const [diagnosisAnswer, setDianosisAnswer] = useState({
+    1: null,
+    2: null,
+    3: null,
+    4: null,
+    5: null,
+    6: null,
+    7: null,
+    8: null,
+    9: null,
+    10: null,
+    11: null,
+  });
 
   async function getDiagnosisSheet() {
     const result = await GetDiagnosisSheet({num: num});
@@ -64,9 +77,14 @@ function DiagnosisPage({navigation}) {
     if (num < 11) {
       setNum(prev => prev + 1);
     } else {
-      navigation.navigate('Diagnosis Result');
-      setNum(1);
+      console.log(diagnosisAnswer);
+      // navigation.navigate('Diagnosis Result');
+      // setNum(1);
     }
+  }
+
+  function handleScoreUpdate(num, score) {
+    setDianosisAnswer(prev => ({...prev, [num]: score}));
   }
 
   useEffect(() => {
@@ -79,17 +97,33 @@ function DiagnosisPage({navigation}) {
     getDiagnosisSheet();
   }, [num]);
 
-  if (diagnosisSheet) {
+  useEffect(() => {
+    console.log(diagnosisAnswer);
+  }, [diagnosisAnswer]);
+
+  if (diagnosisSheet && randomWords) {
     return (
       <View style={styles.container}>
         {num == 2 ? (
-          <Diagnosis2Component diagnosisSheet={diagnosisSheet} />
+          <Diagnosis2Component
+            num={num}
+            diagnosisSheet={diagnosisSheet}
+            setScore={score => handleScoreUpdate(num, score)}
+            setDianosisAnswer={setDianosisAnswer}
+          />
         ) : num == 4 ? (
-          <Diagnosis3Component diagnosisSheet={diagnosisSheet} />
+          <Diagnosis3Component
+            num={num}
+            diagnosisSheet={diagnosisSheet}
+            setScore={score => handleScoreUpdate(num, score)}
+            setDianosisAnswer={setDianosisAnswer}
+          />
         ) : (
           <Diagnosis1Component
             diagnosisSheet={diagnosisSheet}
             randomWords={randomWords}
+            setScore={score => handleScoreUpdate(num, score)}
+            score={diagnosisAnswer[num]}
             num={num}
           />
         )}

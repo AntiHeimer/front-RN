@@ -1,25 +1,24 @@
 import {Storage} from '../../../Utils/Function/Storage';
 
-export default async function RegisterFunction({userId, requestType}) {
+export default async function GetWalkDataFunction({uuid, date}) {
   const userState = await Storage.getItem('userState');
-
-  const uuid = userState.uuid;
   const token = userState.jwtToken;
 
-  const result = await fetch(`${process.env.API}/request-relation`, {
+  console.log(date, uuid);
+  const result = await fetch(`${process.env.API}/health-data/find/walk`, {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      fromMemberUuid: uuid,
-      toMemberId: userId,
-      requestType: requestType,
+      memberUuid: uuid,
+      date: date,
     }),
   });
 
   const res = await result.json();
+  console.log('get walk data function:', res);
 
   return res;
 }

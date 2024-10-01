@@ -32,8 +32,8 @@ export default async function SignUpFunction({name, id, password}) {
 
   // 데이터 암호화
   const encryptedData = EncryptFunction({data: data});
-  console.log(encryptedData);
-  const result = await fetch(`${process.env.API}/signup`, {
+
+  const result = await fetch(`${process.env.API}/member/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
@@ -43,7 +43,6 @@ export default async function SignUpFunction({name, id, password}) {
   });
 
   const res = await result.json();
-  console.log('Sign Up Function: %o', res);
 
   return res;
 }
