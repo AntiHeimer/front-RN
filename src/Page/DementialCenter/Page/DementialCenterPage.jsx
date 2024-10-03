@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   centers: {
-    height: 580,
+    height: 590,
   },
   center: {
     borderWidth: 1,
