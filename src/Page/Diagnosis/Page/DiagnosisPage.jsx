@@ -5,7 +5,7 @@ import {
   MainMediumButtonBlack,
   MainMediumButtonGray,
 } from '../../../Utils/Component/MainButton';
-import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
+import {CancelAlert, ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 
 import Diagnosis1Component from './Diagnosis1Component';
 import Diagnosis2Component from './Diagnosis2Component';
@@ -78,11 +78,31 @@ function DiagnosisPage({navigation}) {
     if (num < 11) {
       setNum(prev => prev + 1);
     } else {
-      const result = await PostDiagnosisAnswer({
-        diagnosisAnswer: diagnosisAnswer,
+      CancelAlert({
+        title: '진단지 제출',
+        message: '진단지를 제출하시겠습니까?',
+        onPressConfirm: async () => {
+          const result = await PostDiagnosisAnswer({
+            diagnosisAnswer: diagnosisAnswer,
+          });
+
+          if (result.statusCode === '200') {
+            navigation.navigate('Diagnosis Result');
+            setNum(1);
+            return;
+          }
+
+          if (result.statusCode === '426') {
+            CancelAlert({
+              title: '유효하지 않은 점수',
+              message: '점수가 유효하지 않습니다.',
+              onPress: () => {},
+            });
+          }
+        },
+
+        onPressCancel: () => {},
       });
-      // navigation.navigate('Diagnosis Result');
-      // setNum(1);
     }
   }
 

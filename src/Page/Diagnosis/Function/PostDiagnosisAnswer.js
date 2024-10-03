@@ -12,13 +12,14 @@ export default async function PostDiagnosisAnswer({diagnosisAnswer}) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: {
+    body: JSON.stringify({
       memberUuid: uuid,
       map: diagnosisAnswer,
-    },
+    }),
   });
 
   const res = await result.json();
+  console.log('diagnosis result parse:', res);
 
   return res;
 }
