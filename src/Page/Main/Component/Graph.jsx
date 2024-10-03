@@ -51,21 +51,18 @@ function Graph() {
     });
   }
 
-  function getSundayDate() {
+  function getFormattedDate() {
     const today = new Date();
-    const dayOfWeek = today.getDay();
-    const diff = today.getDate() - dayOfWeek;
-    const sunday = new Date(today.setDate(diff));
 
-    const year = sunday.getFullYear();
-    const month = String(sunday.getMonth() + 1).padStart(2, '0');
-    const day = String(sunday.getDate()).padStart(2, '0');
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
 
     return `${year}-${month}-${day}`;
   }
 
   async function GetSleepData() {
-    const sundayDate = getSundayDate();
+    const sundayDate = getFormattedDate();
 
     const result = await GetSleepDataFunction({
       uuid: selectedUser,
@@ -87,7 +84,7 @@ function Graph() {
   }
 
   async function GetWalkData() {
-    const sundayDate = getSundayDate();
+    const sundayDate = getFormattedDate();
 
     const result = await GetWalkDataFunction({
       uuid: selectedUser,
@@ -138,10 +135,12 @@ function Graph() {
         )}
       </View>
       {kindOfData === 'sleep' ? (
-        <SleepChart sleepData={sleepData} />
-      ) : (
-        <WalkChart walkData={walkData} />
-      )}
+        sleepData ? (
+          <SleepChart sleepData={sleepData} selectedUser={selectedUser} />
+        ) : null
+      ) : walkData ? (
+        <WalkChart walkData={walkData} selectedUser={selectedUser} />
+      ) : null}
     </View>
   );
 }

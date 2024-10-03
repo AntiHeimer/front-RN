@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {BarChart} from 'react-native-gifted-charts';
 
-function SleepChart({sleepData}) {
+function SleepChart({sleepData, selectedUser}) {
   const stackData = [
     {
       stacks: [
