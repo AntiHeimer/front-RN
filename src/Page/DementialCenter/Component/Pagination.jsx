@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
 
   selected_box: {
     borderWidth: 1,
+    borderRadius: 5,
     width: 30,
     height: 30,
     display: 'flex',
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
   },
   unselected_box: {
     borderWidth: 1,
+    borderRadius: 5,
     borderColor: 'white',
     width: 30,
     height: 30,
