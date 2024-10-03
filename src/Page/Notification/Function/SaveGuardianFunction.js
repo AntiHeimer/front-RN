@@ -8,10 +8,10 @@ export default async function SaveGuardianFunction({
   const uuid = userState.uuid;
   const token = userState.jwtToken;
 
-  const result = await fetch(`${process.env.API}/save-relation/guardian`, {
+  const result = await fetch(`${process.env.API}/relation/save/guardian`, {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({

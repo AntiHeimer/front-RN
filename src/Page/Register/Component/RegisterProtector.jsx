@@ -39,6 +39,28 @@ function RegisterProtector({navigation, value, onChange}) {
       return;
     }
 
+    if (result.statusCode === '431') {
+      ConfirmAlert({
+        title: '요청 전송 실패',
+        message: '존재하지 않는 회원입니다.',
+        onPress: () => {},
+      });
+
+      onChange(null);
+      return;
+    }
+
+    if (result.statusCode === '453') {
+      ConfirmAlert({
+        title: '요청 전송 실패',
+        message: '이미 존재하는 관계입니다.',
+        onPress: () => {},
+      });
+
+      onChange(null);
+      return;
+    }
+
     ConfirmAlert({
       title: '요청 전송 실패',
       message: '보호자 요청 전송을\n실패하였습니다..',

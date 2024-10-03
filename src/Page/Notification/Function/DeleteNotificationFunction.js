@@ -9,7 +9,7 @@ export default async function DeleteNotificationFunction({notificationUuid}) {
   const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/delete-notification?notificationUuid=${encodedUuid}`,
+    `${process.env.API}/notification/delete?notificationUuid=${encodedUuid}`,
     {
       method: 'DELETE',
       headers: {

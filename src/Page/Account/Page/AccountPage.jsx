@@ -114,6 +114,12 @@ function AccountPage({navigation}) {
         })}
         <View style={styles.hr} />
         <View style={styles.buttonDiv}>
+          <MainButtonBlack
+            text="치매 센터 알아보기"
+            onPress={() => {
+              navigation.navigate('DementiaCenter');
+            }}
+          />
           <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
         </View>
       </View>
@@ -135,7 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    marginTop: -160,
+    marginTop: -60,
   },
   text: {
     width: 308,
@@ -153,5 +159,6 @@ const styles = StyleSheet.create({
   },
   buttonDiv: {
     marginTop: 40,
+    gap: 10,
   },
 });

@@ -6,10 +6,10 @@ export default async function RegisterFunction({userId, requestType}) {
   const uuid = userState.uuid;
   const token = userState.jwtToken;
 
-  const result = await fetch(`${process.env.API}/request-relation`, {
+  const result = await fetch(`${process.env.API}/relation/request`, {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
@@ -20,6 +20,7 @@ export default async function RegisterFunction({userId, requestType}) {
   });
 
   const res = await result.json();
+  console.log(res);
 
   return res;
 }

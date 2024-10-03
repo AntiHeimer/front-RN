@@ -1,5 +1,24 @@
-export default async function PostDiagnosisAnswer({token, diagnosisAnswer}) {
-  const result = await fetch(`${process.env.API}/diagnosis/anser`, {
+import {Storage} from '../../../Utils/Function/Storage';
+
+export default async function PostDiagnosisAnswer({diagnosisAnswer}) {
+  const userState = await Storage.getItem('userState');
+
+  const uuid = userState.uuid;
+  const token = userState.jwtToken;
+
+  const result = await fetch(`${process.env.API}/diagnosis/finish`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: {
+      memberUuid: uuid,
+      map: diagnosisAnswer,
+    },
   });
+
+  const res = await result.json();
+
+  return res;
 }

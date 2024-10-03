@@ -1,4 +1,3 @@
-import {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import InputSmall from '../Component/InputSmall';
@@ -45,7 +44,7 @@ function Diagnosis1Component({
         <View style={styles.answerBox}>
           <InputSmall placeholder="" value={score} onChange={setScore} />
           <Text style={styles.scoreText}>
-            점 {`(가산한 점수를 입력하여주세요)`}
+            {`/ ${diagnosisSheet.point}점  (가산한 점수를 입력하여주세요)`}
           </Text>
         </View>
       </View>
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
   },
   scoreText: {
     fontSize: 15,
-    marginTop: 10,
+    marginTop: 9,
   },
   randomWords: {
     display: 'flex',

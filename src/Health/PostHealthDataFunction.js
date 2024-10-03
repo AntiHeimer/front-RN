@@ -65,7 +65,7 @@ async function PostHealthDataFunction({type, startDate, endDate}) {
   const result = await fetch(`${process.env.API}/health-data/save/${type}`, {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({

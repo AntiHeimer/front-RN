@@ -36,7 +36,7 @@ async function sendRecentSleepData() {
     requests.push(
       PostSleepFunction({startDate, endDate}).catch(error =>
         console.error(
-          `Error fetching data for ${startDate} to ${endDate}:`,
+          `Error fetching sleep data for ${startDate} to ${endDate}:`,
           error,
         ),
       ),
@@ -68,7 +68,7 @@ async function sendCumulativeSleepData({latestDate}) {
         endDate: formattedEndDate,
       }).catch(error =>
         console.error(
-          `Error fetching data for ${formattedStartDate} to ${formattedEndDate}:`,
+          `Error fetching sleep data for ${formattedStartDate} to ${formattedEndDate}:`,
           error,
         ),
       ),

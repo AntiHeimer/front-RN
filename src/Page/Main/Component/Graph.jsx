@@ -51,10 +51,22 @@ function Graph() {
     });
   }
 
+  function getFormattedDate() {
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  }
+
   async function GetSleepData() {
+    const sundayDate = getFormattedDate();
+
     const result = await GetSleepDataFunction({
       uuid: selectedUser,
-      date: '2024-06-27',
+      date: sundayDate,
     });
 
     if (result.statusCode === '200') {
@@ -72,9 +84,11 @@ function Graph() {
   }
 
   async function GetWalkData() {
+    const sundayDate = getFormattedDate();
+
     const result = await GetWalkDataFunction({
       uuid: selectedUser,
-      date: '2024-10-01',
+      date: sundayDate,
     });
 
     if (result.statusCode === '200') {
@@ -120,7 +134,13 @@ function Graph() {
           />
         )}
       </View>
-      {kindOfData === 'sleep' ? <SleepChart /> : <WalkChart />}
+      {kindOfData === 'sleep' ? (
+        sleepData ? (
+          <SleepChart sleepData={sleepData} />
+        ) : null
+      ) : walkData ? (
+        <WalkChart walkData={walkData} />
+      ) : null}
     </View>
   );
 }

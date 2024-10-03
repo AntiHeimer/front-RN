@@ -35,7 +35,7 @@ async function sendRecentMoveData() {
     requests.push(
       PostMoveFunction({startDate, endDate}).catch(error =>
         console.error(
-          `Error fetching data for ${startDate} to ${endDate}:`,
+          `Error fetching move data for ${startDate} to ${endDate}:`,
           error,
         ),
       ),
@@ -56,10 +56,7 @@ async function sendCumulativeMoveData({latestDate}) {
   for (let i = 0; i <= totalDaysDifference; i++) {
     const currentDate = startDate.clone().add(i, 'days');
     const formattedStartDate = currentDate.format('YYYY-MM-DD');
-    const formattedEndDate = currentDate
-      .clone()
-      .add(1, 'days')
-      .format('YYYY-MM-DD');
+    const formattedEndDate = currentDate.clone().format('YYYY-MM-DD');
 
     // 비동기 요청을 배열에 저장
     requests.push(
@@ -68,7 +65,7 @@ async function sendCumulativeMoveData({latestDate}) {
         endDate: formattedEndDate,
       }).catch(error =>
         console.error(
-          `Error fetching data for ${formattedStartDate} to ${formattedEndDate}:`,
+          `Error fetching move data for ${formattedStartDate} to ${formattedEndDate}:`,
           error,
         ),
       ),

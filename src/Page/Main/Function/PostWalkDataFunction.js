@@ -35,7 +35,7 @@ async function sendRecentWalkData() {
     requests.push(
       PostWalkFunction({startDate, endDate}).catch(error =>
         console.error(
-          `Error fetching data for ${startDate} to ${endDate}:`,
+          `Error fetching walk data for ${startDate} to ${endDate}:`,
           error,
         ),
       ),
@@ -68,7 +68,7 @@ async function sendCumulativeWalkData({latestDate}) {
         endDate: formattedEndDate,
       }).catch(error =>
         console.error(
-          `Error fetching data for ${formattedStartDate} to ${formattedEndDate}:`,
+          `Error fetching walk data for ${formattedStartDate} to ${formattedEndDate}:`,
           error,
         ),
       ),
