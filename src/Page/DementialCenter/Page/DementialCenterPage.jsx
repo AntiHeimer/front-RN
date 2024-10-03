@@ -2,9 +2,12 @@ import {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 import GetDementialCenterFunction from '../Function/GetDementialCenterFunction';
+import Pagination from '../Component/Pagination';
 
 function DementialCenterPage() {
   const [dementiaCenter, setDementiaCenter] = useState(null);
+  const [page, setPage] = useState(1);
+
   async function GetDementiaCenter({page}) {
     const result = await GetDementialCenterFunction({page: page});
 
@@ -14,27 +17,30 @@ function DementialCenterPage() {
   }
 
   useEffect(() => {
-    GetDementiaCenter({page: 1});
-  }, []);
+    GetDementiaCenter({page: page});
+  }, [page]);
 
   if (dementiaCenter) {
     return (
       <View style={styles.container}>
-        {dementiaCenter.map((center, index) => {
-          return (
-            <View key={index} style={styles.center}>
-              <Text style={styles.name}>{center.name}</Text>
-              <View style={styles.row}>
-                <Text style={styles.title}>전화번호</Text>
-                <Text style={styles.text}>{center.callNumber}</Text>
+        <View style={styles.centers}>
+          {dementiaCenter.map((center, index) => {
+            return (
+              <View key={index} style={styles.center}>
+                <Text style={styles.name}>{center.name}</Text>
+                <View style={styles.row}>
+                  <Text style={styles.title}>전화번호</Text>
+                  <Text style={styles.text}>{center.callNumber}</Text>
+                </View>
+                <View style={styles.row}>
+                  <Text style={styles.title}>주소</Text>
+                  <Text style={styles.text}>{center.centerLocation}</Text>
+                </View>
               </View>
-              <View style={styles.row}>
-                <Text style={styles.title}>주소</Text>
-                <Text style={styles.text}>{center.centerLocation}</Text>
-              </View>
-            </View>
-          );
-        })}
+            );
+          })}
+        </View>
+        <Pagination page={page} setPage={setPage} />
       </View>
     );
   }
@@ -48,6 +54,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     marginTop: 30,
+  },
+  centers: {
+    height: 580,
   },
   center: {
     borderWidth: 1,
