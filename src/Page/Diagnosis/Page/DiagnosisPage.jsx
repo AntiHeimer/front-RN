@@ -13,6 +13,7 @@ import Diagnosis3Component from './Diagnosis3Component';
 
 import GetDiagnosisSheet from '../Function/GetDiagnosisSheet';
 import GetRandomWordFunction from '../Function/GetRandomWordFunction';
+import PostDiagnosisAnswer from '../Function/PostDiagnosisAnswer';
 
 function DiagnosisPage({navigation}) {
   const [diagnosisSheet, setDiagnosisSheet] = useState(null);
@@ -73,11 +74,13 @@ function DiagnosisPage({navigation}) {
     }
   }
 
-  function getNextDiagnosisSheet() {
+  async function getNextDiagnosisSheet() {
     if (num < 11) {
       setNum(prev => prev + 1);
     } else {
-      console.log(diagnosisAnswer);
+      const result = await PostDiagnosisAnswer({
+        diagnosisAnswer: diagnosisAnswer,
+      });
       // navigation.navigate('Diagnosis Result');
       // setNum(1);
     }
@@ -96,10 +99,6 @@ function DiagnosisPage({navigation}) {
   useEffect(() => {
     getDiagnosisSheet();
   }, [num]);
-
-  useEffect(() => {
-    console.log(diagnosisAnswer);
-  }, [diagnosisAnswer]);
 
   if (diagnosisSheet && randomWords) {
     return (

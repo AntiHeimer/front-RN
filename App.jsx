@@ -26,6 +26,7 @@ import DiagnosisResultPage from './src/Page/DiagnosisResult/Page/DiagnosisResult
 import RegisterPage from './src/Page/Register/Page/RegisterPage';
 import Notification from './src/Utils/Component/Notification';
 import NotificationPage from './src/Page/Notification/Page/NotificationPage';
+import DementialCenterPage from './src/Page/\bDementialCenter/Page/DementialCenterPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -168,6 +169,19 @@ function App() {
           component={RegisterPage}
           options={{
             title: '관계 등록',
+            headerBackAccessibilityLabel: true,
+            headerBackTitleVisible: false,
+            headerTintColor: 'black',
+            headerLeftContainerStyle: {paddingLeft: 15, marginRight: -15},
+            headerRight: () => <Notification />,
+            headerStyle: {height: 110},
+          }}
+        />
+        <Stack.Screen
+          name="DementiaCenter"
+          component={DementialCenterPage}
+          options={{
+            title: '치매 센터',
             headerBackAccessibilityLabel: true,
             headerBackTitleVisible: false,
             headerTintColor: 'black',
