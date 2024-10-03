@@ -2,32 +2,28 @@ import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-function DropDown({wardList}) {
+function DropDown({wardList, setWardList, selectedUser, setSelectedUser}) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    {label: '강민재', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
-    {label: 'Pear', value: 'pear'},
-  ]);
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.subContainer}>
-        <DropDownPicker
-          open={open}
-          value={value}
-          items={items}
-          setOpen={setOpen}
-          setValue={setValue}
-          setItems={setItems}
-          placeholder={'피보호자를 선택해주세요'}
-          style={styles.dropdown}
-          dropDownContainerStyle={styles.dropdown}
-        />
+  if (wardList) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.subContainer}>
+          <DropDownPicker
+            open={open}
+            value={selectedUser}
+            items={wardList}
+            setOpen={setOpen}
+            setValue={setSelectedUser}
+            setItems={setWardList}
+            placeholder={'피보호자를 선택해주세요'}
+            style={styles.dropdown}
+            dropDownContainerStyle={styles.dropdown}
+          />
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 export default DropDown;

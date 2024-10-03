@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import {StyleSheet, View, FlatList, RefreshControl} from 'react-native';
 
 import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
+import {Storage} from '../../../Utils/Function/Storage';
 
 import RegisterButton from '../Component/RegisterButton';
 import Map from '../Component/Map';
@@ -9,7 +10,6 @@ import Map from '../Component/Map';
 import GetGeoLocationFromDeviceFunction from '../../../Location/GetGeolocationFromDeviceFunction';
 import GetWardsFunction from '../../Account/Function/GetWardsFunction';
 import PostGeolocationFunction from '../Function/PostGeolocationFunction';
-import GetRecentLocationFunction from '../Function/GetRecentLocationFunction';
 
 function LocationPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -22,10 +22,6 @@ function LocationPage({navigation}) {
     setLocation(res);
   }
 
-  async function getRecentLocationFunction() {
-    const result = await GetRecentLocationFunction();
-  }
-
   async function handleRefresh() {
     setIsRefreshing(true);
     getGeoLocationFromDeviceFunction();
@@ -34,6 +30,9 @@ function LocationPage({navigation}) {
 
   async function GetWardList() {
     const result = await GetWardsFunction();
+    const userState = await Storage.getItem('userState');
+    const uuid = userState.uuid;
+
     if (result.statusCode == '200') {
       const data = result.infoWardDtoList;
 
@@ -43,6 +42,14 @@ function LocationPage({navigation}) {
       }));
 
       setWardList(transformedData);
+
+      const userData = {
+        value: uuid,
+        label: '본인',
+      };
+
+      setWardList([userData, ...transformedData]);
+
       return;
     }
 
@@ -57,16 +64,10 @@ function LocationPage({navigation}) {
 
   useEffect(() => {
     getGeoLocationFromDeviceFunction();
-    getRecentLocationFunction();
     GetWardList();
   }, []);
 
-  useEffect(() => {
-    if (location) {
-      PostGeolocationFunction({location: location});
-    }
-  }, [location]);
-
+  console.log(wardList);
   return (
     <View style={styles.container}>
       <FlatList
@@ -78,7 +79,12 @@ function LocationPage({navigation}) {
         ListHeaderComponent={
           <View style={styles.subContainer}>
             <RegisterButton navigation={navigation} />
-            <Map location={location} wardList={wardList} />
+            <Map
+              location={location}
+              setLocation={setLocation}
+              wardList={wardList}
+              setWardList={setWardList}
+            />
           </View>
         }
         renderItem={null}
