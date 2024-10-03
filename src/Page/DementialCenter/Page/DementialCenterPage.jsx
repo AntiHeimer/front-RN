@@ -22,10 +22,16 @@ function DementialCenterPage() {
       <View style={styles.container}>
         {dementiaCenter.map((center, index) => {
           return (
-            <View key={index}>
-              <Text>{center.name}</Text>
-              <Text>{center.callNumber}</Text>
-              <Text>{center.centerLocation}</Text>
+            <View key={index} style={styles.center}>
+              <Text style={styles.name}>{center.name}</Text>
+              <View style={styles.row}>
+                <Text style={styles.title}>전화번호</Text>
+                <Text style={styles.text}>{center.callNumber}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.title}>주소</Text>
+                <Text style={styles.text}>{center.centerLocation}</Text>
+              </View>
             </View>
           );
         })}
@@ -38,10 +44,39 @@ export default DementialCenterPage;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    justifyContent: 'center',
+    justifyContent: 'start',
     alignItems: 'center',
     flex: 1,
-    marginTop: -60,
+    marginTop: 30,
+  },
+  center: {
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 10,
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    width: '90%',
+    marginBottom: 10,
+    padding: 10,
+  },
+  name: {
+    fontSize: 17,
+    fontWeight: '700',
+    marginBottom: 15,
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 10,
+    marginBottom: 5,
+  },
+  title: {
+    width: 50,
+    fontWeight: '600',
+  },
+  text: {
+    flexWrap: 'wrap',
+    width: 250,
   },
 });
