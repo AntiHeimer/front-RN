@@ -1,7 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 function Pagination({page, setPage}) {
-  const pageArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const pageArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
     <View style={styles.pagination}>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   pagination: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 3,
+    gap: 5,
   },
 
   selected_box: {
