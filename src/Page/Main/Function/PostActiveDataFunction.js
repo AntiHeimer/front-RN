@@ -32,7 +32,7 @@ async function sendRecentActiveData() {
 
     requests.push(
       PostActiveFunction({startDate: startDate}).catch(error =>
-        console.error(`Error fetching data for ${startDate}:`, error),
+        console.error(`Error fetching active data for ${startDate}:`, error),
       ),
     );
   }
@@ -55,7 +55,7 @@ async function sendCumulativeActiveData({latestDate}) {
     requests.push(
       PostActiveFunction({startDate: formattedStartDate}).catch(error =>
         console.error(
-          `Error fetching data for ${formattedStartDate} }:`,
+          `Error fetching active data for ${formattedStartDate} }:`,
           error,
         ),
       ),
