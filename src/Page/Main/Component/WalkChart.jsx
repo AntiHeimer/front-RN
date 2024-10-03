@@ -50,8 +50,6 @@ function WalkChart({walkData}) {
     label: getFormattedDateLabel(item.date), // 날짜를 MM.DD 형식으로 표시
   }));
 
-  console.log(stackData);
-
   return (
     <View style={styles.container}>
       <BarChart

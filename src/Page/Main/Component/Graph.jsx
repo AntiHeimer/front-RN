@@ -136,10 +136,10 @@ function Graph() {
       </View>
       {kindOfData === 'sleep' ? (
         sleepData ? (
-          <SleepChart sleepData={sleepData} selectedUser={selectedUser} />
+          <SleepChart sleepData={sleepData} />
         ) : null
       ) : walkData ? (
-        <WalkChart walkData={walkData} selectedUser={selectedUser} />
+        <WalkChart walkData={walkData} />
       ) : null}
     </View>
   );
