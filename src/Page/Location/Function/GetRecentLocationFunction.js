@@ -10,10 +10,11 @@ export default async function GetRecentLocationFunction() {
   const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/recent/location?memberUuid=${encodedUuid}`,
+    `${process.env.API}/location/recent?memberUuid=${encodedUuid}`,
     {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     },

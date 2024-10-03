@@ -8,10 +8,10 @@ export default async function SaveWardFunction({
   const uuid = userState.uuid;
   const token = userState.jwtToken;
 
-  const result = await fetch(`${process.env.API}/save-relation/ward`, {
+  const result = await fetch(`${process.env.API}/relation/save/ward`, {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
