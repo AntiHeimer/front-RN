@@ -33,6 +33,7 @@ async function PostHealthDataFunction({type, startDate, endDate}) {
         startDate,
         endDate,
       });
+
       if (data.length === 0) return; // 데이터가 없으면 반환
       data = DateFormattingFunction1(data); // 데이터 포맷팅
       data = data.filter(item => item.startDateTime.startsWith(startDate)); // 필터링

@@ -56,7 +56,10 @@ async function sendCumulativeMoveData({latestDate}) {
   for (let i = 0; i <= totalDaysDifference; i++) {
     const currentDate = startDate.clone().add(i, 'days');
     const formattedStartDate = currentDate.format('YYYY-MM-DD');
-    const formattedEndDate = currentDate.clone().format('YYYY-MM-DD');
+    const formattedEndDate = currentDate
+      .clone()
+      .add(1, 'days')
+      .format('YYYY-MM-DD');
 
     // 비동기 요청을 배열에 저장
     requests.push(
