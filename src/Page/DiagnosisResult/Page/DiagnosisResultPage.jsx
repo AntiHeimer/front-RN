@@ -3,13 +3,18 @@ import {StyleSheet, Text, View} from 'react-native';
 import Table from '../Component/Table';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
-function DiagnosisResultPage({navigation}) {
+function DiagnosisResultPage({navigation, route}) {
+  const {result} = route.params;
+  console.log(result);
   return (
     <View style={styles.container}>
       <View style={styles.resultContainer}>
         <Text style={styles.resultTitle}>강민숙 님의 진단 결과</Text>
         <Text style={styles.resultSubTitle}>현재 치매 위험도는</Text>
-        <Text style={styles.resultHighlight}>3단계 입니다</Text>
+        <Text style={styles.resultHighlight}>
+          {result.aiResDto.result.stage}단계 입니다
+        </Text>
+        <Text>{result.aiResDto.result.explanation}</Text>
       </View>
       <Table />
       <MainButtonBlack

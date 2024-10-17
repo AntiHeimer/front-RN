@@ -6,6 +6,7 @@ export default async function PostDiagnosisAnswer({diagnosisAnswer}) {
   const uuid = userState.uuid;
   const token = userState.jwtToken;
 
+  console.log(JSON.stringify(diagnosisAnswer));
   const result = await fetch(`${process.env.API}/diagnosis/finish`, {
     method: 'POST',
     headers: {
@@ -19,7 +20,7 @@ export default async function PostDiagnosisAnswer({diagnosisAnswer}) {
   });
 
   const res = await result.json();
-  console.log('diagnosis result parse:', res);
+  console.log('diagnosis result:', res);
 
   return res;
 }

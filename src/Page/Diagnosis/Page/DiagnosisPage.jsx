@@ -87,13 +87,21 @@ function DiagnosisPage({navigation}) {
           });
 
           if (result.statusCode === '200') {
-            navigation.navigate('Diagnosis Result');
+            navigation.navigate('Diagnosis Result', {result});
             setNum(1);
             return;
           }
 
+          if (result.statusCode === '400') {
+            ConfirmAlert({
+              title: '치매 진단 실패',
+              message: '진단 결과 저장 및 치매 진단에 실패하였습니다.',
+              onPress: () => {},
+            });
+          }
+
           if (result.statusCode === '426') {
-            CancelAlert({
+            ConfirmAlert({
               title: '유효하지 않은 점수',
               message: '점수가 유효하지 않습니다.',
               onPress: () => {},
