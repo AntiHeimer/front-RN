@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useEffect, useState} from 'react';
 
 import Row from '../Component/Row';
@@ -90,38 +90,47 @@ function AccountPage({navigation}) {
   if (userInfo && protectorList && wardList) {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>나의 정보</Text>
-        <Row name={userInfo.name} id={userInfo.id} />
-        <View style={styles.hr} />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Text style={styles.text}>나의 정보</Text>
+          <Row name={userInfo.name} id={userInfo.id} />
+          <View style={styles.hr} />
 
-        <Text style={styles.text}>나의 보호자 정보</Text>
-        {protectorList.map(protector => {
-          return (
-            <View key={protector.memberUuid}>
-              <Row name={protector.name} id={protector.id} />
-            </View>
-          );
-        })}
-        <View style={styles.hr} />
+          <Text style={styles.text}>나의 보호자 정보</Text>
+          {protectorList.length == 0 && (
+            <Text style={styles.nullInfo}>보호자 정보가 없습니다.</Text>
+          )}
+          {protectorList.map(protector => {
+            return (
+              <View key={protector.memberUuid}>
+                <Row name={protector.name} id={protector.id} />
+              </View>
+            );
+          })}
 
-        <Text style={styles.text}>나의 피보호자 정보</Text>
-        {wardList.map(ward => {
-          return (
-            <View key={ward.memberUuid}>
-              <Row name={ward.name} id={ward.id} />
-            </View>
-          );
-        })}
-        <View style={styles.hr} />
-        <View style={styles.buttonDiv}>
-          <MainButtonBlack
-            text="치매 센터 알아보기"
-            onPress={() => {
-              navigation.navigate('DementiaCenter');
-            }}
-          />
-          <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
-        </View>
+          <View style={styles.hr} />
+
+          <Text style={styles.text}>나의 피보호자 정보</Text>
+          {wardList.length == 0 && (
+            <Text style={styles.nullInfo}>피보호자 정보가 없습니다.</Text>
+          )}
+          {wardList.map(ward => {
+            return (
+              <View key={ward.memberUuid}>
+                <Row name={ward.name} id={ward.id} />
+              </View>
+            );
+          })}
+          <View style={styles.hr} />
+          <View style={styles.buttonDiv}>
+            <MainButtonBlack
+              text="치매 센터 알아보기"
+              onPress={() => {
+                navigation.navigate('DementiaCenter');
+              }}
+            />
+            <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -144,7 +153,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    marginTop: -60,
   },
   text: {
     width: 308,
@@ -163,5 +171,10 @@ const styles = StyleSheet.create({
   buttonDiv: {
     marginTop: 40,
     gap: 10,
+  },
+  nullInfo: {
+    height: 50,
+    textAlign: 'left',
+    paddingTop: 15,
   },
 });
