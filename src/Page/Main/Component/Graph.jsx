@@ -110,6 +110,12 @@ function Graph() {
   }, []);
 
   useEffect(() => {
+    if (wardList && wardList.length > 0) {
+      setSelectedUser(wardList[0].value);
+    }
+  }, [wardList]);
+
+  useEffect(() => {
     if (kindOfData === 'sleep' && selectedUser) {
       GetSleepData();
     }
@@ -119,30 +125,32 @@ function Graph() {
     }
   }, [kindOfData, selectedUser]);
 
-  return (
-    <View style={styles.graphContainer}>
-      <Text style={styles.title}>수면 및 걸음 차트</Text>
-      <View style={styles.dropdownContainer}>
-        <Dropdown1 kindOfData={kindOfData} setKindOfData={setKindOfData} />
+  if (selectedUser) {
+    return (
+      <View style={styles.graphContainer}>
+        <Text style={styles.title}>수면 및 걸음 차트</Text>
+        <View style={styles.dropdownContainer}>
+          <Dropdown1 kindOfData={kindOfData} setKindOfData={setKindOfData} />
 
-        {wardList && (
-          <Dropdown2
-            selectedUser={selectedUser}
-            setSelectedUser={setSelectedUser}
-            wardList={wardList}
-            setWardList={setWardList}
-          />
-        )}
+          {wardList && (
+            <Dropdown2
+              selectedUser={selectedUser}
+              setSelectedUser={setSelectedUser}
+              wardList={wardList}
+              setWardList={setWardList}
+            />
+          )}
+        </View>
+        {kindOfData === 'sleep' ? (
+          sleepData ? (
+            <SleepChart sleepData={sleepData} />
+          ) : null
+        ) : walkData ? (
+          <WalkChart walkData={walkData} />
+        ) : null}
       </View>
-      {kindOfData === 'sleep' ? (
-        sleepData ? (
-          <SleepChart sleepData={sleepData} />
-        ) : null
-      ) : walkData ? (
-        <WalkChart walkData={walkData} />
-      ) : null}
-    </View>
-  );
+    );
+  }
 }
 
 export default Graph;
