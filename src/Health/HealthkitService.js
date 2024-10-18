@@ -152,7 +152,7 @@ export const HealthKitService = {
         if (error) {
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
-          console.log('biological sex', result); // 생물학적 성별 데이터 로깅
+          // console.log('biological sex', result); // 생물학적 성별 데이터 로깅
           resolve(result); // 생물학적 성별 데이터 반환
         }
       });
@@ -170,7 +170,7 @@ export const HealthKitService = {
         if (error) {
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
-          console.log('date of birth', result); // 생년월일 데이터 로깅
+          // console.log('date of birth', result); // 생년월일 데이터 로깅
           resolve(result); // 생년월일 데이터 반환
         }
       });
@@ -193,7 +193,7 @@ export const HealthKitService = {
         if (error) {
           reject(error); // 데이터 로드 실패 시 Promise를 실패로 처리
         } else {
-          console.log('latest weight', result); // 체중 데이터 로깅
+          // console.log('latest weight', result); // 체중 데이터 로깅
           resolve(result); // 체중 데이터 반환
         }
       });

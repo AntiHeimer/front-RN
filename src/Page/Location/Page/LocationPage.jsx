@@ -67,7 +67,6 @@ function LocationPage({navigation}) {
     GetWardList();
   }, []);
 
-  console.log(wardList);
   return (
     <View style={styles.container}>
       <FlatList

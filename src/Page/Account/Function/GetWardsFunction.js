@@ -20,7 +20,7 @@ export default async function GetWardsFunction() {
   );
 
   const res = await result.json();
-  console.log('get wards list function:', res);
+  // console.log('get wards list function:', res);
 
   return res;
 }

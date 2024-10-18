@@ -5,7 +5,7 @@ import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 
 function DiagnosisResultPage({navigation, route}) {
   const {result} = route.params;
-  console.log(result);
+
   return (
     <View style={styles.container}>
       <View style={styles.resultContainer}>

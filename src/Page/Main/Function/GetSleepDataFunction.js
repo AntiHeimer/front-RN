@@ -17,7 +17,7 @@ export default async function GetSleepDataFunction({uuid, date}) {
   });
 
   const res = await result.json();
-  console.log('get sleep data function:', res);
+  // console.logs('get sleep data function:', res);
 
   return res;
 }

@@ -20,7 +20,7 @@ export default async function RegisterFunction({userId, requestType}) {
   });
 
   const res = await result.json();
-  console.log(res);
+  // console.log(res);
 
   return res;
 }
