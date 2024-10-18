@@ -132,11 +132,10 @@ function DiagnosisPage({navigation}) {
   if (diagnosisSheet && randomWords) {
     return (
       <KeyboardAwareScrollView
-        style={{flex: 1}}
+        style={styles.keyboardView}
         KeyboardAwareScrollView
-        extraScrollHeight={20} // 추가로 스크롤 되는 높이
-        enableOnAndroid={true} // 안드로이드에서도 적용
-      >
+        extraScrollHeight={20}
+        enableOnAndroid={true}>
         <View style={styles.container}>
           {num == 2 ? (
             <Diagnosis2Component
@@ -181,6 +180,10 @@ function DiagnosisPage({navigation}) {
 export default DiagnosisPage;
 
 const styles = StyleSheet.create({
+  keyboardView: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
   container: {
     backgroundColor: 'white',
     justifyContent: 'flex-start',

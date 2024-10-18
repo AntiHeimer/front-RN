@@ -1,5 +1,4 @@
-import {useEffect} from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, Text, TextInput, View, Keyboard} from 'react-native';
 
 /**
  * 스몰 메인 입력 필드 컴포넌트
@@ -17,6 +16,10 @@ import {StyleSheet, Text, TextInput, View} from 'react-native';
  * @returns {JSX.Element} - 입력 필드를 렌더링하는 React Native 컴포넌트
  */
 function InputMedium({placeholder, value, onChange, security}) {
+  const handleDonePress = () => {
+    Keyboard.dismiss(); // 키보드 숨김
+  };
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
@@ -27,6 +30,9 @@ function InputMedium({placeholder, value, onChange, security}) {
         onChangeText={onChange}
         secureTextEntry={security}
         autoCapitalize="none"
+        keyboardType="numeric"
+        returnKeyType="done"
+        onSubmitEditing={handleDonePress}
       />
       <View pointerEvents="none" style={styles.placeholderContainer}>
         <Text
