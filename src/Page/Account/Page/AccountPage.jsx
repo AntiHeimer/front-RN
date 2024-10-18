@@ -127,8 +127,11 @@ function AccountPage({navigation}) {
   }
 
   return (
-    <View style={styles.buttonDiv}>
-      <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+    <View style={styles.container}>
+      <Text>회원 정보를 불러오지 못했습니다.</Text>
+      <View style={styles.buttonDiv}>
+        <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+      </View>
     </View>
   );
 }
