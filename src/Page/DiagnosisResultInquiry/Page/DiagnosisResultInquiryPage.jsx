@@ -1,15 +1,17 @@
 import {StyleSheet, View} from 'react-native';
 
 import Table from '../Component/Table';
-import Graph from '../../Main/Component/Graph';
+import Graph from '../Component/Graph';
+import {useState} from 'react';
 
 function DiagnosisResultInquiryPage() {
+  const [selectedUser, setSelectedUser] = useState(null);
   return (
     <View style={styles.container}>
       <View style={styles.graphContainer}>
-        <Graph />
+        <Graph selectedUser={selectedUser} setSelectedUser={setSelectedUser} />
       </View>
-      <Table />
+      <Table selectedUser={selectedUser} />
     </View>
   );
 }
