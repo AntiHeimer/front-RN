@@ -9,13 +9,18 @@ function DiagnosisResultPage({navigation, route}) {
   return (
     <View style={styles.container}>
       <View style={styles.resultContainer}>
-        <Text style={styles.resultTitle}>강민숙 님의 진단 결과</Text>
+        <Text style={styles.resultTitle}>
+          {result.aiResDto.memberName}님의 진단 결과
+        </Text>
         <Text style={styles.resultSubTitle}>현재 치매 위험도는</Text>
         <Text style={styles.resultHighlight}>
           {result.aiResDto.result.stage}단계 입니다
         </Text>
-        <Text>{result.aiResDto.result.explanation}</Text>
+        <Text style={styles.explanation}>
+          {result.aiResDto.result.explanation}
+        </Text>
       </View>
+
       <Table />
       <MainButtonBlack
         text="홈으로"
@@ -33,7 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    marginTop: -100,
+    marginTop: -50,
   },
   resultContainer: {
     alignItems: 'center',
@@ -51,5 +56,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: 'red',
+  },
+  explanation: {
+    marginTop: 10,
+    width: 230,
+    textAlign: 'center',
   },
 });

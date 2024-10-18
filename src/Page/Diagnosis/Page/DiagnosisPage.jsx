@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {
@@ -135,7 +135,8 @@ function DiagnosisPage({navigation}) {
         style={styles.keyboardView}
         KeyboardAwareScrollView
         extraScrollHeight={20}
-        enableOnAndroid={true}>
+        enableOnAndroid={true}
+        nestedScrollEnabled={true}>
         <View style={styles.container}>
           {num == 2 ? (
             <Diagnosis2Component

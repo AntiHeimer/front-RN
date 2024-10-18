@@ -13,26 +13,31 @@ function Table() {
       </View>
       <View style={styles.tableRow}>
         <View style={[styles.tableCell, styles.narrowColumn]}>
-          <Text style={styles.tableCellText}>1단계</Text>
+          <Text style={styles.tableCellText}>정상</Text>
         </View>
         <View style={[styles.tableCell, styles.wideColumn]}>
-          <Text style={styles.tableCellText}>설명설명설명설명설명설명설명</Text>
+          <Text style={styles.tableCellText}>인지 기능이 정상입니다</Text>
         </View>
       </View>
       <View style={styles.tableRow}>
         <View style={[styles.tableCell, styles.narrowColumn]}>
-          <Text style={styles.tableCellText}>2단계</Text>
+          <Text style={styles.tableCellText}>주의 필요</Text>
         </View>
         <View style={[styles.tableCell, styles.wideColumn]}>
-          <Text style={styles.tableCellText}>설명설명설명설명설명설명설명</Text>
+          <Text style={styles.tableCellText}>
+            인지 기능이 다소 저하되어 있습니다.
+          </Text>
         </View>
       </View>
       <View style={styles.tableRow}>
         <View style={[styles.tableCell, styles.narrowColumn]}>
-          <Text style={styles.tableCellText}>3단계</Text>
+          <Text style={styles.tableCellText}>치매 의심</Text>
         </View>
         <View style={[styles.tableCell, styles.wideColumn]}>
-          <Text style={styles.tableCellText}>설명설명설명설명설명설명설명</Text>
+          <Text style={styles.tableCellText}>
+            치매가 의심됩니다. 가까운 병원에 방문하여 전문가의 진단을 받으시길
+            권장합니다
+          </Text>
         </View>
       </View>
     </View>
@@ -71,13 +76,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: 'black',
-    height: 50,
+    height: 55,
   },
   tableCellText: {
-    fontSize: 13,
+    fontSize: 12,
     textAlign: 'center',
   },
   wideColumn: {
+    padding: 10,
     flex: 4,
   },
   narrowColumn: {
