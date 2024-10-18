@@ -53,20 +53,28 @@ function WalkChart({walkData}) {
   return (
     <View style={styles.container}>
       <BarChart
-        maxValue={20000}
+        maxValue={20}
         noOfSections={5}
-        hideYAxisText
-        stackData={stackData}
+        hideYAxisText={false}
+        yAxisLabelTexts={['0', '5', '10', '15', '20']}
+        stackData={stackData.map(item => ({
+          ...item,
+          stacks: item.stacks.map(stack => ({
+            ...stack,
+            value: stack.value / 1000,
+          })),
+        }))}
         width={250}
         spacing={23}
         initialSpacing={30}
         barWidth={10}
-        yAxisLabelWidth={50}
         barBorderRadius={6}
         renderTooltip={item => {
           return (
             <View style={styles.label}>
-              <Text style={styles.labelText}>{item.stacks[0].value}</Text>
+              <Text style={styles.labelText}>
+                {item.stacks[0].value * 1000}
+              </Text>
             </View>
           );
         }}
@@ -83,7 +91,7 @@ export default WalkChart;
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: -35,
+    marginLeft: -20,
     marginTop: 30,
     position: 'static',
     zIndex: 1,

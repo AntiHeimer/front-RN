@@ -82,7 +82,7 @@ function SleepChart({sleepData}) {
         initialSpacing={30}
         barWidth={10}
         barBorderRadius={6}
-        // isAnimated
+        maxValue={15}
       />
       <View style={styles.legend}>
         <View style={styles.bar1} />
