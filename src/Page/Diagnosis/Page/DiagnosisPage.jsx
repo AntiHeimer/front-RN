@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {
   MainMediumButtonBlack,
@@ -130,42 +131,49 @@ function DiagnosisPage({navigation}) {
 
   if (diagnosisSheet && randomWords) {
     return (
-      <View style={styles.container}>
-        {num == 2 ? (
-          <Diagnosis2Component
-            num={num}
-            diagnosisSheet={diagnosisSheet}
-            setScore={score => handleScoreUpdate(num, score)}
-            setDianosisAnswer={setDianosisAnswer}
-          />
-        ) : num == 4 ? (
-          <Diagnosis3Component
-            num={num}
-            diagnosisSheet={diagnosisSheet}
-            setScore={score => handleScoreUpdate(num, score)}
-            setDianosisAnswer={setDianosisAnswer}
-          />
-        ) : (
-          <Diagnosis1Component
-            diagnosisSheet={diagnosisSheet}
-            randomWords={randomWords}
-            setScore={score => handleScoreUpdate(num, score)}
-            score={diagnosisAnswer[num]}
-            num={num}
-          />
-        )}
+      <KeyboardAwareScrollView
+        style={{flex: 1}}
+        KeyboardAwareScrollView
+        extraScrollHeight={20} // 추가로 스크롤 되는 높이
+        enableOnAndroid={true} // 안드로이드에서도 적용
+      >
+        <View style={styles.container}>
+          {num == 2 ? (
+            <Diagnosis2Component
+              num={num}
+              diagnosisSheet={diagnosisSheet}
+              setScore={score => handleScoreUpdate(num, score)}
+              setDianosisAnswer={setDianosisAnswer}
+            />
+          ) : num == 4 ? (
+            <Diagnosis3Component
+              num={num}
+              diagnosisSheet={diagnosisSheet}
+              setScore={score => handleScoreUpdate(num, score)}
+              setDianosisAnswer={setDianosisAnswer}
+            />
+          ) : (
+            <Diagnosis1Component
+              diagnosisSheet={diagnosisSheet}
+              randomWords={randomWords}
+              setScore={score => handleScoreUpdate(num, score)}
+              score={diagnosisAnswer[num]}
+              num={num}
+            />
+          )}
 
-        <View style={styles.buttonDiv}>
-          <MainMediumButtonGray
-            text="이전"
-            onPress={() => getPrevDiagnosisSheet()}
-          />
-          <MainMediumButtonBlack
-            text={num == 11 ? '제출하기' : '다음'}
-            onPress={() => getNextDiagnosisSheet()}
-          />
+          <View style={styles.buttonDiv}>
+            <MainMediumButtonGray
+              text="이전"
+              onPress={() => getPrevDiagnosisSheet()}
+            />
+            <MainMediumButtonBlack
+              text={num == 11 ? '제출하기' : '다음'}
+              onPress={() => getNextDiagnosisSheet()}
+            />
+          </View>
         </View>
-      </View>
+      </KeyboardAwareScrollView>
     );
   }
 }

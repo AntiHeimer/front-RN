@@ -1,4 +1,5 @@
 import {View, Text, StyleSheet} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import InputSmall from '../Component/InputSmall';
 
@@ -16,6 +17,12 @@ function Diagnosis1Component({
   setScore,
 }) {
   return (
+    // <KeyboardAwareScrollView
+    //   style={{flex: 1}}
+    //   KeyboardAwareScrollView
+    //   extraScrollHeight={20} // 추가로 스크롤 되는 높이
+    //   enableOnAndroid={true} // 안드로이드에서도 적용
+    // >
     <View>
       <View style={styles.outerBox}>
         <View style={styles.numberDiv}>
