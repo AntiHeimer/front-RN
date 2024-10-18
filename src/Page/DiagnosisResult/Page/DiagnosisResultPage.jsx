@@ -20,12 +20,19 @@ function DiagnosisResultPage({navigation, route}) {
           {result.aiResDto.result.explanation}
         </Text>
       </View>
-
       <Table />
-      <MainButtonBlack
-        text="홈으로"
-        onPress={() => navigation.navigate('Main')}
-      />
+      <View style={styles.buttonDiv}>
+        <MainButtonBlack
+          text="홈으로"
+          onPress={() => navigation.navigate('Main')}
+        />
+        <MainButtonBlack
+          text="치매 센터 알아보기"
+          onPress={() => {
+            navigation.navigate('DementiaCenter');
+          }}
+        />
+      </View>
     </View>
   );
 }
@@ -61,5 +68,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: 230,
     textAlign: 'center',
+  },
+  buttonDiv: {
+    marginTop: -30,
+    gap: 10,
   },
 });

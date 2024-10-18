@@ -26,7 +26,7 @@ function DementialCenterPage() {
         <View style={styles.centers}>
           {dementiaCenter.map((center, index) => {
             return (
-              <View key={index} style={styles.center}>
+              <View key={center.uuid} style={styles.center}>
                 <Text style={styles.name}>{center.name}</Text>
                 <View style={styles.row}>
                   <Text style={styles.title}>전화번호</Text>
