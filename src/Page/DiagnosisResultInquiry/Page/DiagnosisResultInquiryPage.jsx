@@ -1,6 +1,7 @@
 import {StyleSheet, View} from 'react-native';
-import Graph from '../Component/Graph';
+
 import Table from '../Component/Table';
+import Graph from '../../Main/Component/Graph';
 
 function DiagnosisResultInquiryPage() {
   return (

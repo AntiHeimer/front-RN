@@ -8,6 +8,7 @@ function Pagination({page, setPage}) {
       {pageArr.map(n => {
         return (
           <TouchableOpacity
+            key={n}
             style={page === n ? styles.selected_box : styles.unselected_box}
             onPress={() => setPage(n)}>
             <Text
