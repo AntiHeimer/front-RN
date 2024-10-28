@@ -96,30 +96,32 @@ function AccountPage({navigation}) {
           <View style={styles.hr} />
 
           <Text style={styles.text}>나의 보호자 정보</Text>
-          {protectorList.length == 0 && (
+          {protectorList.length == 0 ? (
             <Text style={styles.nullInfo}>보호자 정보가 없습니다.</Text>
+          ) : (
+            protectorList.map(protector => {
+              return (
+                <View key={protector.memberUuid}>
+                  <Row name={protector.name} id={protector.id} />
+                </View>
+              );
+            })
           )}
-          {protectorList.map(protector => {
-            return (
-              <View key={protector.memberUuid}>
-                <Row name={protector.name} id={protector.id} />
-              </View>
-            );
-          })}
-
           <View style={styles.hr} />
 
           <Text style={styles.text}>나의 피보호자 정보</Text>
-          {wardList.length == 0 && (
+          {wardList.length == 0 ? (
             <Text style={styles.nullInfo}>피보호자 정보가 없습니다.</Text>
+          ) : (
+            wardList.map(ward => {
+              return (
+                <View key={ward.memberUuid}>
+                  <Row name={ward.name} id={ward.id} />
+                </View>
+              );
+            })
           )}
-          {wardList.map(ward => {
-            return (
-              <View key={ward.memberUuid}>
-                <Row name={ward.name} id={ward.id} />
-              </View>
-            );
-          })}
+
           <View style={styles.hr} />
           <View style={styles.buttonDiv}>
             <MainButtonBlack

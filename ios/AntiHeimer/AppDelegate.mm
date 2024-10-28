@@ -2,6 +2,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <UIKit/UIKit.h>
 #import <FirebaseCore/FirebaseCore.h>
+#import <TSBackgroundFetch/TSBackgroundFetch.h>
 
 @implementation AppDelegate
 
@@ -11,6 +12,9 @@
 
   self.moduleName = @"AntiHeimer";
   self.initialProps = @{};
+
+  // Background Fetch 초기화
+  [[TSBackgroundFetch sharedInstance] didFinishLaunching];
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }

@@ -9,7 +9,6 @@ import Map from '../Component/Map';
 
 import GetGeoLocationFromDeviceFunction from '../../../Location/GetGeolocationFromDeviceFunction';
 import GetWardsFunction from '../../Account/Function/GetWardsFunction';
-import PostGeolocationFunction from '../Function/PostGeolocationFunction';
 
 function LocationPage({navigation}) {
   const [isRefreshing, setIsRefreshing] = useState(false);
