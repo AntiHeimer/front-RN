@@ -15,6 +15,7 @@ import Diagnosis3Component from './Diagnosis3Component';
 import GetDiagnosisSheet from '../Function/GetDiagnosisSheet';
 import GetRandomWordFunction from '../Function/GetRandomWordFunction';
 import PostDiagnosisAnswer from '../Function/PostDiagnosisAnswer';
+import Diagnosis4Component from './Diagnosis4Component';
 
 function DiagnosisPage({navigation}) {
   const [diagnosisSheet, setDiagnosisSheet] = useState(null);
@@ -151,6 +152,13 @@ function DiagnosisPage({navigation}) {
               diagnosisSheet={diagnosisSheet}
               setScore={score => handleScoreUpdate(num, score)}
               setDianosisAnswer={setDianosisAnswer}
+            />
+          ) : num == 7 ? (
+            <Diagnosis4Component
+              num={num}
+              diagnosisSheet={diagnosisSheet}
+              setScore={score => handleScoreUpdate(num, score)}
+              score={diagnosisAnswer[num]}
             />
           ) : (
             <Diagnosis1Component
