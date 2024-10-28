@@ -6,6 +6,7 @@ import {useState} from 'react';
 
 function DiagnosisResultInquiryPage() {
   const [selectedUser, setSelectedUser] = useState(null);
+
   return (
     <View style={styles.container}>
       <View style={styles.graphContainer}>

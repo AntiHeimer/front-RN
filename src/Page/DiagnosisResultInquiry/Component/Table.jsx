@@ -9,7 +9,7 @@ function Table({selectedUser}) {
   async function GetDiagnosisResultList() {
     const result = await GetDiagnosisResultListFunction({uuid: selectedUser});
     if (result.statusCode === '200') {
-      setResultList(result.resultList.slice(0, 3));
+      setResultList(result.resultList);
       return;
     }
 
