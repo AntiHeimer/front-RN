@@ -132,56 +132,74 @@ function DiagnosisPage({navigation}) {
 
   if (diagnosisSheet && randomWords) {
     return (
-      <KeyboardAwareScrollView
-        style={styles.keyboardView}
-        KeyboardAwareScrollView
-        extraScrollHeight={20}
-        enableOnAndroid={true}
-        nestedScrollEnabled={true}>
-        <View style={styles.container}>
-          {num == 2 ? (
-            <Diagnosis2Component
-              num={num}
-              diagnosisSheet={diagnosisSheet}
-              setScore={score => handleScoreUpdate(num, score)}
-              setDianosisAnswer={setDianosisAnswer}
-            />
-          ) : num == 4 ? (
-            <Diagnosis3Component
-              num={num}
-              diagnosisSheet={diagnosisSheet}
-              setScore={score => handleScoreUpdate(num, score)}
-              setDianosisAnswer={setDianosisAnswer}
-            />
-          ) : num == 7 ? (
-            <Diagnosis4Component
-              num={num}
-              diagnosisSheet={diagnosisSheet}
-              setScore={score => handleScoreUpdate(num, score)}
-              score={diagnosisAnswer[num]}
-            />
-          ) : (
-            <Diagnosis1Component
-              diagnosisSheet={diagnosisSheet}
-              randomWords={randomWords}
-              setScore={score => handleScoreUpdate(num, score)}
-              score={diagnosisAnswer[num]}
-              num={num}
-            />
-          )}
-
-          <View style={styles.buttonDiv}>
-            <MainMediumButtonGray
-              text="이전"
-              onPress={() => getPrevDiagnosisSheet()}
-            />
-            <MainMediumButtonBlack
-              text={num == 11 ? '제출하기' : '다음'}
-              onPress={() => getNextDiagnosisSheet()}
-            />
+      <>
+        {num == 2 ? (
+          <View style={styles.keyboardView}>
+            <View style={styles.container}>
+              <Diagnosis2Component
+                num={num}
+                diagnosisSheet={diagnosisSheet}
+                setScore={score => handleScoreUpdate(num, score)}
+                setDianosisAnswer={setDianosisAnswer}
+              />
+              <View style={styles.buttonDiv}>
+                <MainMediumButtonGray
+                  text="이전"
+                  onPress={() => getPrevDiagnosisSheet()}
+                />
+                <MainMediumButtonBlack
+                  text={num == 11 ? '제출하기' : '다음'}
+                  onPress={() => getNextDiagnosisSheet()}
+                />
+              </View>
+            </View>
           </View>
-        </View>
-      </KeyboardAwareScrollView>
+        ) : (
+          <KeyboardAwareScrollView
+            style={styles.keyboardView}
+            KeyboardAwareScrollView
+            extraScrollHeight={20}
+            enableOnAndroid={true}
+            nestedScrollEnabled={true}>
+            <View style={styles.container}>
+              {num == 4 ? (
+                <Diagnosis3Component
+                  num={num}
+                  diagnosisSheet={diagnosisSheet}
+                  setScore={score => handleScoreUpdate(num, score)}
+                  setDianosisAnswer={setDianosisAnswer}
+                />
+              ) : num == 7 ? (
+                <Diagnosis4Component
+                  num={num}
+                  diagnosisSheet={diagnosisSheet}
+                  setScore={score => handleScoreUpdate(num, score)}
+                  score={diagnosisAnswer[num]}
+                />
+              ) : (
+                <Diagnosis1Component
+                  diagnosisSheet={diagnosisSheet}
+                  randomWords={randomWords}
+                  setScore={score => handleScoreUpdate(num, score)}
+                  score={diagnosisAnswer[num]}
+                  num={num}
+                />
+              )}
+
+              <View style={styles.buttonDiv}>
+                <MainMediumButtonGray
+                  text="이전"
+                  onPress={() => getPrevDiagnosisSheet()}
+                />
+                <MainMediumButtonBlack
+                  text={num == 11 ? '제출하기' : '다음'}
+                  onPress={() => getNextDiagnosisSheet()}
+                />
+              </View>
+            </View>
+          </KeyboardAwareScrollView>
+        )}
+      </>
     );
   }
 }
