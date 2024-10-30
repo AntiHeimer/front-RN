@@ -5,7 +5,7 @@ import DeleteNotificationFunction from '../Function/DeleteNotificationFunction';
 function Row3({notification, navigation}) {
   async function DeleteNotification() {
     const result = await DeleteNotificationFunction({
-      notificationUuid: notification.notificationUuid,
+      notificationUuid: notification.uuid,
     });
 
     if (result.statusCode === '200') {
@@ -17,7 +17,6 @@ function Row3({notification, navigation}) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.circle} />
       <Text style={styles.message}>
         {notification.fromMemberName}님이{' '}
         {notification.notificationType === 'resultGuardian'
@@ -25,11 +24,13 @@ function Row3({notification, navigation}) {
           : '피보호자'}{' '}
         요청을 수락했습니다.
       </Text>
-      <TouchableOpacity
-        style={styles.removeButton}
-        onPress={() => DeleteNotification()}>
-        <Text style={styles.removeButtonText}>x</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonDiv}>
+        <TouchableOpacity
+          style={styles.removeButton}
+          onPress={() => DeleteNotification()}>
+          <Text style={styles.removeButtonText}>x</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -38,34 +39,26 @@ export default Row3;
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: 350,
     borderBottomWidth: 0.2,
     display: 'flex',
     flexDirection: 'row',
-    paddingTop: 20,
-    paddingBottom: 15,
-  },
-  circle: {
-    borderWidth: 0.2,
-    borderRadius: 100,
-    height: 40,
-    width: 40,
-
-    marginRight: 15,
+    paddingTop: 25,
+    paddingBottom: 20,
+    marginLeft: 20,
   },
   message: {
-    marginRight: 10,
-    marginTop: 10,
     fontSize: 13,
+    width: 300,
+    marginTop: 5,
+    // borderWidth: 1,
   },
   buttonDiv: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 10,
   },
   removeButton: {
     marginTop: 5,
-    marginLeft: 25,
     borderWidth: 0.2,
     borderRadius: 40,
     width: 30,

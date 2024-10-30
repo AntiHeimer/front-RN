@@ -102,7 +102,6 @@ function Row({notification, navigation}) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.circle} />
       <Text style={styles.message}>
         {notification.fromMemberName}님이{' '}
         {notification.notificationType === 'guardian' ? '보호자' : '피보호자'}{' '}
@@ -120,29 +119,24 @@ export default Row;
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: 350,
     borderBottomWidth: 0.2,
     display: 'flex',
     flexDirection: 'row',
-    paddingTop: 20,
-    paddingBottom: 15,
-  },
-  circle: {
-    borderWidth: 0.2,
-    borderRadius: 100,
-    height: 40,
-    width: 40,
-    marginLeft: 25,
-    marginRight: 15,
+    paddingTop: 25,
+    paddingBottom: 20,
+    marginLeft: 20,
   },
   message: {
-    width: 150,
     marginRight: 10,
     fontSize: 13,
+    width: 200,
+    marginTop: 5,
   },
   buttonDiv: {
     display: 'flex',
     flexDirection: 'row',
     gap: 10,
+    width: 120,
   },
 });
