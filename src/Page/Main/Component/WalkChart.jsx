@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 10,
-    marginLeft: 35,
   },
   bar1: {
     borderWidth: 1,
@@ -125,6 +124,6 @@ const styles = StyleSheet.create({
     borderColor: '#4ABFF4',
     borderRadius: 90,
     marginTop: 4,
-    marginRight: 4,
+    marginRight: 10,
   },
 });
