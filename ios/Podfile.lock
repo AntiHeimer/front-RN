@@ -955,6 +955,9 @@ PODS:
   - BoringSSL-GRPC/Interface (0.0.32)
   - BVLinearGradient (2.8.3):
     - React-Core
+  - CocoaLumberjack (3.8.5):
+    - CocoaLumberjack/Core (= 3.8.5)
+  - CocoaLumberjack/Core (3.8.5)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.74.5)
   - Firebase/CoreOnly (10.29.0):
@@ -2305,6 +2308,9 @@ PODS:
     - React
   - RNBackgroundFetch (4.2.5):
     - React-Core
+  - RNBackgroundGeolocation (4.17.4):
+    - CocoaLumberjack (~> 3.8.5)
+    - React-Core
   - RNCAsyncStorage (1.24.0):
     - React-Core
   - RNCMaskedView (0.1.11):
@@ -2455,6 +2461,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNAppleHealthKit (from `../node_modules/react-native-health`)
   - RNBackgroundFetch (from `../node_modules/react-native-background-fetch`)
+  - RNBackgroundGeolocation (from `../node_modules/react-native-background-geolocation`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
@@ -2470,6 +2477,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
+    - CocoaLumberjack
     - Firebase
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -2614,6 +2622,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-health"
   RNBackgroundFetch:
     :path: "../node_modules/react-native-background-fetch"
+  RNBackgroundGeolocation:
+    :path: "../node_modules/react-native-background-geolocation"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCMaskedView:
@@ -2640,6 +2650,7 @@ SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   BoringSSL-GRPC: 1e2348957acdbcad360b80a264a90799984b2ba6
   BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
+  CocoaLumberjack: 6a459bc897d6d80bd1b8c78482ec7ad05dffc3f0
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: ac12dc084d1c8ec4cc4d7b3cf1b0ebda6dab85af
   Firebase: cec914dab6fd7b1bd8ab56ea07ce4e03dd251c2d
@@ -2718,6 +2729,7 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   RNAppleHealthKit: 60a6beefdd89a75811e9a8873a5e24f351dee681
   RNBackgroundFetch: 2f800a04434620db15ede2e8f21886608a2d1743
+  RNBackgroundGeolocation: 31312aec533ca8dbee7f62685996658a95c37adf
   RNCAsyncStorage: ec53e44dc3e75b44aa2a9f37618a49c3bc080a7a
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNFBApp: 10819a4f67d634fe34aa607c6d1e8a8aef019308

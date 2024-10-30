@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {View, StyleSheet, ScrollView, RefreshControl} from 'react-native';
+import {View, StyleSheet, ScrollView, RefreshControl, Text} from 'react-native';
 
 import {ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 
@@ -14,9 +14,8 @@ function NotificationPage({navigation}) {
 
   async function LoadNotification() {
     const res = await FindNotificationFunction();
-
     if (res.statusCode === '200') {
-      setNotificationList(res.notificationDtoList);
+      setNotificationList(res.notificationList);
       return;
     }
 
@@ -51,28 +50,40 @@ function NotificationPage({navigation}) {
           }
           style={styles.scrollViewContent}>
           <View style={styles.subContainer}>
-            {notificationList.map(notification => {
-              if (
-                notification.notificationType === 'ward' ||
-                notification.notificationType === 'guardian'
-              ) {
-                return (
-                  <View key={notification.notificationUuid}>
-                    <Row notification={notification} navigation={navigation} />
-                  </View>
-                );
-              }
-              if (
-                notification.notificationType === 'resultWard' ||
-                notification.notificationType === 'resultGuardian'
-              ) {
-                return (
-                  <View key={notification.notificationUuid}>
-                    <Row3 notification={notification} navigation={navigation} />
-                  </View>
-                );
-              }
-            })}
+            {notificationList.length > 0 ? (
+              notificationList.map(notification => {
+                if (
+                  notification.notificationType === 'ward' ||
+                  notification.notificationType === 'guardian'
+                ) {
+                  return (
+                    <View key={notification.notificationUuid}>
+                      <Row
+                        notification={notification}
+                        navigation={navigation}
+                      />
+                    </View>
+                  );
+                }
+                if (
+                  notification.notificationType === 'resultWard' ||
+                  notification.notificationType === 'resultGuardian'
+                ) {
+                  return (
+                    <View key={notification.notificationUuid}>
+                      <Row3
+                        notification={notification}
+                        navigation={navigation}
+                      />
+                    </View>
+                  );
+                }
+              })
+            ) : (
+              <View style={styles.subContainer}>
+                <Text style={styles.nullNotification}>알림이 없습니다</Text>
+              </View>
+            )}
           </View>
         </ScrollView>
       </View>
@@ -93,5 +104,10 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     alignItems: 'center',
+  },
+  nullNotification: {
+    marginTop: 30,
+    fontSize: 15,
+    fontWeight: '500',
   },
 });

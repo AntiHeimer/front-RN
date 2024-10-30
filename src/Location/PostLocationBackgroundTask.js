@@ -1,4 +1,4 @@
-import BackgroundFetch from 'react-native-background-fetch';
+import BackgroundGeolocation from 'react-native-background-geolocation';
 import GetGeoLocationFromDeviceFunction from './GetGeolocationFromDeviceFunction';
 import PostGeolocationFunction from '../Page/Location/Function/PostGeolocationFunction';
 import {Storage} from '../Utils/Function/Storage';
@@ -18,41 +18,35 @@ async function PostLocationBackgroundTask() {
     console.error('Failed to fetch location:', error);
   }
 }
+// // Background Geolocation 설정 및 초기화
+// BackgroundGeolocation.ready(
+//   {
+//     desiredAccuracy: BackgroundGeolocation.DESIRED_ACCURACY_HIGH,
+//     distanceFilter: 0, // 시간 기반 업데이트를 위해 거리 필터를 0으로 설정
+//     stopOnTerminate: false, // 앱이 종료되어도 위치 추적 유지
+//     startOnBoot: true, // 디바이스 재부팅 시에도 위치 추적 시작
+//     enableHeadless: true, // 헤드리스 모드 활성화
+//     interval: 30 * 60 * 1000, // 30분 간격 (밀리초 단위)
+//     fastestInterval: 15 * 60 * 1000, // 가장 빠른 간격 (밀리초 단위)
+//     stationaryRadius: 50, // 정지 상태로 간주되는 반경
+//   },
+//   state => {
+//     console.log('[BackgroundGeolocation] Ready:', state);
+//     if (!state.enabled) {
+//       BackgroundGeolocation.start(); // 위치 추적 시작
+//     }
+//   },
+// );
 
-// Background Fetch 설정
-BackgroundFetch.configure(
-  {
-    minimumFetchInterval: 1, // 백그라운드 작업 실행 간격 (분 단위)
-    stopOnTerminate: false, // 앱이 종료되었을 때 작업 중지 여부
-    startOnBoot: true, // 디바이스 재시작 시 자동 실행 여부
-    requiredNetworkType: BackgroundFetch.NETWORK_TYPE_ANY, // 네트워크 필요 조건 추가
-    enableHeadless: true, // 헤드리스 모드 활성화 (백그라운드에서 실행 가능)
-  },
-  async taskId => {
-    console.log('[BackgroundFetch] task start:', taskId);
+// // 위치 이벤트 처리
+// BackgroundGeolocation.onLocation(
+//   location => {
+//     console.log('[BackgroundGeolocation] Location:', location);
+//     PostLocationBackgroundTask(location);
+//   },
+//   error => {
+//     console.warn('[BackgroundGeolocation] Error:', error);
+//   },
+// );
 
-    // 실제 백그라운드 작업 수행
-    // await PostLocationBackgroundTask();
-    console.log('backgrohnd');
-
-    // 작업이 끝난 후 시스템에 완료 알림
-    BackgroundFetch.finish(taskId);
-  },
-  error => {
-    console.error('[BackgroundFetch] failed to start:', error);
-  },
-);
-
-// 백그라운드 서비스 강제로 시작 (필요한 경우)
-BackgroundFetch.start(() => {
-  console.log('[BackgroundFetch] Service started');
-});
-
-// BackgroundFetch.stop(() => {
-//   console.log('[BackgroundFetch] Stopped service');
-//   // 서비스가 중지된 후 다시 시작
-//   BackgroundFetch.start(() => {
-//     console.log('[BackgroundFetch] Restarted service');
-//   });
-// });
 export default PostLocationBackgroundTask;
