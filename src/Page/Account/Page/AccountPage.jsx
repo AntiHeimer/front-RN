@@ -6,7 +6,6 @@ import {MainButtonBlack} from '../../../Utils/Component/MainButton';
 import {Storage} from '../../../Utils/Function/Storage';
 import {CancelAlert, ConfirmAlert} from '../../../Utils/Component/CustomAlert';
 
-import LogoutFunction from '../../Login/Function/LogoutFunction';
 import GetProtectorsFunction from '../Function/GetProtectorsFunction';
 import GetWardsFunction from '../Function/GetWardsFunction';
 import GetUserAccountFunction from '../Function/GetUserAccountFunction';
@@ -21,8 +20,6 @@ function AccountPage({navigation}) {
       title: '로그아웃',
       message: '정말 로그아웃 하시겠습니까?',
       onPressConfirm: async () => {
-        LogoutFunction();
-
         Storage.setItem('userState', {
           jwtToken: null,
           uuid: null,

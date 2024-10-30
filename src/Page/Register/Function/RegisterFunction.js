@@ -1,6 +1,7 @@
 import {Storage} from '../../../Utils/Function/Storage';
 
 export default async function RegisterFunction({userId, requestType}) {
+  console.log(userId, requestType);
   const userState = await Storage.getItem('userState');
 
   const uuid = userState.uuid;
@@ -20,7 +21,7 @@ export default async function RegisterFunction({userId, requestType}) {
   });
 
   const res = await result.json();
-  // console.log(res);
+  console.log(res);
 
   return res;
 }
