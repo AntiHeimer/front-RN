@@ -8,9 +8,10 @@ export default async function LogoutFunction() {
   const token = userState.jwtToken;
 
   const encryptedUuid = EncryptFunction({data: uuid});
+  const encodedUuid = encodeURIComponent(encryptedUuid);
 
   const result = await fetch(
-    `${process.env.API}/member/logout/${encryptedUuid}`,
+    `${process.env.API}/member/logout/${encodedUuid}`,
     {
       method: 'GET',
       headers: {
