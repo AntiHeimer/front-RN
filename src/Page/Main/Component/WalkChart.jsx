@@ -54,9 +54,8 @@ function WalkChart({walkData}) {
     <View style={styles.container}>
       <BarChart
         maxValue={20}
-        noOfSections={5}
+        noOfSections={4}
         hideYAxisText={false}
-        yAxisLabelTexts={['0', '5', '10', '15', '20']}
         stackData={stackData.map(item => ({
           ...item,
           stacks: item.stacks.map(stack => ({

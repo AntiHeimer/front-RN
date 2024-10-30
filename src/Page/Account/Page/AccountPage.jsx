@@ -98,7 +98,7 @@ function AccountPage({navigation}) {
           ) : (
             protectorList.map(protector => {
               return (
-                <View key={protector.memberUuid}>
+                <View key={protector.uuid}>
                   <Row name={protector.name} id={protector.id} />
                 </View>
               );
@@ -112,7 +112,7 @@ function AccountPage({navigation}) {
           ) : (
             wardList.map(ward => {
               return (
-                <View key={ward.memberUuid}>
+                <View key={ward.uuid}>
                   <Row name={ward.name} id={ward.id} />
                 </View>
               );

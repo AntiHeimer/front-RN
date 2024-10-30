@@ -45,9 +45,9 @@ function Row({notification, navigation}) {
   }
 
   async function SaveRelation() {
-    if (notification.notificationType === 'guardian') {
+    if (notification.type === 'guardian') {
       const result = await SaveGuardianFunction({
-        notificationUuid: notification.notificationUuid,
+        notificationUuid: notification.uuid,
         wardUuid: notification.fromMemberUuid,
       });
 
@@ -72,9 +72,9 @@ function Row({notification, navigation}) {
       return;
     }
 
-    if (notification.notificationType === 'ward') {
+    if (notification.type === 'ward') {
       const result = await SaveWardFunction({
-        notificationUuid: notification.notificationUuid,
+        notificationUuid: notification.uuid,
         guardianUuid: notification.fromMemberUuid,
       });
 

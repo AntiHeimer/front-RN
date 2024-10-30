@@ -53,11 +53,11 @@ function NotificationPage({navigation}) {
             {notificationList.length > 0 ? (
               notificationList.map(notification => {
                 if (
-                  notification.notificationType === 'ward' ||
-                  notification.notificationType === 'guardian'
+                  notification.type === 'ward' ||
+                  notification.type === 'guardian'
                 ) {
                   return (
-                    <View key={notification.notificationUuid}>
+                    <View key={notification.uuid}>
                       <Row
                         notification={notification}
                         navigation={navigation}
@@ -66,11 +66,11 @@ function NotificationPage({navigation}) {
                   );
                 }
                 if (
-                  notification.notificationType === 'resultWard' ||
-                  notification.notificationType === 'resultGuardian'
+                  notification.type === 'resultWard' ||
+                  notification.type === 'resultGuardian'
                 ) {
                   return (
-                    <View key={notification.notificationUuid}>
+                    <View key={notification.uuid}>
                       <Row3
                         notification={notification}
                         navigation={navigation}
