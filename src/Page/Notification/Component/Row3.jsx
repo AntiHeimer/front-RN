@@ -50,8 +50,7 @@ const styles = StyleSheet.create({
   message: {
     fontSize: 13,
     width: 300,
-    marginTop: 5,
-    // borderWidth: 1,
+    marginTop: 10,
   },
   buttonDiv: {
     display: 'flex',

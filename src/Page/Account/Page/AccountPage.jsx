@@ -98,7 +98,7 @@ function AccountPage({navigation}) {
           ) : (
             protectorList.map(protector => {
               return (
-                <View key={protector.uuid}>
+                <View style={styles.row} key={protector.uuid}>
                   <Row name={protector.name} id={protector.id} />
                 </View>
               );
@@ -112,7 +112,7 @@ function AccountPage({navigation}) {
           ) : (
             wardList.map(ward => {
               return (
-                <View key={ward.uuid}>
+                <View style={styles.row} key={ward.uuid}>
                   <Row name={ward.name} id={ward.id} />
                 </View>
               );
@@ -175,5 +175,8 @@ const styles = StyleSheet.create({
     height: 50,
     textAlign: 'left',
     paddingTop: 15,
+  },
+  row: {
+    marginTop: 5,
   },
 });
