@@ -17,7 +17,7 @@ function MainPage({navigation}) {
     PostActiveDataFunction();
     PostMoveDataFunction();
     PostWalkDataFunction();
-    PostLocationBackgroundTask();
+    // PostLocationBackgroundTask();
     GetGeoLocationFromDeviceFunction();
   }, []);
 

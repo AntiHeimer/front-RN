@@ -1,5 +1,5 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {useEffect, useState} from 'react';
+import {ScrollView, StyleSheet, Text, View, RefreshControl} from 'react-native';
+import {useEffect, useState, useCallback} from 'react';
 
 import Row from '../Component/Row';
 import {MainButtonBlack} from '../../../Utils/Component/MainButton';
@@ -14,6 +14,7 @@ function AccountPage({navigation}) {
   const [userInfo, setUserInfo] = useState(null);
   const [protectorList, setProtectorList] = useState(null);
   const [wardList, setWardList] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
 
   async function Logout() {
     CancelAlert({
@@ -78,6 +79,13 @@ function AccountPage({navigation}) {
     return;
   }
 
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    Promise.all([getProtector(), getWard()]).finally(() =>
+      setRefreshing(false),
+    );
+  }, []);
+
   useEffect(() => {
     getProtector();
     getWard();
@@ -87,7 +95,11 @@ function AccountPage({navigation}) {
   if (userInfo && protectorList && wardList) {
     return (
       <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }>
           <Text style={styles.text}>나의 정보</Text>
           <Row name={userInfo.name} id={userInfo.id} />
           <View style={styles.hr} />

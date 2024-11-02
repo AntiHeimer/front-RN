@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     width: 308,
     borderWidth: 0.2,
     borderColor: 'black',
-    marginTop: 40,
-    marginBottom: 55,
+    marginTop: 20,
+    marginBottom: 60,
   },
   tableRow: {
     flexDirection: 'row',
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   wideColumn: {
-    padding: 10,
+    padding: 1,
     flex: 4,
   },
   narrowColumn: {
