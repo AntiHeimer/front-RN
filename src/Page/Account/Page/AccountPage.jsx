@@ -112,7 +112,7 @@ function AccountPage({navigation}) {
           ) : (
             wardList.map(ward => {
               return (
-                <View style={styles.row} key={ward.uuid}>
+                <View style={styles.row} key={ward.memberUuid}>
                   <Row name={ward.name} id={ward.id} />
                 </View>
               );
