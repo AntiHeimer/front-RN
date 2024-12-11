@@ -70,7 +70,7 @@ function WalkChart({walkData}) {
         width={250}
         spacing={23}
         initialSpacing={30}
-        barWidth={10}
+        barWidth={15}
         barBorderRadius={6}
         renderTooltip={item => {
           return (
