@@ -44,6 +44,10 @@ function WalkChart({walkData}) {
     };
   });
 
+  // 최대값 계산 및 그래프의 maxValue 동적으로 설정
+  const maxWalkValue = Math.max(...completeData.map(item => item.value));
+  const maxValue = Math.ceil(maxWalkValue / 5000) * 5000; // 최대값에 5000의 여유를 추가
+
   // 날짜순으로 walkData를 정렬하고 stackData 형식으로 변환
   const stackData = completeData.map(item => ({
     stacks: [{value: item.value, color: '#4ABFF4'}],
@@ -53,7 +57,7 @@ function WalkChart({walkData}) {
   return (
     <View style={styles.container}>
       <BarChart
-        maxValue={20}
+        maxValue={maxValue / 1000}
         noOfSections={4}
         hideYAxisText={false}
         stackData={stackData.map(item => ({
