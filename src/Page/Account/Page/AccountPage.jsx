@@ -15,6 +15,7 @@ function AccountPage({navigation}) {
   const [protectorList, setProtectorList] = useState(null);
   const [wardList, setWardList] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   async function Logout() {
     CancelAlert({
@@ -79,6 +80,16 @@ function AccountPage({navigation}) {
     return;
   }
 
+  const loadData = async () => {
+    try {
+      await Promise.all([getUserInfo(), getProtector(), getWard()]);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     Promise.all([getProtector(), getWard()]).finally(() =>
@@ -86,72 +97,80 @@ function AccountPage({navigation}) {
     );
   }, []);
 
+  // useEffect(() => {
+  //   getProtector();
+  //   getWard();
+  //   getUserInfo();
+  // }, []);
+
   useEffect(() => {
-    getProtector();
-    getWard();
-    getUserInfo();
+    loadData();
   }, []);
 
-  if (userInfo && protectorList && wardList) {
+  if (isLoading) {
     return (
       <View style={styles.container}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }>
-          <Text style={styles.text}>나의 정보</Text>
-          <Row name={userInfo.name} id={userInfo.id} />
-          <View style={styles.hr} />
+        <Text>로딩 중입니다...</Text>
+      </View>
+    );
+  }
 
-          <Text style={styles.text}>나의 보호자 정보</Text>
-          {protectorList.length == 0 ? (
-            <Text style={styles.nullInfo}>보호자 정보가 없습니다.</Text>
-          ) : (
-            protectorList.map(protector => {
-              return (
-                <View style={styles.row} key={protector.uuid}>
-                  <Row name={protector.name} id={protector.id} />
-                </View>
-              );
-            })
-          )}
-          <View style={styles.hr} />
-
-          <Text style={styles.text}>나의 피보호자 정보</Text>
-          {wardList.length == 0 ? (
-            <Text style={styles.nullInfo}>피보호자 정보가 없습니다.</Text>
-          ) : (
-            wardList.map(ward => {
-              return (
-                <View style={styles.row} key={ward.memberUuid}>
-                  <Row name={ward.name} id={ward.id} />
-                </View>
-              );
-            })
-          )}
-
-          <View style={styles.hr} />
-          <View style={styles.buttonDiv}>
-            <MainButtonBlack
-              text="치매 센터 알아보기"
-              onPress={() => {
-                navigation.navigate('DementiaCenter');
-              }}
-            />
-            <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
-          </View>
-        </ScrollView>
+  if (!userInfo || !protectorList || !wardList) {
+    return (
+      <View style={styles.container}>
+        <Text>회원 정보를 불러오지 못했습니다.</Text>
+        <View style={styles.buttonDiv}>
+          <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+        </View>
       </View>
     );
   }
 
   return (
     <View style={styles.container}>
-      <Text>회원 정보를 불러오지 못했습니다.</Text>
-      <View style={styles.buttonDiv}>
-        <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
-      </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
+        <Text style={styles.text}>나의 정보</Text>
+        <Row name={userInfo.name} id={userInfo.id} />
+        <View style={styles.hr} />
+
+        <Text style={styles.text}>나의 보호자 정보</Text>
+        {protectorList.length === 0 ? (
+          <Text style={styles.nullInfo}>보호자 정보가 없습니다.</Text>
+        ) : (
+          protectorList.map(protector => (
+            <View style={styles.row} key={protector.uuid}>
+              <Row name={protector.name} id={protector.id} />
+            </View>
+          ))
+        )}
+        <View style={styles.hr} />
+
+        <Text style={styles.text}>나의 피보호자 정보</Text>
+        {wardList.length === 0 ? (
+          <Text style={styles.nullInfo}>피보호자 정보가 없습니다.</Text>
+        ) : (
+          wardList.map(ward => (
+            <View style={styles.row} key={ward.memberUuid}>
+              <Row name={ward.name} id={ward.id} />
+            </View>
+          ))
+        )}
+
+        <View style={styles.hr} />
+        <View style={styles.buttonDiv}>
+          <MainButtonBlack
+            text="치매 센터 알아보기"
+            onPress={() => {
+              navigation.navigate('DementiaCenter');
+            }}
+          />
+          <MainButtonBlack text="로그아웃" onPress={() => Logout()} />
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -165,6 +184,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
+  loadBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 200,
+  },
   text: {
     width: 308,
     textAlign: 'left',
@@ -173,6 +199,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 20,
   },
+
   hr: {
     width: 308,
     height: 1,
