@@ -8,7 +8,7 @@ import Row3 from '../Component/Row3';
 
 import FindNotificationFunction from '../Function/FindNotificationFunction';
 
-function NotificationPage({navigation}) {
+function NotificationPage() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [notificationList, setNotificationList] = useState(null);
 
@@ -32,6 +32,12 @@ function NotificationPage({navigation}) {
     setIsRefreshing(true);
     LoadNotification();
     setIsRefreshing(false);
+  }
+
+  function handleDeleteNotification(uuid) {
+    setNotificationList(prev =>
+      prev.filter(notification => notification.uuid !== uuid),
+    );
   }
 
   useEffect(() => {
@@ -60,7 +66,7 @@ function NotificationPage({navigation}) {
                     <View key={notification.uuid}>
                       <Row
                         notification={notification}
-                        navigation={navigation}
+                        onDelete={handleDeleteNotification}
                       />
                     </View>
                   );
@@ -73,7 +79,7 @@ function NotificationPage({navigation}) {
                     <View key={notification.uuid}>
                       <Row3
                         notification={notification}
-                        navigation={navigation}
+                        onDelete={handleDeleteNotification}
                       />
                     </View>
                   );
