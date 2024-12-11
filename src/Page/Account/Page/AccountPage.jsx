@@ -97,12 +97,6 @@ function AccountPage({navigation}) {
     );
   }, []);
 
-  // useEffect(() => {
-  //   getProtector();
-  //   getWard();
-  //   getUserInfo();
-  // }, []);
-
   useEffect(() => {
     loadData();
   }, []);
