@@ -6,6 +6,7 @@ export default async function PostGeolocationFunction({location}) {
   const uuid = userState.uuid;
 
   location.memberUuid = uuid;
+  console.log(location);
 
   const encryptedLocation = EncryptFunction({data: JSON.stringify(location)});
 

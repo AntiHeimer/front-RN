@@ -1,79 +1,37 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# AntiHeimer
 
-# Getting Started
+AntiHeimer는 치매(알츠하이머)의 조기 진단과 예방을 돕기 위해 개발된 애플리케이션입니다.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+이름은 Anti + Alzheimer의 합성어로, 치매를 예방하고 관리하려는 목적을 담고 있습니다.
 
-## Step 1: Start the Metro Server
+## 주요 기능
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+1.  iOS HealthKit 데이터를 활용한 건강 상태 조회
 
-To start Metro, run the following command from the _root_ of your React Native project:
+    • 사용자의 HealthKit 데이터를 활용하여 건강 상태를 조회할 수 있습니다.
 
-```bash
-# using npm
-npm start
+    • 수집된 건강 데이터를 그래프로 시각화하여 직관적으로 확인 가능합니다.
 
-# OR using Yarn
-yarn start
-```
+2.  위치 조회 및 기록
 
-## Step 2: Start your Application
+    • 사용자의 디바이스 위치를 주기적으로 조회 및 기록합니다.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+    • 위치 정보를 통해 사용자의 이동 경로를 관리할 수 있습니다.
 
-### For Android
+3.  보호자 및 피보호자 관리 기능
 
-```bash
-# using npm
-npm run android
+    • 보호자가 피보호자를 등록하여 다음 정보를 조회할 수 있습니다:
 
-# OR using Yarn
-yarn android
-```
+         보호자의 건강 데이터
 
-### For iOS
+         피보호자의 현재 위치
 
-```bash
-# using npm
-npm run ios
+         긴급 상황 시 피보호자의 위치 확인 및 대처가 가능합니다.
 
-# OR using Yarn
-yarn ios
-```
+4.  AI를 활용한 치매 진단
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+    • MMSE(간이 정신상태 검사)와 건강 데이터를 결합하여 AI 기반으로 치매를 진단합니다.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+    • 결과는 다음 세 가지로 분류됩니다
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+    정상, 치매 위험, 치매 주의

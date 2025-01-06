@@ -2323,7 +2323,7 @@ PODS:
     - FirebaseCoreExtension
     - React-Core
     - RNFBApp
-  - RNGestureHandler (2.18.1):
+  - RNGestureHandler (2.21.2):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2346,27 +2346,6 @@ PODS:
     - Yoga
   - RNPermissions (4.1.5):
     - React-Core
-  - RNReanimated (3.14.0):
-    - DoubleConversion
-    - glog
-    - hermes-engine
-    - RCT-Folly (= 2024.01.01.00)
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Codegen
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - Yoga
   - RNScreens (3.34.0):
     - DoubleConversion
     - glog
@@ -2468,7 +2447,6 @@ DEPENDENCIES:
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
-  - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -2636,8 +2614,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
-  RNReanimated:
-    :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSVG:
@@ -2734,9 +2710,8 @@ SPEC CHECKSUMS:
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNFBApp: 10819a4f67d634fe34aa607c6d1e8a8aef019308
   RNFBMessaging: 652aac21d91b8ddb85a5e25c0f04150ef60b5384
-  RNGestureHandler: fc0d83b45872ee937ecc9814012d9b48586b4d7a
+  RNGestureHandler: 38b7949a58a56ae0e2a3c38920cb6852cafb6b9f
   RNPermissions: 294531ede5a64d1528463e88fffef05675842042
-  RNReanimated: f6b214732ff303cb815ac81b26bbfd2070b69f43
   RNScreens: db442e7b8c7bc8befec2ce057927305ff8598cc8
   RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d

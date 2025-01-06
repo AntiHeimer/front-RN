@@ -8,7 +8,6 @@ import PostMoveDataFunction from '../Function/PostMoveDataFunction';
 import PostActiveDataFunction from '../Function/PostActiveDataFunction';
 import PostWalkDataFunction from '../Function/PostWalkDataFunction';
 import PostSleepDataFunction from '../Function/PostSleepDataFunction';
-import PostLocationBackgroundTask from '../../../Location/PostLocationBackgroundTask';
 import GetGeoLocationFromDeviceFunction from '../../../Location/GetGeolocationFromDeviceFunction';
 
 function MainPage({navigation}) {
